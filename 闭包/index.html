@@ -3,16 +3,19 @@
 <head>
   <meta charset="utf-8">
   
-  <title>tags | 叶珵珵</title>
+  <title>闭包 | 叶珵珵</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="tags">
-<meta property="og:url" content="http://yoursite.com/tags/index.html">
+  <meta name="description" content="闭包在我看来就是携带状态的函数，并且它的状态可以完全对外隐藏。 由于“链式作用域”，函数内部可以直接读取全局变量，不停向父层函数访问，但函数外部无法读取函数内部的局部变量。 因此，通过闭包我们可以从函数外部访问函数内部变量，可以把闭包理解珵函数内部与外部连接的桥梁。 所以，闭包的两大作用为：1，可以读取函数内部的变量；2，让这些内部变量一直保存在内存中，当函数调用后不会被销毁。      func">
+<meta property="og:type" content="website">
+<meta property="og:title" content="闭包">
+<meta property="og:url" content="http://yoursite.com/闭包/index.html">
 <meta property="og:site_name" content="叶珵珵">
+<meta property="og:description" content="闭包在我看来就是携带状态的函数，并且它的状态可以完全对外隐藏。 由于“链式作用域”，函数内部可以直接读取全局变量，不停向父层函数访问，但函数外部无法读取函数内部的局部变量。 因此，通过闭包我们可以从函数外部访问函数内部变量，可以把闭包理解珵函数内部与外部连接的桥梁。 所以，闭包的两大作用为：1，可以读取函数内部的变量；2，让这些内部变量一直保存在内存中，当函数调用后不会被销毁。      func">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-08-10T12:58:03.000Z">
+<meta property="og:updated_time" content="2017-09-08T08:40:59.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="tags">
+<meta name="twitter:title" content="闭包">
+<meta name="twitter:description" content="闭包在我看来就是携带状态的函数，并且它的状态可以完全对外隐藏。 由于“链式作用域”，函数内部可以直接读取全局变量，不停向父层函数访问，但函数外部无法读取函数内部的局部变量。 因此，通过闭包我们可以从函数外部访问函数内部变量，可以把闭包理解珵函数内部与外部连接的桥梁。 所以，闭包的两大作用为：1，可以读取函数内部的变量；2，让这些内部变量一直保存在内存中，当函数调用后不会被销毁。      func">
   
     <link rel="alternate" href="/atom.xml" title="叶珵珵" type="application/atom+xml">
   
@@ -67,8 +70,8 @@
       <div class="outer">
         <section id="main"><article id="page-" class="article article-type-page" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/tags/index.html" class="article-date">
-  <time datetime="2017-08-10T12:56:37.000Z" itemprop="datePublished">2017-08-10</time>
+    <a href="/闭包/index.html" class="article-date">
+  <time datetime="2017-09-08T08:38:24.000Z" itemprop="datePublished">2017-09-08</time>
 </a>
     
   </div>
@@ -79,7 +82,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      tags
+      闭包
     </h1>
   
 
@@ -87,11 +90,33 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        
+        <pre><code>闭包在我看来就是携带状态的函数，并且它的状态可以完全对外隐藏。
+由于“链式作用域”，函数内部可以直接读取全局变量，不停向父层函数访问，但函数外部无法读取函数内部的局部变量。
+因此，通过闭包我们可以从函数外部访问函数内部变量，可以把闭包理解珵函数内部与外部连接的桥梁。
+所以，闭包的两大作用为：1，可以读取函数内部的变量；2，让这些内部变量一直保存在内存中，当函数调用后不会被销毁。
+</code></pre><script type="text/javascript">
+    function f1(){
+        var subtr = document.getElementsByClassName("subtr");
+        function f2(){
+            var arr = new Array;
+            for(var i=0; i<subtr.length; i++){
+                if(subtr[i].children[0].innerHTML > 123){
+                    arr.push(subtr[i].children[0].innerHTML);
+                }
+            }
+
+        }
+        return f2;
+        console.log(arr);
+    }
+    var result = f1();
+    result();//执行的是f2函数
+</script>
+
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/tags/index.html" data-id="cj7bmttzk0001c1jb15syrmm2" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/闭包/index.html" data-id="cj7bmtu0d0006c1jbcxfdm459" class="article-share-link">Share</a>
       
       
     </footer>
