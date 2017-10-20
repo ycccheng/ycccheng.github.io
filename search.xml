@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search>
+  <entry>
+    <title><![CDATA[闭包]]></title>
+    <url>%2F2017%2F09%2F08%2F%E9%97%AD%E5%8C%85%2F</url>
+    <content type="text"><![CDATA[闭包在我看来就是携带状态的函数，并且它的状态可以完全对外隐藏。 由于“链式作用域”，函数内部可以直接读取全局变量，不停向父层函数访问，但函数外部无法读取函数内部的局部变量。 因此，通过闭包我们可以从函数外部访问函数内部变量，可以把闭包理解珵函数内部与外部连接的桥梁。 所以，闭包的两大作用为：1，可以读取函数内部的变量；2，让这些内部变量一直保存在内存中，当函数调用后不会被销毁。 闭包1var sub = document. [ ] 123 234 row 1 col 1 row 1 col 2 row 2 col 1 row 2 col 2]]></content>
+      <categories>
+        <category>js</category>
+      </categories>
+      <tags>
+        <tag>js</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[常用的几种布局]]></title>
+    <url>%2F2017%2F09%2F08%2F%E5%B8%B8%E7%94%A8%E7%9A%84%E5%87%A0%E7%A7%8D%E5%B8%83%E5%B1%80%2F</url>
+    <content type="text"><![CDATA[两列布局左列定宽，右列自适应12.left&#123;float：left; width:100px;&#125;.right&#123;margin-left:100px&#125; IE6会有3像素的bug 三列布局这三种布局基本都是当今网页布局比较常用的布局方式：左中右三栏布局，左右两栏宽度固定（要是不想固定将宽度改成百分比），中间栏宽度自适应。 绝度定位法左右两栏采用绝对定位，固定于页面两侧；中间栏用左右margin值撑开距离。 12345&lt;body&gt; &lt;div id=&quot;left&quot; style=&quot;position:absolute; width:200px; left:0;&quot;&gt;&lt;/div&gt; &lt;div id=&quot;main&quot; style=&quot;margin:0 210px&quot;&gt;&lt;/div&gt; &lt;div id=&quot;right&quot; style=&quot;position:absolute; width:200px;&quot;&gt;&lt;/div&gt;&lt;/body&gt; margin负值法这种方法是在实际的网站中应用的最多的，中间主体使用双层标签，内层div为真正的主体内容，含有左右210像素的margin值。左右栏采用maigin负值定位：margin-left:-100% 1234567&lt;body&gt; &lt;div style=&quot;float:left margin:0;&quot;&gt; &lt;div width:100%,float:left&gt;&lt;/div&gt; &lt;/div&gt; &lt;div id=&quot;left&quot; style=&quot;width:200px; margin-left:-100%;float:left&quot;&gt;&lt;/div&gt; &lt;div id=&quot;right&quot; style=&quot; width:200px; margin-left:-200px;float:left&quot;&gt;&lt;/div&gt;&lt;/body&gt; 自身浮动法左栏左浮动，右栏右浮动，中间部分自适应12345&lt;body&gt; &lt;div id=&quot;left&quot; style=&quot;width:200px; float:left&quot;&gt;&lt;/div&gt; &lt;div id=&quot;right&quot; style=&quot;width:200px; float:right&quot;&gt;&lt;/div&gt; &lt;div style=&quot;margin:0 210px;&quot;&gt;&lt;/div&gt;&lt;/body&gt;]]></content>
+      <categories>
+        <category>css</category>
+      </categories>
+      <tags>
+        <tag>css</tag>
+      </tags>
+  </entry>
+</search>
