@@ -2,8 +2,8 @@
 <search>
   <entry>
     <title><![CDATA[闭包]]></title>
-    <url>%2F2017%2F09%2F08%2F%E9%97%AD%E5%8C%85%2F</url>
-    <content type="text"><![CDATA[闭包在我看来就是携带状态的函数，并且它的状态可以完全对外隐藏。 由于“链式作用域”，函数内部可以直接读取全局变量，不停向父层函数访问，但函数外部无法读取函数内部的局部变量。 因此，通过闭包我们可以从函数外部访问函数内部变量，可以把闭包理解珵函数内部与外部连接的桥梁。 所以，闭包的两大作用为：1，可以读取函数内部的变量；2，让这些内部变量一直保存在内存中，当函数调用后不会被销毁。 闭包1var sub = document. [ ] 123 234 row 1 col 1 row 1 col 2 row 2 col 1 row 2 col 2]]></content>
+    <url>%2F2017%2F09%2F08%2F%E5%8E%9F%E5%9E%8B%2F</url>
+    <content type="text"><![CDATA[探讨原型之前，我们先探讨下对象和函数的关系： 对象与函数我们一直都知道，函数是对象的一种，通过instanceof函数可以判断；再去看数据，我们也知道数组也是对象的一种，他就是数组的一个子集；但是我们又可以说所有对象都是通过函数创建的；所以，函数和对象的关系有种鸡生蛋蛋生鸡的关系 123var obj = new object();obj.a = 10;obj.b = 5; 原型与原型链原型prototype我们得先弄清原型、实例、构造函数三者之间的关系 首先 每个函数都具有prototype这个属性，函数的prototype属性指向函数的原型 其次，每个原型对象都具有一个constructor指针指向构造函数本身； 再者，每个对象都具有一个隐式原型 proto指向他的原型，所以，所有实例也指向原型对象 每个对象都有一个proto属性，指向创建该对象的函数的prototype 12person.prototype.constructor = person;new person()._proto_ = person.prototype; 由于所有函数也是对象，所以函数也会有自己的原型，他的prototype属性会指向她的原型，而所有的函数也具有自己的函数原型，所有的函数原型也是对象，都是被object创建，所以他的proto属性指向object.prototype.但是Object.prototype确实一个特例——它的proto指向的是null 原型链的两个问题 1.众所周知的是，原型对象的所有属性会被所有是咧共享，所以一部分实例属性应该定义在构造函数中，而共享的原型属性应写在原型对象中。原型对象也具有这样的问题，原型会成为另一个对象的实例，所以实例属性就变成了原型属性。 2.在创建子类型的实例时，不能向超类型的构造函数中传递参数 问题解决：组合继承 原型链和借用构造函数的组合，使用原型链实现对原型属性的继承，使用构造函数实现对实例属性的继承，call()方法实现继承，并传入参数。看下面这个例子： 12345678910111213141516171819202122232425262728function sup(name)&#123; this.name = name; this.color = [&quot;red&quot;,&quot;blue&quot;] //构造函数里定义了name,color属性 &#125;; sup.prototype.sayname = function()&#123; alert(this.name); &#125;; function sub(name,age)&#123; sup.call(this,name);//继承了sup的构造函数属性 this.age = age; &#125;; sub.prototype = new sup();//sub原型指向sup的实例，具有了name,color属性 sub.prototype.constructor = sub; sub.prototype.sayage = function()&#123; alert(this.age); &#125;; var instance1 = new sub(&quot;Nick&quot;,29); instance1.color.push(&quot;black&quot;) alert(instance1.color);//&quot;red&quot;,&quot;blue&quot;,&quot;black&quot; instance1.sayname();//&quot;Nick&quot; instance1.sayage();//29 var instance2 = new sub(&quot;John&quot;,31); alert(instance1.color);//&quot;red&quot;,&quot;blue&quot; instance1.sayname();//&quot;John&quot; instance1.sayage();//31 由于sub的原型指向了sup的实例，所以存在sup构造函数里的name,color属性也继承到了sub的原型里，因此，运行函数是，可以在sub的原型对象里找到name,color属性。 但由于运用了call()函数，所以sub的构造函数的对象里也具有color,name的实例属性，所以，当构造函数sub()调用时，首先搜索的是构造函数里的实例属性。所以，每个实例，instance1,instance2都有自己的实例属性的副本。 组合式继承融合了原型链和构造函数的优点，成为js中最常用的继承模式。]]></content>
       <categories>
         <category>js</category>
       </categories>
@@ -20,6 +20,17 @@
       </categories>
       <tags>
         <tag>css</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[闭包]]></title>
+    <url>%2F2017%2F09%2F08%2F%E9%97%AD%E5%8C%85%2F</url>
+    <content type="text"><![CDATA[闭包在我看来就是携带状态的函数，并且它的状态可以完全对外隐藏。 由于“链式作用域”，函数内部可以直接读取全局变量，不停向父层函数访问，但函数外部无法读取函数内部的局部变量。 因此，通过闭包我们可以从函数外部访问函数内部变量，可以把闭包理解珵函数内部与外部连接的桥梁。 所以，闭包的两大作用为：1，可以读取函数内部的变量；2，让这些内部变量一直保存在内存中，当函数调用后不会被销毁。 闭包1var sub = document. [ ] 123 234 row 1 col 1 row 1 col 2 row 2 col 1 row 2 col 2]]></content>
+      <categories>
+        <category>js</category>
+      </categories>
+      <tags>
+        <tag>js</tag>
       </tags>
   </entry>
 </search>
