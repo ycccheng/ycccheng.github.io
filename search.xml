@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title><![CDATA[原型]]></title>
-    <url>%2F2017%2F09%2F08%2F%E5%8E%9F%E5%9E%8B%2F</url>
-    <content type="text"><![CDATA[探讨原型之前，我们先探讨下对象和函数的关系： 对象与函数我们一直都知道，函数是对象的一种，通过instanceof函数可以判断；再去看数据，我们也知道数组也是对象的一种，他就是数组的一个子集；但是我们又可以说所有对象都是通过函数创建的；所以，函数和对象的关系有种鸡生蛋蛋生鸡的关系 123var obj = new object();obj.a = 10;obj.b = 5; 原型与原型链原型prototype我们得先弄清原型、实例、构造函数三者之间的关系 首先 每个函数都具有prototype这个属性，函数的prototype属性指向函数的原型 其次，每个原型对象都具有一个constructor指针指向构造函数本身； 再者，每个对象都具有一个隐式原型 proto指向他的原型，所以，所有实例也指向原型对象 每个对象都有一个proto属性，指向创建该对象的函数的prototype 12person.prototype.constructor = person;new person()._proto_ = person.prototype; 由于所有函数也是对象，所以函数也会有自己的原型，他的prototype属性会指向她的原型，而所有的函数也具有自己的函数原型，所有的函数原型也是对象，都是被object创建，所以他的proto属性指向object.prototype.但是Object.prototype确实一个特例——它的proto指向的是null ###原型链的两个问题 1.众所周知的是，原型对象的所有属性会被所有是咧共享，所以一部分实例属性应该定义在构造函数中，而共享的原型属性应写在原型对象中。原型对象也具有这样的问题，原型会成为另一个对象的实例，所以实例属性就变成了原型属性。 2.在创建子类型的实例时，不能向超类型的构造函数中传递参数 问题解决：组合继承 原型链和借用构造函数的组合，使用原型链实现对原型属性的继承，使用构造函数实现对实例属性的继承，call()方法实现继承，并传入参数。看下面这个例子： 12345678910111213141516171819202122232425262728function sup(name)&#123; this.name = name; this.color = [&quot;red&quot;,&quot;blue&quot;] //构造函数里定义了name,color属性 &#125;; sup.prototype.sayname = function()&#123; alert(this.name); &#125;; function sub(name,age)&#123; sup.call(this,name);//继承了sup的构造函数属性 第二次调用 this.age = age; &#125;; sub.prototype = new sup();//sub原型指向sup的实例，具有了name,color属性 第一次调用sup sub.prototype.constructor = sub; sub.prototype.sayage = function()&#123; alert(this.age); &#125;; var instance1 = new sub(&quot;Nick&quot;,29); instance1.color.push(&quot;black&quot;) alert(instance1.color);//&quot;red&quot;,&quot;blue&quot;,&quot;black&quot; instance1.sayname();//&quot;Nick&quot; instance1.sayage();//29 var instance2 = new sub(&quot;John&quot;,31); alert(instance1.color);//&quot;red&quot;,&quot;blue&quot; instance1.sayname();//&quot;John&quot; instance1.sayage();//31 由于sub的原型指向了sup的实例，所以存在sup构造函数里的name,color属性也继承到了sub的原型里，因此，运行函数是，可以在sub的原型对象里找到name,color属性。 但由于运用了call()函数，所以sub的构造函数的对象里也具有color,name的实例属性，所以，当构造函数sub()调用时，首先搜索的是构造函数里的实例属性。所以，每个实例，instance1,instance2都有自己的实例属性的副本。 组合式继承融合了原型链和构造函数的优点，成为js中最常用的继承模式。 上述例子由于两次调用sup函数而使得在instance实例和sub原型中具有两个相同的同名属性，为了解决这个问题便引出了寄生组合式继承，详见书173页。]]></content>
+    <title><![CDATA[HTTP首部字段]]></title>
+    <url>%2F2017%2F09%2F08%2Fhttp%E9%A6%96%E9%83%A8%E5%AD%97%E6%AE%B5%2F</url>
+    <content type="text"><![CDATA[http协议的请求和响应报文必定包含http首部首部内容是客户端和服务器请求或响应时所提供的需要的信息。 &lt;–!more–&gt; 请求报文与响应报文构成请求报文由方法，URI，http版本、首部字段组成。 响应报文由http版本，状态码，首部字段组成。构成 | 请求报文 | 响应报文—|—|—报文首部|请求行、通用/请求/实体首部字段| 请求行、通用/请求/实体首部字段主体部分|报文主体 | 报文主体 首部字段首部字段在客户端与服务器通信中，起到传递重要信息的作用。首部字段是为了给浏览器 和服务器提供报文大小、认证信息、缓存等内容。 字段结构 首部字段名：字段值 4种字段类型 通用首部字段 请求/相应首部字段 实体首部 接下来我们详细讲一下每个字段的具体内容 http/1.1通用首部字段++通用首部字段指的是请求报文和响应报文都会使用的首部。++ Cache-Control 通过指定Cache-Control的值，就能操作缓存的工作机制。指令可为多个，且用”，“来间隔 1Cache-Control: private, max-age = 0, no-cache 表示能否缓存的指令 ++public指令++ 表明可向任一用户提供响应的缓存 ++private指令++ 与public相对的，表明响应的缓存只向特定用户提供 ++no-cache指令++ 确定缓存的有效性，防止返回过期的缓存 客户端请求包含no-cache：表示客户端不会接受缓存服务器发来的缓存，处于中间的缓存服务器就会把请求发给源服务器。 服务器请求包含no-cache：缓存服务器不能对资源进行缓存。以后也不会对缓存服务器的资源进行确认，且禁止对任何资源进行缓存。 1Cache-Control:no-cache = Location 如果对字段名指定具体参数值，客户端接受到服务器返回的响应报文后，就不能使用缓存了。也就是说，无村塾的首部字段可以使用缓存。++且该参数只能在响应报文中指定。++ 控制可执行缓存的对象的指令 ++no-store指令++ 规定不能缓存请求或响应的任一部分 指定缓存期限和认证的指令 ++s-maxage++ 只适用于拱多位用户使用的公共缓存服务器 1Cache-Control:s-maxage = 604800（秒） ++max-age++ 客户端角度 如果在缓存期限内，即判定当前的缓存期限小于指定时间，则向客户端发送缓存的数据。1Cache-Control:s-maxage = 0（秒） 当值为0时，那么缓存服务器需要将请求发送给园服务器。 服务器角度 缓存服务器不再对缓存的期限进行确认。 ++min-fresh指令++ 超过期限就无法返回缓存，只返回指定时间内的缓存。 ++max-scale++ 缓存过期也照常接收。 ++only-if-cached++ 客户端仅在缓存服务器本地缓存目标资源的情况下才会要求其返回。缓存服务器不重新加载响应，不确认缓存的有效性。 ++must-revalidate指令++ 代理服务器向源服务器确定缓存的有效性。 ++proxy-cache++ 所有缓存服务器在接受客户端带有该指令的情求返回响应之前，必须再次验证缓存的有效性。 ++no-transform++ 缓存不能改变实体主体的媒体类型。]]></content>
       <categories>
-        <category>js</category>
+        <category>http</category>
       </categories>
       <tags>
-        <tag>js</tag>
+        <tag>http</tag>
       </tags>
   </entry>
   <entry>
@@ -20,6 +20,17 @@
       </categories>
       <tags>
         <tag>css</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[原型]]></title>
+    <url>%2F2017%2F09%2F08%2F%E5%8E%9F%E5%9E%8B%2F</url>
+    <content type="text"><![CDATA[探讨原型之前，我们先探讨下对象和函数的关系： 对象与函数我们一直都知道，函数是对象的一种，通过instanceof函数可以判断；再去看数据，我们也知道数组也是对象的一种，他就是数组的一个子集；但是我们又可以说所有对象都是通过函数创建的；所以，函数和对象的关系有种鸡生蛋蛋生鸡的关系 123var obj = new object();obj.a = 10;obj.b = 5; 原型与原型链原型prototype我们得先弄清原型、实例、构造函数三者之间的关系 首先 每个函数都具有prototype这个属性，函数的prototype属性指向函数的原型 其次，每个原型对象都具有一个constructor指针指向构造函数本身； 再者，每个对象都具有一个隐式原型 proto指向他的原型，所以，所有实例也指向原型对象 每个对象都有一个proto属性，指向创建该对象的函数的prototype 12person.prototype.constructor = person;new person()._proto_ = person.prototype; 由于所有函数也是对象，所以函数也会有自己的原型，他的prototype属性会指向她的原型，而所有的函数也具有自己的函数原型，所有的函数原型也是对象，都是被object创建，所以他的proto属性指向object.prototype.但是Object.prototype确实一个特例——它的proto指向的是null ###原型链的两个问题 1.众所周知的是，原型对象的所有属性会被所有是咧共享，所以一部分实例属性应该定义在构造函数中，而共享的原型属性应写在原型对象中。原型对象也具有这样的问题，原型会成为另一个对象的实例，所以实例属性就变成了原型属性。 2.在创建子类型的实例时，不能向超类型的构造函数中传递参数 问题解决：组合继承 原型链和借用构造函数的组合，使用原型链实现对原型属性的继承，使用构造函数实现对实例属性的继承，call()方法实现继承，并传入参数。看下面这个例子： 12345678910111213141516171819202122232425262728function sup(name)&#123; this.name = name; this.color = [&quot;red&quot;,&quot;blue&quot;] //构造函数里定义了name,color属性 &#125;; sup.prototype.sayname = function()&#123; alert(this.name); &#125;; function sub(name,age)&#123; sup.call(this,name);//继承了sup的构造函数属性 第二次调用 this.age = age; &#125;; sub.prototype = new sup();//sub原型指向sup的实例，具有了name,color属性 第一次调用sup sub.prototype.constructor = sub; sub.prototype.sayage = function()&#123; alert(this.age); &#125;; var instance1 = new sub(&quot;Nick&quot;,29); instance1.color.push(&quot;black&quot;) alert(instance1.color);//&quot;red&quot;,&quot;blue&quot;,&quot;black&quot; instance1.sayname();//&quot;Nick&quot; instance1.sayage();//29 var instance2 = new sub(&quot;John&quot;,31); alert(instance1.color);//&quot;red&quot;,&quot;blue&quot; instance1.sayname();//&quot;John&quot; instance1.sayage();//31 由于sub的原型指向了sup的实例，所以存在sup构造函数里的name,color属性也继承到了sub的原型里，因此，运行函数是，可以在sub的原型对象里找到name,color属性。 但由于运用了call()函数，所以sub的构造函数的对象里也具有color,name的实例属性，所以，当构造函数sub()调用时，首先搜索的是构造函数里的实例属性。所以，每个实例，instance1,instance2都有自己的实例属性的副本。 组合式继承融合了原型链和构造函数的优点，成为js中最常用的继承模式。 上述例子由于两次调用sup函数而使得在instance实例和sub原型中具有两个相同的同名属性，为了解决这个问题便引出了寄生组合式继承，详见书173页。]]></content>
+      <categories>
+        <category>js</category>
+      </categories>
+      <tags>
+        <tag>js</tag>
       </tags>
   </entry>
   <entry>
