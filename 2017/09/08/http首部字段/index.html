@@ -103,7 +103,8 @@
 <meta property="og:description" content="http协议的请求和响应报文必定包含http首部首部内容是客户端和服务器请求或响应时所提供的需要的信息。">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://oy3ncu01s.bkt.clouddn.com/17-11-3/42111472.jpg">
-<meta property="og:updated_time" content="2017-11-04T06:24:50.000Z">
+<meta property="og:image" content="http://oy3ncu01s.bkt.clouddn.com/17-11-4/6435648.jpg">
+<meta property="og:updated_time" content="2017-11-04T07:42:54.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="HTTP首部字段">
 <meta name="twitter:description" content="http协议的请求和响应报文必定包含http首部首部内容是客户端和服务器请求或响应时所提供的需要的信息。">
@@ -469,7 +470,11 @@
 <p>IP地址相当于通信地址，都是由数字组成的，不利于记忆，因此为了方便记忆，定义了域名，所以人们都是访问baidu.com，而不是ip地址。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">host:www.baidu.com</div></pre></td></tr></table></figure>
 <hr>
-<h3 id="http-1-1响应首部字段"><a href="#http-1-1响应首部字段" class="headerlink" title="http/1.1响应首部字段"></a>http/1.1响应首部字段</h3>
+<h3 id="http-1-1响应首部字段"><a href="#http-1-1响应首部字段" class="headerlink" title="http/1.1响应首部字段"></a>http/1.1响应首部字段</h3><h4 id="1-vary"><a href="#1-vary" class="headerlink" title="1.vary"></a>1.vary</h4><p>vary可对缓存进行控制，源服务器向代理服务器传达关于缓存使用方法的命令。</p>
+<p><img src="http://oy3ncu01s.bkt.clouddn.com/17-11-4/6435648.jpg" alt=""></p>
+<p>当客户当与代理服务器都带有相同值的vary指令时，那么就直接从代理服务器发送缓存给客户端，如果不相同，则向源服务器发送请求。</p>
+<p>从代理服务器收到源服务器返回的包含vary的响应后，如果再要进行缓存，则仅对请求中的vary指令值相同时返回缓存。</p>
+
       
     </div>
     
@@ -499,8 +504,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/09/08/原型/" rel="next" title="原型">
-                <i class="fa fa-chevron-left"></i> 原型
+              <a href="/2017/09/08/常用的几种布局/" rel="next" title="常用的几种布局">
+                <i class="fa fa-chevron-left"></i> 常用的几种布局
               </a>
             
           </div>
@@ -508,6 +513,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/09/08/原型/" rel="prev" title="原型">
+                原型 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -584,7 +593,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">4</span>
+                <span class="site-state-item-count">5</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -641,7 +650,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#请求报文与响应报文构成"><span class="nav-number">1.</span> <span class="nav-text">请求报文与响应报文构成</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#首部字段"><span class="nav-number">2.</span> <span class="nav-text">首部字段</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#http-1-1通用首部字段"><span class="nav-number">3.</span> <span class="nav-text">http/1.1通用首部字段</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-Cache-Control"><span class="nav-number">3.1.</span> <span class="nav-text">1. Cache-Control</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-Connection指令"><span class="nav-number">3.2.</span> <span class="nav-text">2. Connection指令</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-Date"><span class="nav-number">3.3.</span> <span class="nav-text">3. Date</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-Pragma"><span class="nav-number">3.4.</span> <span class="nav-text">4. Pragma</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5-Trailer"><span class="nav-number">3.5.</span> <span class="nav-text">5. Trailer</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#6-Transfer-Encoding"><span class="nav-number">3.6.</span> <span class="nav-text">6.Transfer-Encoding</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#7-Upgrade"><span class="nav-number">3.7.</span> <span class="nav-text">7. Upgrade</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#8-via"><span class="nav-number">3.8.</span> <span class="nav-text">8.via</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#9-Warning"><span class="nav-number">3.9.</span> <span class="nav-text">9.Warning</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#http-1-1请求首部字段"><span class="nav-number">4.</span> <span class="nav-text">http/1.1请求首部字段</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-host"><span class="nav-number">4.1.</span> <span class="nav-text">1.host</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#http-1-1响应首部字段"><span class="nav-number">5.</span> <span class="nav-text">http/1.1响应首部字段</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#请求报文与响应报文构成"><span class="nav-number">1.</span> <span class="nav-text">请求报文与响应报文构成</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#首部字段"><span class="nav-number">2.</span> <span class="nav-text">首部字段</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#http-1-1通用首部字段"><span class="nav-number">3.</span> <span class="nav-text">http/1.1通用首部字段</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-Cache-Control"><span class="nav-number">3.1.</span> <span class="nav-text">1. Cache-Control</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-Connection指令"><span class="nav-number">3.2.</span> <span class="nav-text">2. Connection指令</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-Date"><span class="nav-number">3.3.</span> <span class="nav-text">3. Date</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-Pragma"><span class="nav-number">3.4.</span> <span class="nav-text">4. Pragma</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5-Trailer"><span class="nav-number">3.5.</span> <span class="nav-text">5. Trailer</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#6-Transfer-Encoding"><span class="nav-number">3.6.</span> <span class="nav-text">6.Transfer-Encoding</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#7-Upgrade"><span class="nav-number">3.7.</span> <span class="nav-text">7. Upgrade</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#8-via"><span class="nav-number">3.8.</span> <span class="nav-text">8.via</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#9-Warning"><span class="nav-number">3.9.</span> <span class="nav-text">9.Warning</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#http-1-1请求首部字段"><span class="nav-number">4.</span> <span class="nav-text">http/1.1请求首部字段</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-host"><span class="nav-number">4.1.</span> <span class="nav-text">1.host</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#http-1-1响应首部字段"><span class="nav-number">5.</span> <span class="nav-text">http/1.1响应首部字段</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-vary"><span class="nav-number">5.1.</span> <span class="nav-text">1.vary</span></a></li></ol></li></ol></div>
             
 
           </div>
