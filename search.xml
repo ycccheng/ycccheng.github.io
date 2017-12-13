@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[ES6之Promise]]></title>
+    <url>%2F2017%2F09%2F08%2Fpromise%20ES6%2F</url>
+    <content type="text"><![CDATA[##Promise介绍 promise是异步编程的一种解决方案，而传统的方案指的是回调函数或事件。 promise的本质上还是回调函数，通过注册promise对象执行成功与失败时的相应的回调函数。 但与回调函数方式有什么不同呢？在使用promise进行进一步处理时，唏嘘按照接口规定的方式编写处理代码。除promise对象规定的方法以外的方法是不可以使用的。而传统的异步请求是可以自己自由的定义回调函数的参数。 一方面增加了代码的可读性与理解性；一方面也是可以将复杂的异步处理进行模块化。 promise就像一个容器，里面保存着某个未来才会结束的事件（通常是一个异步操作）的结果，通过状态的改变来执行下一步的操作。 ##promise三种状态 pending–进行中（异步操作的初始状态） fulfilled–已成功 rejected–已失败 只有异步操作的结果才能决定当前是哪一种状态，任何其他操作都无法改变这个状态。 promise对象是一个构造函数，用来生成promise实例。promise构造函数接受一个函数作为参数，该函数有resolve和reject两个参数。resolve函数的作用是，将Promise对象的状态从“未完成”变为“成功”（即从 pending 变为 resolved），在异步操作成功时调用，并将异步操作的结果，作为参数传递出去；reject函数的作用是，将Promise对象的状态从“未完成”变为“失败”（即从 pending 变为 rejected），在异步操作失败时调用，并将异步操作报出的错误，作为参数传递出去。 12345678const promise = new Promise(function(resolve,reject)&#123; ...some code&#125;);promise.then(function(value)&#123; //success&#125;,function(error)&#123; //fail&#125;) ##基本用法 12345678910function asynFunction()&#123; return new Promise(function(resolve,reject)&#123; setTimeout(function () &#123; resolve(&apos;Async Hello world&apos;); &#125;, 16); &#125;);&#125;asyncFunction().then(value =&gt; console.log(value)) // =&gt; &apos;Async Hello world&apos;.catch(error =&gt; console.log(error)); 上述代码中，asynFunction()返回一个promise对象，且为该对象设置了.then调用时的回调函数。该promise对象会在setTimeout之后的16ms时被resolve, 这时 then 的回调函数会被调用，并输出 Async Hello world 。 ###一些point #####1. Promise在新建后就会立即执行。123456789101112let promise = new Promise(function(resolve,reject)&#123; console.log(&apos;promise&apos;); resolve();&#125;) promise.then(function()&#123; console.log(&apos;resolved&apos;); &#125;) console.log(&apos;hi&apos;); //promise //hi //resolved 由于promise在新建后会立即执行，所以首先输出的是promise，然后，then方法指定的回调函数，将在当前脚本所有同步任务执行完才会执行，所以resolved最后输出。]]></content>
+      <categories>
+        <category>js</category>
+      </categories>
+      <tags>
+        <tag>js,ES6</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[ES6 6种声明变量的方法]]></title>
     <url>%2F2017%2F09%2F08%2FES6%206%E7%A7%8D%E5%A3%B0%E6%98%8E%E5%8F%98%E9%87%8F%E7%9A%84%E6%96%B9%E6%B3%95%2F</url>
     <content type="text"><![CDATA[除了var，function以外，ES6新增了6种声明变量的方法。 let命令let声明的变量，只能在其命令所在的代码块内有效。]]></content>
@@ -15,6 +26,17 @@
     <title><![CDATA[js单线程相关理解]]></title>
     <url>%2F2017%2F09%2F08%2Fjs%E5%8D%95%E7%BA%BF%E7%A8%8B%E7%90%86%E8%A7%A3%2F</url>
     <content type="text"><![CDATA[一直不太理解单线程是什么意思，刚看了一些博客的讲解好像懂了一些。今天就来谈谈这个问题。 js是单线程的，这是毋庸置疑的，那么js是怎么实现异步请求的呢？js本身是不可能异步的，但js的宿主环境，如浏览器、node都是多线程的，宿主环境通过某种方式使得js具备了异步的属性。 js为什么是单线程的？js的单线程机制，与它用途有关。作为浏览器脚本语言，js的主要用途是与用户互动，以及操作DOM。这就决定了它的单线程。 如果js同时有两个线程，一个线程在某个节点上添加了内容，另一个线程删除了这个节点，这就导致了混乱，所以js从一诞生就是单线程的。 浏览器的多线程浏览器是多线程的，浏览器只给js分配了一个线程来执行任务（函数），但由于js是单线程的，因此一次只能执行一个任务，这些任务形成一个任务队列（callback queue）等候执行。这意味着完成队列的所有任务会非常的耗时，且效率低。所以浏览器为这些耗时的任务开辟了另外的线程，并由这些线程实现异步。 下面是浏览器的主要线程： 界面渲染线程 浏览器事件触发线程 http请求线程 js引擎线程 任务队列callback queue单线程意味着所有任务都得排队，前一个没有结束，后一个任务就得一直等着。只有前一个任务执行完了才会执行下一个任务。但是在开发的后期，人们逐渐意识到不必等前一个任务结束再折行下一个任务（如IO设备，ajax操作）。可以把处于等待中的任务挂起，先运行排在后面的任务。等IO设备返回了结果再回头把挂起的任务继续执行下去。 于是所有的任务分为两种，同步任务和异步任务。同步指的是在主线程上排队执行的任务，只有前一个任务执行完毕，才会执行后一个任务； 异步任务指的是，不进入主线程，而是进而任务队列的任务，只有任务队列“通知”主线程异步任务可以执行了，就会执行任务队列的任务。 异步执行的运行机制如下:(同步执行也是如此，可视为没有异步任务的异步执行) 所有的同步任务都在主线程上执行，形成一个执行栈 主线程外，还存在一个“任务队列”，只有异步运行有了结果，就会在“任务队列”中放置一个事件。（这里的事件在我的理解是通过回调函数进入任务队列） 执行栈中的所有同步任务执行完毕，系统会处理“任务队列”里的任务。并进入执行栈，开始执行 主线程不断重复上面的第3步。 上图很好的诠释了异步的机制，也展现出异步的优点。 回调函数在讲任务队列之前我得先讲一下回调函数，因为看到这里时对回调函数产生了模糊。特地仔细研究了下回调函数。之前对于回调函数接触是在ajax里面，ajax请求返回后才执行回调函数里面的内容。 “任务队列”是一个事件的队列（也可以理解成消息的队列），IO设备完成一项任务，就在”任务队列”中添加一个事件，表示相关的异步任务可以进入”执行栈”了。主线程读取”任务队列”，就是读取里面有哪些事件。 而这些事件是怎么进入“任务队列”的呢？答案是回调函数。 所谓”回调函数”（callback），就是那些会被主线程挂起来的代码。异步任务必须指定回调函数，当主线程开始执行异步任务，就是执行对应的回调函数。 事件循环 Event Loop主线程从“任务队列”中读取事件，这个循环的过程又被称为事件循环Event loop。 主线程在运行的时候，产生堆（heap）和栈（stack），函数的执行就是通过进栈和出栈实现的，栈中的代码调用各种外部API，它们在”任务队列”中加入各种事件（click，load，done）。只要栈中的代码执行完毕，主线程就会去读取”任务队列”，依次执行那些事件所对应的回调函数。 定时器“任务队列”还可以放置定时事件。setTimeout()函数接收两个参数，一个是回调函数，一个是任务执行前需等待的时间。 12345console.log(1);setTimeout(function()&#123; consoloe.log(2);&#125;,1000);console.log(3); //1,3,2 setTimeout()将第二行推迟到1000毫秒之后执行。 12setTimeout(function()&#123;console.log(1);&#125;,0);console.log(2); //2,1 如果将setTimeout()的第二个参数设为0，就表示当前代码执行完（执行栈清空）以后，立即执行（0毫秒间隔）指定的回调函数。 总之，setTimeout(fn,0)指的是某个任务在主线程最早可得的空闲时间执行，也就是尽可能早的执行。他在任务队列的尾部添加了一个时间，因此要等到所有同步任务和“任务队列”的任务处理完，再会执行。]]></content>
+      <categories>
+        <category>js</category>
+      </categories>
+      <tags>
+        <tag>js</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[原型]]></title>
+    <url>%2F2017%2F09%2F08%2F%E5%8E%9F%E5%9E%8B%2F</url>
+    <content type="text"><![CDATA[探讨原型之前，我们先探讨下对象和函数的关系： 对象与函数我们一直都知道，函数是对象的一种，通过instanceof函数可以判断；再去看数据，我们也知道数组也是对象的一种，他就是数组的一个子集；但是我们又可以说所有对象都是通过函数创建的；所以，函数和对象的关系有种鸡生蛋蛋生鸡的关系 123var obj = new object();obj.a = 10;obj.b = 5; 原型与原型链原型prototype我们得先弄清原型、实例、构造函数三者之间的关系 首先 每个函数都具有prototype这个属性，函数的prototype属性指向函数的原型 其次，每个原型对象都具有一个constructor指针指向构造函数本身； 再者，每个对象都具有一个隐式原型 proto指向他的原型，所以，所有实例也指向原型对象 每个对象都有一个proto属性，指向创建该对象的函数的prototype 12person.prototype.constructor = person;new person()._proto_ = person.prototype; 由于所有函数也是对象，所以函数也会有自己的原型，他的prototype属性会指向她的原型，而所有的函数也具有自己的函数原型，所有的函数原型也是对象，都是被object创建，所以他的proto属性指向object.prototype.但是Object.prototype确实一个特例——它的proto指向的是null ###原型链的两个问题 1.众所周知的是，原型对象的所有属性会被所有是咧共享，所以一部分实例属性应该定义在构造函数中，而共享的原型属性应写在原型对象中。原型对象也具有这样的问题，原型会成为另一个对象的实例，所以实例属性就变成了原型属性。 2.在创建子类型的实例时，不能向超类型的构造函数中传递参数 问题解决：组合继承 原型链和借用构造函数的组合，使用原型链实现对原型属性的继承，使用构造函数实现对实例属性的继承，call()方法实现继承，并传入参数。看下面这个例子： 12345678910111213141516171819202122232425262728function sup(name)&#123; this.name = name; this.color = [&quot;red&quot;,&quot;blue&quot;] //构造函数里定义了name,color属性 &#125;; sup.prototype.sayname = function()&#123; alert(this.name); &#125;; function sub(name,age)&#123; sup.call(this,name);//继承了sup的构造函数属性 第二次调用 this.age = age; &#125;; sub.prototype = new sup();//sub原型指向sup的实例，具有了name,color属性 第一次调用sup sub.prototype.constructor = sub; sub.prototype.sayage = function()&#123; alert(this.age); &#125;; var instance1 = new sub(&quot;Nick&quot;,29); instance1.color.push(&quot;black&quot;) alert(instance1.color);//&quot;red&quot;,&quot;blue&quot;,&quot;black&quot; instance1.sayname();//&quot;Nick&quot; instance1.sayage();//29 var instance2 = new sub(&quot;John&quot;,31); alert(instance1.color);//&quot;red&quot;,&quot;blue&quot; instance1.sayname();//&quot;John&quot; instance1.sayage();//31 由于sub的原型指向了sup的实例，所以存在sup构造函数里的name,color属性也继承到了sub的原型里，因此，运行函数是，可以在sub的原型对象里找到name,color属性。 但由于运用了call()函数，所以sub的构造函数的对象里也具有color,name的实例属性，所以，当构造函数sub()调用时，首先搜索的是构造函数里的实例属性。所以，每个实例，instance1,instance2都有自己的实例属性的副本。 组合式继承融合了原型链和构造函数的优点，成为js中最常用的继承模式。 上述例子由于两次调用sup函数而使得在instance实例和sub原型中具有两个相同的同名属性，为了解决这个问题便引出了寄生组合式继承，详见书173页。]]></content>
       <categories>
         <category>js</category>
       </categories>
@@ -45,17 +67,6 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[原型]]></title>
-    <url>%2F2017%2F09%2F08%2F%E5%8E%9F%E5%9E%8B%2F</url>
-    <content type="text"><![CDATA[探讨原型之前，我们先探讨下对象和函数的关系： 对象与函数我们一直都知道，函数是对象的一种，通过instanceof函数可以判断；再去看数据，我们也知道数组也是对象的一种，他就是数组的一个子集；但是我们又可以说所有对象都是通过函数创建的；所以，函数和对象的关系有种鸡生蛋蛋生鸡的关系 123var obj = new object();obj.a = 10;obj.b = 5; 原型与原型链原型prototype我们得先弄清原型、实例、构造函数三者之间的关系 首先 每个函数都具有prototype这个属性，函数的prototype属性指向函数的原型 其次，每个原型对象都具有一个constructor指针指向构造函数本身； 再者，每个对象都具有一个隐式原型 proto指向他的原型，所以，所有实例也指向原型对象 每个对象都有一个proto属性，指向创建该对象的函数的prototype 12person.prototype.constructor = person;new person()._proto_ = person.prototype; 由于所有函数也是对象，所以函数也会有自己的原型，他的prototype属性会指向她的原型，而所有的函数也具有自己的函数原型，所有的函数原型也是对象，都是被object创建，所以他的proto属性指向object.prototype.但是Object.prototype确实一个特例——它的proto指向的是null ###原型链的两个问题 1.众所周知的是，原型对象的所有属性会被所有是咧共享，所以一部分实例属性应该定义在构造函数中，而共享的原型属性应写在原型对象中。原型对象也具有这样的问题，原型会成为另一个对象的实例，所以实例属性就变成了原型属性。 2.在创建子类型的实例时，不能向超类型的构造函数中传递参数 问题解决：组合继承 原型链和借用构造函数的组合，使用原型链实现对原型属性的继承，使用构造函数实现对实例属性的继承，call()方法实现继承，并传入参数。看下面这个例子： 12345678910111213141516171819202122232425262728function sup(name)&#123; this.name = name; this.color = [&quot;red&quot;,&quot;blue&quot;] //构造函数里定义了name,color属性 &#125;; sup.prototype.sayname = function()&#123; alert(this.name); &#125;; function sub(name,age)&#123; sup.call(this,name);//继承了sup的构造函数属性 第二次调用 this.age = age; &#125;; sub.prototype = new sup();//sub原型指向sup的实例，具有了name,color属性 第一次调用sup sub.prototype.constructor = sub; sub.prototype.sayage = function()&#123; alert(this.age); &#125;; var instance1 = new sub(&quot;Nick&quot;,29); instance1.color.push(&quot;black&quot;) alert(instance1.color);//&quot;red&quot;,&quot;blue&quot;,&quot;black&quot; instance1.sayname();//&quot;Nick&quot; instance1.sayage();//29 var instance2 = new sub(&quot;John&quot;,31); alert(instance1.color);//&quot;red&quot;,&quot;blue&quot; instance1.sayname();//&quot;John&quot; instance1.sayage();//31 由于sub的原型指向了sup的实例，所以存在sup构造函数里的name,color属性也继承到了sub的原型里，因此，运行函数是，可以在sub的原型对象里找到name,color属性。 但由于运用了call()函数，所以sub的构造函数的对象里也具有color,name的实例属性，所以，当构造函数sub()调用时，首先搜索的是构造函数里的实例属性。所以，每个实例，instance1,instance2都有自己的实例属性的副本。 组合式继承融合了原型链和构造函数的优点，成为js中最常用的继承模式。 上述例子由于两次调用sup函数而使得在instance实例和sub原型中具有两个相同的同名属性，为了解决这个问题便引出了寄生组合式继承，详见书173页。]]></content>
-      <categories>
-        <category>js</category>
-      </categories>
-      <tags>
-        <tag>js</tag>
-      </tags>
-  </entry>
-  <entry>
     <title><![CDATA[闭包]]></title>
     <url>%2F2017%2F09%2F08%2F%E9%97%AD%E5%8C%85%2F</url>
     <content type="text"><![CDATA[闭包在我看来就是携带状态的函数，并且它的状态可以完全对外隐藏。 由于“链式作用域”，函数内部可以直接读取全局变量，不停向父层函数访问，但函数外部无法读取函数内部的局部变量。 因此，通过闭包我们可以从函数外部访问函数内部变量，可以把闭包理解珵函数内部与外部连接的桥梁。 所以，闭包的两大作用为：1，可以读取函数内部的变量；2，让这些内部变量一直保存在内存中，当函数调用后不会被销毁。 闭包1var sub = document. [ ] 123 234 row 1 col 1 row 1 col 2 row 2 col 1 row 2 col 2]]></content>
@@ -64,17 +75,6 @@
       </categories>
       <tags>
         <tag>js</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title><![CDATA[ES6之Promise]]></title>
-    <url>%2F2017%2F09%2F08%2Fpromise%20ES6%2F</url>
-    <content type="text"><![CDATA[##Promise介绍 promise是异步编程的一种解决方案，而传统的方案指的是回调函数或事件。 promise的本质上还是回调函数，通过注册promise对象执行成功与失败时的相应的回调函数。 但与回调函数方式有什么不同呢？在使用promise进行进一步处理时，唏嘘按照接口规定的方式编写处理代码。除promise对象规定的方法以外的方法是不可以使用的。而传统的异步请求是可以自己自由的定义回调函数的参数。 一方面增加了代码的可读性与理解性；一方面也是可以将复杂的异步处理进行模块化。 promise就像一个容器，里面保存着某个未来才会结束的事件（通常是一个异步操作）的结果，通过状态的改变来执行下一步的操作。 ##promise三种状态 pending–进行中（异步操作的初始状态） fulfilled–已成功 rejected–已失败 只有异步操作的结果才能决定当前是哪一种状态，任何其他操作都无法改变这个状态。 promise对象是一个构造函数，用来生成promise实例。promise构造函数接受一个函数作为参数，该函数有resolve和reject两个参数。resolve函数的作用是，将Promise对象的状态从“未完成”变为“成功”（即从 pending 变为 resolved），在异步操作成功时调用，并将异步操作的结果，作为参数传递出去；reject函数的作用是，将Promise对象的状态从“未完成”变为“失败”（即从 pending 变为 rejected），在异步操作失败时调用，并将异步操作报出的错误，作为参数传递出去。 12345678const promise = new Promise(function(resolve,reject)&#123; ...some code&#125;);promise.then(function(value)&#123; //success&#125;,function(error)&#123; //fail&#125;) ##基本用法 12345678910function asynFunction()&#123; return new Promise(function(resolve,reject)&#123; setTimeout(function () &#123; resolve(&apos;Async Hello world&apos;); &#125;, 16); &#125;);&#125;asyncFunction().then(value =&gt; console.log(value)) // =&gt; &apos;Async Hello world&apos;.catch(error =&gt; console.log(error)); 上述代码中，asynFunction()返回一个promise对象，且为该对象设置了.then调用时的回调函数。该promise对象会在setTimeout之后的16ms时被resolve, 这时 then 的回调函数会被调用，并输出 Async Hello world 。 ###一些point #####1. Promise在新建后就会立即执行。123456789101112let promise = new Promise(function(resolve,reject)&#123; console.log(&apos;promise&apos;); resolve();&#125;) promise.then(function()&#123; console.log(&apos;resolved&apos;); &#125;) console.log(&apos;hi&apos;); //promise //hi //resolved 由于promise在新建后会立即执行，所以首先输出的是promise，然后，then方法指定的回调函数，将在当前脚本所有同步任务执行完才会执行，所以resolved最后输出。]]></content>
-      <categories>
-        <category>js</category>
-      </categories>
-      <tags>
-        <tag>js,ES6</tag>
       </tags>
   </entry>
 </search>
