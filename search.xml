@@ -1,17 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title><![CDATA[ES6之Promise]]></title>
-    <url>%2F2017%2F09%2F08%2Fpromise%20ES6%2F</url>
-    <content type="text"><![CDATA[##Promise介绍 promise是异步编程的一种解决方案，而传统的方案指的是回调函数或事件。 promise的本质上还是回调函数，通过注册promise对象执行成功与失败时的相应的回调函数。 但与回调函数方式有什么不同呢？在使用promise进行进一步处理时，唏嘘按照接口规定的方式编写处理代码。除promise对象规定的方法以外的方法是不可以使用的。而传统的异步请求是可以自己自由的定义回调函数的参数。 一方面增加了代码的可读性与理解性；一方面也是可以将复杂的异步处理进行模块化。 promise就像一个容器，里面保存着某个未来才会结束的事件（通常是一个异步操作）的结果，通过状态的改变来执行下一步的操作。 ##promise三种状态 pending–进行中（异步操作的初始状态） fulfilled–已成功 rejected–已失败 只有异步操作的结果才能决定当前是哪一种状态，任何其他操作都无法改变这个状态。 promise对象是一个构造函数，用来生成promise实例。promise构造函数接受一个函数作为参数，该函数有resolve和reject两个参数。resolve函数的作用是，将Promise对象的状态从“未完成”变为“成功”（即从 pending 变为 resolved），在异步操作成功时调用，并将异步操作的结果，作为参数传递出去；reject函数的作用是，将Promise对象的状态从“未完成”变为“失败”（即从 pending 变为 rejected），在异步操作失败时调用，并将异步操作报出的错误，作为参数传递出去。 12345678const promise = new Promise(function(resolve,reject)&#123; ...some code&#125;);promise.then(function(value)&#123; //success&#125;,function(error)&#123; //fail&#125;) ##基本用法 12345678910function asynFunction()&#123; return new Promise(function(resolve,reject)&#123; setTimeout(function () &#123; resolve(&apos;Async Hello world&apos;); &#125;, 16); &#125;);&#125;asyncFunction().then(value =&gt; console.log(value)) // =&gt; &apos;Async Hello world&apos;.catch(error =&gt; console.log(error)); 上述代码中，asynFunction()返回一个promise对象，且为该对象设置了.then调用时的回调函数。该promise对象会在setTimeout之后的16ms时被resolve, 这时 then 的回调函数会被调用，并输出 Async Hello world 。 ###一些point #####1. Promise在新建后就会立即执行。123456789101112let promise = new Promise(function(resolve,reject)&#123; console.log(&apos;promise&apos;); resolve();&#125;) promise.then(function()&#123; console.log(&apos;resolved&apos;); &#125;) console.log(&apos;hi&apos;); //promise //hi //resolved 由于promise在新建后会立即执行，所以首先输出的是promise，然后，then方法指定的回调函数，将在当前脚本所有同步任务执行完才会执行，所以resolved最后输出。]]></content>
-      <categories>
-        <category>js</category>
-      </categories>
-      <tags>
-        <tag>js,ES6</tag>
-      </tags>
-  </entry>
-  <entry>
     <title><![CDATA[ES6 6种声明变量的方法]]></title>
     <url>%2F2017%2F09%2F08%2FES6%206%E7%A7%8D%E5%A3%B0%E6%98%8E%E5%8F%98%E9%87%8F%E7%9A%84%E6%96%B9%E6%B3%95%2F</url>
     <content type="text"><![CDATA[除了var，function以外，ES6新增了6种声明变量的方法。 let命令let声明的变量，只能在其命令所在的代码块内有效。]]></content>
@@ -20,6 +9,17 @@
       </categories>
       <tags>
         <tag>js</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[ES6之Promise]]></title>
+    <url>%2F2017%2F09%2F08%2Fpromise%20ES6%2F</url>
+    <content type="text"><![CDATA[Promise介绍promise是异步编程的一种解决方案，而传统的方案指的是回调函数或事件。 promise的本质上还是回调函数，通过注册promise对象执行成功与失败时的相应的回调函数。 但与回调函数方式有什么不同呢？在使用promise进行进一步处理时，唏嘘按照接口规定的方式编写处理代码。除promise对象规定的方法以外的方法是不可以使用的。而传统的异步请求是可以自己自由的定义回调函数的参数。 一方面增加了代码的可读性与理解性；一方面也是可以将复杂的异步处理进行模块化。 promise就像一个容器，里面保存着某个未来才会结束的事件（通常是一个异步操作）的结果，通过状态的改变来执行下一步的操作。 promise三种状态 pending–进行中（异步操作的初始状态） fulfilled–已成功 rejected–已失败 只有异步操作的结果才能决定当前是哪一种状态，任何其他操作都无法改变这个状态。 promise对象是一个构造函数，用来生成promise实例。promise构造函数接受一个函数作为参数，该函数有resolve和reject两个参数。resolve函数的作用是，将Promise对象的状态从“未完成”变为“成功”（即从 pending 变为 resolved），在异步操作成功时调用，并将异步操作的结果，作为参数传递出去；reject函数的作用是，将Promise对象的状态从“未完成”变为“失败”（即从 pending 变为 rejected），在异步操作失败时调用，并将异步操作报出的错误，作为参数传递出去。 12345678const promise = new Promise(function(resolve,reject)&#123; ...some code&#125;);promise.then(function(value)&#123; //success&#125;,function(error)&#123; //fail&#125;) 基本用法12345678910function asynFunction()&#123; return new Promise(function(resolve,reject)&#123; setTimeout(function () &#123; resolve(&apos;Async Hello world&apos;); &#125;, 16); &#125;);&#125;asyncFunction().then(value =&gt; console.log(value)) // =&gt; &apos;Async Hello world&apos;.catch(error =&gt; console.log(error)); 上述代码中，asynFunction()返回一个promise对象，且为该对象设置了.then调用时的回调函数。该promise对象会在setTimeout之后的16ms时被resolve, 这时 then 的回调函数会被调用，并输出 Async Hello world 。 一些point1. Promise在新建后就会立即执行。123456789101112let promise = new Promise(function(resolve,reject)&#123; console.log(&apos;promise&apos;); resolve();&#125;) promise.then(function()&#123; console.log(&apos;resolved&apos;); &#125;) console.log(&apos;hi&apos;); //promise //hi //resolved 由于promise在新建后会立即执行，所以首先输出的是promise，然后，then方法指定的回调函数，将在当前脚本所有同步任务执行完才会执行，所以resolved最后输出。]]></content>
+      <categories>
+        <category>js</category>
+      </categories>
+      <tags>
+        <tag>js,ES6</tag>
       </tags>
   </entry>
   <entry>

@@ -5,7 +5,7 @@
   
 
 
-<html class="theme-next muse use-motion" lang="zh-Hans">
+<html class="theme-next pisces use-motion" lang="zh-Hans">
 <head>
   <meta charset="UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -94,18 +94,18 @@
 
 
 
-<meta name="description" content="##Promise介绍 promise是异步编程的一种解决方案，而传统的方案指的是回调函数或事件。 promise的本质上还是回调函数，通过注册promise对象执行成功与失败时的相应的回调函数。 但与回调函数方式有什么不同呢？在使用promise进行进一步处理时，唏嘘按照接口规定的方式编写处理代码。除promise对象规定的方法以外的方法是不可以使用的。而传统的异步请求是可以自己自由的定义回调函">
+<meta name="description" content="Promise介绍promise是异步编程的一种解决方案，而传统的方案指的是回调函数或事件。 promise的本质上还是回调函数，通过注册promise对象执行成功与失败时的相应的回调函数。 但与回调函数方式有什么不同呢？在使用promise进行进一步处理时，唏嘘按照接口规定的方式编写处理代码。除promise对象规定的方法以外的方法是不可以使用的。而传统的异步请求是可以自己自由的定义回调函数的参">
 <meta name="keywords" content="js,ES6">
 <meta property="og:type" content="article">
 <meta property="og:title" content="ES6之Promise">
 <meta property="og:url" content="http://yoursite.com/2017/09/08/promise ES6/index.html">
 <meta property="og:site_name" content="叶珵珵">
-<meta property="og:description" content="##Promise介绍 promise是异步编程的一种解决方案，而传统的方案指的是回调函数或事件。 promise的本质上还是回调函数，通过注册promise对象执行成功与失败时的相应的回调函数。 但与回调函数方式有什么不同呢？在使用promise进行进一步处理时，唏嘘按照接口规定的方式编写处理代码。除promise对象规定的方法以外的方法是不可以使用的。而传统的异步请求是可以自己自由的定义回调函">
+<meta property="og:description" content="Promise介绍promise是异步编程的一种解决方案，而传统的方案指的是回调函数或事件。 promise的本质上还是回调函数，通过注册promise对象执行成功与失败时的相应的回调函数。 但与回调函数方式有什么不同呢？在使用promise进行进一步处理时，唏嘘按照接口规定的方式编写处理代码。除promise对象规定的方法以外的方法是不可以使用的。而传统的异步请求是可以自己自由的定义回调函数的参">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-12-13T08:47:42.000Z">
+<meta property="og:updated_time" content="2017-12-13T13:14:32.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="ES6之Promise">
-<meta name="twitter:description" content="##Promise介绍 promise是异步编程的一种解决方案，而传统的方案指的是回调函数或事件。 promise的本质上还是回调函数，通过注册promise对象执行成功与失败时的相应的回调函数。 但与回调函数方式有什么不同呢？在使用promise进行进一步处理时，唏嘘按照接口规定的方式编写处理代码。除promise对象规定的方法以外的方法是不可以使用的。而传统的异步请求是可以自己自由的定义回调函">
+<meta name="twitter:description" content="Promise介绍promise是异步编程的一种解决方案，而传统的方案指的是回调函数或事件。 promise的本质上还是回调函数，通过注册promise对象执行成功与失败时的相应的回调函数。 但与回调函数方式有什么不同呢？在使用promise进行进一步处理时，唏嘘按照接口规定的方式编写处理代码。除promise对象规定的方法以外的方法是不可以使用的。而传统的异步请求是可以自己自由的定义回调函数的参">
 
 
 
@@ -113,7 +113,7 @@
   var NexT = window.NexT || {};
   var CONFIG = {
     root: '/',
-    scheme: 'Muse',
+    scheme: 'Pisces',
     sidebar: {"position":"left","display":"post","offset":12,"offset_float":12,"b2t":false,"scrollpercent":false,"onmobile":false},
     fancybox: true,
     tabs: true,
@@ -366,15 +366,13 @@
       
 
       
-        <p>##Promise介绍</p>
-<p>promise是异步编程的一种解决方案，而传统的方案指的是回调函数或事件。</p>
+        <h2 id="Promise介绍"><a href="#Promise介绍" class="headerlink" title="Promise介绍"></a>Promise介绍</h2><p>promise是异步编程的一种解决方案，而传统的方案指的是回调函数或事件。</p>
 <p>promise的本质上还是<strong>回调函数</strong>，通过注册promise对象执行成功与失败时的相应的回调函数。</p>
 <p>但与回调函数方式有什么不同呢？在使用promise进行进一步处理时，唏嘘按照接口规定的方式编写处理代码。除promise对象规定的方法以外的方法是不可以使用的。而传统的异步请求是可以自己自由的定义回调函数的参数。</p>
 <a id="more"></a>
 <p>一方面增加了代码的可读性与理解性；一方面也是可以将复杂的异步处理进行模块化。</p>
 <p>promise就像一个容器，里面保存着某个未来才会结束的事件（通常是一个异步操作）的结果，通过状态的改变来执行下一步的操作。</p>
-<p>##promise三种状态</p>
-<ul>
+<h2 id="promise三种状态"><a href="#promise三种状态" class="headerlink" title="promise三种状态"></a>promise三种状态</h2><ul>
 <li>pending–进行中（异步操作的初始状态）</li>
 <li>fulfilled–已成功</li>
 <li>rejected–已失败</li>
@@ -382,11 +380,9 @@
 <p>只有异步操作的结果才能决定当前是哪一种状态，任何其他操作都无法改变这个状态。</p>
 <p>promise对象是一个构造函数，用来生成promise实例。promise构造函数接受一个函数作为参数，该函数有<code>resolve</code>和<code>reject</code>两个参数。<br><code>resolve</code>函数的作用是，将Promise对象的状态从“未完成”变为“成功”（即从 pending 变为 resolved），在异步操作成功时调用，并将异步操作的结果，作为<strong>参数</strong>传递出去；<code>reject</code>函数的作用是，将Promise对象的状态从“未完成”变为“失败”（即从 pending 变为 rejected），在异步操作失败时调用，并将异步操作报出的错误，作为参数传递出去。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">const promise = new Promise(function(resolve,reject)&#123;</div><div class="line">	...some code</div><div class="line">&#125;);</div><div class="line">promise.then(function(value)&#123;</div><div class="line">	//success</div><div class="line">&#125;,function(error)&#123;</div><div class="line">	//fail</div><div class="line">&#125;)</div></pre></td></tr></table></figure>
-<p>##基本用法</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">function asynFunction()&#123;</div><div class="line">	return new Promise(function(resolve,reject)&#123;</div><div class="line">		 setTimeout(function () &#123;</div><div class="line">            resolve(&apos;Async Hello world&apos;);</div><div class="line">        &#125;, 16);</div><div class="line">	&#125;);</div><div class="line">&#125;</div><div class="line">asyncFunction()</div><div class="line">.then(value =&gt; console.log(value))    // =&gt; &apos;Async Hello world&apos;</div><div class="line">.catch(error =&gt; console.log(error));</div></pre></td></tr></table></figure>
+<h2 id="基本用法"><a href="#基本用法" class="headerlink" title="基本用法"></a>基本用法</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">function asynFunction()&#123;</div><div class="line">	return new Promise(function(resolve,reject)&#123;</div><div class="line">		 setTimeout(function () &#123;</div><div class="line">            resolve(&apos;Async Hello world&apos;);</div><div class="line">        &#125;, 16);</div><div class="line">	&#125;);</div><div class="line">&#125;</div><div class="line">asyncFunction()</div><div class="line">.then(value =&gt; console.log(value))    // =&gt; &apos;Async Hello world&apos;</div><div class="line">.catch(error =&gt; console.log(error));</div></pre></td></tr></table></figure>
 <p>上述代码中，<code>asynFunction()</code>返回一个promise对象，且为该对象设置了<code>.then</code>调用时的回调函数。该promise对象会在setTimeout之后的16ms时被resolve, 这时 <code>then</code> 的回调函数会被调用，并输出 <code>Async Hello world</code> 。</p>
-<p>###一些point</p>
-<p>#####1. Promise在新建后就会立即执行。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">let promise = new Promise(function(resolve,reject)&#123;</div><div class="line">	console.log(&apos;promise&apos;);</div><div class="line">	resolve();</div><div class="line">&#125;)</div><div class="line"> promise.then(function()&#123;</div><div class="line"> 	console.log(&apos;resolved&apos;);</div><div class="line"> &#125;)</div><div class="line"> console.log(&apos;hi&apos;);</div><div class="line"> </div><div class="line"> //promise</div><div class="line"> //hi</div><div class="line"> //resolved</div></pre></td></tr></table></figure></p>
+<h3 id="一些point"><a href="#一些point" class="headerlink" title="一些point"></a>一些point</h3><h5 id="1-Promise在新建后就会立即执行。"><a href="#1-Promise在新建后就会立即执行。" class="headerlink" title="1. Promise在新建后就会立即执行。"></a>1. Promise在新建后就会立即执行。</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">let promise = new Promise(function(resolve,reject)&#123;</div><div class="line">	console.log(&apos;promise&apos;);</div><div class="line">	resolve();</div><div class="line">&#125;)</div><div class="line"> promise.then(function()&#123;</div><div class="line"> 	console.log(&apos;resolved&apos;);</div><div class="line"> &#125;)</div><div class="line"> console.log(&apos;hi&apos;);</div><div class="line"> </div><div class="line"> //promise</div><div class="line"> //hi</div><div class="line"> //resolved</div></pre></td></tr></table></figure>
 <p>由于promise在新建后会立即执行，所以首先输出的是<code>promise</code>，然后，<code>then</code>方法指定的回调函数，将在当前脚本所有同步任务执行完才会执行，所以<code>resolved</code>最后输出。</p>
 
       
@@ -418,8 +414,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/09/08/ES6 6种声明变量的方法/" rel="next" title="ES6 6种声明变量的方法">
-                <i class="fa fa-chevron-left"></i> ES6 6种声明变量的方法
+              <a href="/2017/09/08/js单线程理解/" rel="next" title="js单线程相关理解">
+                <i class="fa fa-chevron-left"></i> js单线程相关理解
               </a>
             
           </div>
@@ -427,6 +423,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/09/08/ES6 6种声明变量的方法/" rel="prev" title="ES6 6种声明变量的方法">
+                ES6 6种声明变量的方法 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -478,8 +478,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel sidebar-panel-active">
+      <section class="site-overview sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/images/avatar.gif"
@@ -542,6 +551,22 @@
       </section>
 
       
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Promise介绍"><span class="nav-number">1.</span> <span class="nav-text">Promise介绍</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#promise三种状态"><span class="nav-number">2.</span> <span class="nav-text">promise三种状态</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#基本用法"><span class="nav-number">3.</span> <span class="nav-text">基本用法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#一些point"><span class="nav-number">3.1.</span> <span class="nav-text">一些point</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#1-Promise在新建后就会立即执行。"><span class="nav-number">3.1.0.1.</span> <span class="nav-text">1. Promise在新建后就会立即执行。</span></a></li></ol></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
 
       
 
@@ -573,7 +598,7 @@
 <div class="theme-info">
   主题 -
   <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
-    NexT.Muse
+    NexT.Pisces
   </a>
 </div>
 
@@ -658,6 +683,13 @@
 
   
   
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.2"></script>
+
+
 
   
   <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
