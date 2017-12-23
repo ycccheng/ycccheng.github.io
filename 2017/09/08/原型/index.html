@@ -104,7 +104,7 @@
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://oy3ncu01s.bkt.clouddn.com/17-10-20/26091828.jpg">
 <meta property="og:image" content="http://oy3ncu01s.bkt.clouddn.com/17-10-21/53538279.jpg">
-<meta property="og:updated_time" content="2017-10-26T08:38:11.000Z">
+<meta property="og:updated_time" content="2017-12-21T07:57:37.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="原型">
 <meta name="twitter:description" content="探讨原型之前，我们先探讨下对象和函数的关系： 对象与函数我们一直都知道，函数是对象的一种，通过instanceof函数可以判断；再去看数据，我们也知道数组也是对象的一种，他就是数组的一个子集；但是我们又可以说所有对象都是通过函数创建的；所以，函数和对象的关系有种鸡生蛋蛋生鸡的关系">
@@ -371,13 +371,13 @@
       
         <p>探讨原型之前，我们先探讨下对象和函数的关系：</p>
 <h2 id="对象与函数"><a href="#对象与函数" class="headerlink" title="对象与函数"></a>对象与函数</h2><p>我们一直都知道，函数是对象的一种，通过instanceof函数可以判断；<br>再去看数据，我们也知道数组也是对象的一种，他就是数组的一个子集；<br>但是我们又可以说所有对象都是通过函数创建的；<br>所以，函数和对象的关系有种鸡生蛋蛋生鸡的关系<br><a id="more"></a></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">var obj = new object();</div><div class="line">obj.a = 10;</div><div class="line">obj.b = 5;</div></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> obj = <span class="keyword">new</span> object();</div><div class="line">obj.a = <span class="number">10</span>;</div><div class="line">obj.b = <span class="number">5</span>;</div></pre></td></tr></table></figure>
 <h2 id="原型与原型链"><a href="#原型与原型链" class="headerlink" title="原型与原型链"></a>原型与原型链</h2><h3 id="原型prototype"><a href="#原型prototype" class="headerlink" title="原型prototype"></a>原型prototype</h3><p>我们得先弄清原型、实例、构造函数三者之间的关系</p>
 <p>首先 每个函数都具有prototype这个属性，函数的prototype属性指向函数的原型</p>
 <p>其次，每个原型对象都具有一个constructor指针指向构造函数本身；</p>
 <p>再者，每个对象都具有一个隐式原型 <em><em>proto</em></em>指向他的原型，所以，所有实例也指向原型对象</p>
 <p><strong>每个对象都有一个<strong>proto</strong>属性，指向创建该对象的函数的prototype</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">person.prototype.constructor = person;</div><div class="line">new person()._proto_ = person.prototype;</div></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">person.prototype.constructor = person;</div><div class="line"><span class="keyword">new</span> person()._proto_ = person.prototype;</div></pre></td></tr></table></figure>
 <p><img src="http://oy3ncu01s.bkt.clouddn.com/17-10-20/26091828.jpg" alt=""></p>
 <p>由于所有函数也是对象，所以函数也会有自己的原型，他的prototype属性会指向她的原型，而所有的函数也具有自己的函数原型，所有的函数原型也是对象，都是被object创建，所以他的proto属性指向object.prototype.<br>但是Object.prototype确实一个特例——它的<strong>proto</strong>指向的是null<br><img src="http://oy3ncu01s.bkt.clouddn.com/17-10-21/53538279.jpg" alt=""></p>
 <p>###原型链的两个问题</p>
@@ -385,7 +385,7 @@
 <p>2.在创建子类型的实例时，不能向超类型的构造函数中传递参数</p>
 <p><strong>问题解决：组合继承</strong></p>
 <p>原型链和借用构造函数的组合，使用原型链实现对原型属性的继承，使用构造函数实现对实例属性的继承，call()方法实现继承，并传入参数。看下面这个例子：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div></pre></td><td class="code"><pre><div class="line">function sup(name)&#123;</div><div class="line">		this.name = name;</div><div class="line">		this.color = [&quot;red&quot;,&quot;blue&quot;] //构造函数里定义了name,color属性</div><div class="line">	&#125;;</div><div class="line"></div><div class="line">	sup.prototype.sayname = function()&#123;</div><div class="line">		alert(this.name);</div><div class="line">	&#125;;</div><div class="line">	function sub(name,age)&#123;</div><div class="line">		sup.call(this,name);//继承了sup的构造函数属性 第二次调用</div><div class="line">		this.age = age;</div><div class="line">	&#125;;</div><div class="line">	sub.prototype = new sup();//sub原型指向sup的实例，具有了name,color属性		第一次调用sup</div><div class="line">	sub.prototype.constructor = sub;</div><div class="line">	sub.prototype.sayage = function()&#123;</div><div class="line">		alert(this.age);</div><div class="line">	&#125;;</div><div class="line"></div><div class="line">	var instance1 = new sub(&quot;Nick&quot;,29);</div><div class="line">	instance1.color.push(&quot;black&quot;)</div><div class="line">	alert(instance1.color);//&quot;red&quot;,&quot;blue&quot;,&quot;black&quot;</div><div class="line">	instance1.sayname();//&quot;Nick&quot;</div><div class="line">	instance1.sayage();//29</div><div class="line"></div><div class="line">	var instance2 = new sub(&quot;John&quot;,31);</div><div class="line">	alert(instance1.color);//&quot;red&quot;,&quot;blue&quot;</div><div class="line">	instance1.sayname();//&quot;John&quot;</div><div class="line">	instance1.sayage();//31</div></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">sup</span>(<span class="params">name</span>)</span>&#123;</div><div class="line">		<span class="keyword">this</span>.name = name;</div><div class="line">		<span class="keyword">this</span>.color = [<span class="string">"red"</span>,<span class="string">"blue"</span>] <span class="comment">//构造函数里定义了name,color属性</span></div><div class="line">	&#125;;</div><div class="line"></div><div class="line">	sup.prototype.sayname = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">		alert(<span class="keyword">this</span>.name);</div><div class="line">	&#125;;</div><div class="line">	<span class="function"><span class="keyword">function</span> <span class="title">sub</span>(<span class="params">name,age</span>)</span>&#123;</div><div class="line">		sup.call(<span class="keyword">this</span>,name);<span class="comment">//继承了sup的构造函数属性 第二次调用</span></div><div class="line">		<span class="keyword">this</span>.age = age;</div><div class="line">	&#125;;</div><div class="line">	sub.prototype = <span class="keyword">new</span> sup();<span class="comment">//sub原型指向sup的实例，具有了name,color属性		第一次调用sup</span></div><div class="line">	sub.prototype.constructor = sub;</div><div class="line">	sub.prototype.sayage = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">		alert(<span class="keyword">this</span>.age);</div><div class="line">	&#125;;</div><div class="line"></div><div class="line">	<span class="keyword">var</span> instance1 = <span class="keyword">new</span> sub(<span class="string">"Nick"</span>,<span class="number">29</span>);</div><div class="line">	instance1.color.push(<span class="string">"black"</span>)</div><div class="line">	alert(instance1.color);<span class="comment">//"red","blue","black"</span></div><div class="line">	instance1.sayname();<span class="comment">//"Nick"</span></div><div class="line">	instance1.sayage();<span class="comment">//29</span></div><div class="line"></div><div class="line">	<span class="keyword">var</span> instance2 = <span class="keyword">new</span> sub(<span class="string">"John"</span>,<span class="number">31</span>);</div><div class="line">	alert(instance1.color);<span class="comment">//"red","blue"</span></div><div class="line">	instance1.sayname();<span class="comment">//"John"</span></div><div class="line">	instance1.sayage();<span class="comment">//31</span></div></pre></td></tr></table></figure>
 <p>由于sub的原型指向了sup的实例，所以存在sup构造函数里的name,color属性也继承到了sub的原型里，因此，运行函数是，可以在sub的原型对象里找到name,color属性。</p>
 <p>但由于运用了call()函数，所以sub的构造函数的对象里也具有color,name的实例属性，所以，当构造函数sub()调用时，首先搜索的是构造函数里的实例属性。所以，每个实例，instance1,instance2都有自己的实例属性的副本。</p>
 <p>组合式继承融合了原型链和构造函数的优点，成为js中最常用的继承模式。</p>
@@ -395,6 +395,10 @@
     </div>
     
     
+    
+
+    
+     
     
 
     
@@ -430,8 +434,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2017/09/08/js单线程理解/" rel="prev" title="js单线程相关理解">
-                js单线程相关理解 <i class="fa fa-chevron-right"></i>
+              <a href="/2017/09/08/闭包/" rel="prev" title="闭包">
+                闭包 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -509,7 +513,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">8</span>
+                <span class="site-state-item-count">9</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>

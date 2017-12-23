@@ -94,21 +94,21 @@
 
 
 
-<meta name="description" content="闭包在我看来就是携带状态的函数，并且它的状态可以完全对外隐藏。 由于“链式作用域”，函数内部可以直接读取全局变量，不停向父层函数访问，但函数外部无法读取函数内部的局部变量。 因此，通过闭包我们可以从函数外部访问函数内部变量，可以把闭包理解珵函数内部与外部连接的桥梁。 所以，闭包的两大作用为：1，可以读取函数内部的变量；2，让这些内部变量一直保存在内存中，当函数调用后不会被销毁。">
+<meta name="description" content="闭包在我看来就是携带状态的函数，并且它的状态可以完全对外隐藏。由于“链式作用域”，函数内部可以直接读取全局变量，不停向父层函数访问，但函数外部无法读取函数内部的局部变量。因此，通过闭包我们可以从函数外部访问函数内部变量，可以把闭包理解珵函数内部与外部连接的桥梁。所以，闭包的两大作用为：1，可以读取函数内部的变量；2，让这些内部变量一直保存在内存中，当函数调用后不会被销毁。">
 <meta name="keywords" content="js">
 <meta property="og:type" content="article">
 <meta property="og:title" content="闭包">
 <meta property="og:url" content="http://yoursite.com/2017/09/08/闭包/index.html">
 <meta property="og:site_name" content="叶珵珵">
-<meta property="og:description" content="闭包在我看来就是携带状态的函数，并且它的状态可以完全对外隐藏。 由于“链式作用域”，函数内部可以直接读取全局变量，不停向父层函数访问，但函数外部无法读取函数内部的局部变量。 因此，通过闭包我们可以从函数外部访问函数内部变量，可以把闭包理解珵函数内部与外部连接的桥梁。 所以，闭包的两大作用为：1，可以读取函数内部的变量；2，让这些内部变量一直保存在内存中，当函数调用后不会被销毁。">
+<meta property="og:description" content="闭包在我看来就是携带状态的函数，并且它的状态可以完全对外隐藏。由于“链式作用域”，函数内部可以直接读取全局变量，不停向父层函数访问，但函数外部无法读取函数内部的局部变量。因此，通过闭包我们可以从函数外部访问函数内部变量，可以把闭包理解珵函数内部与外部连接的桥梁。所以，闭包的两大作用为：1，可以读取函数内部的变量；2，让这些内部变量一直保存在内存中，当函数调用后不会被销毁。">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://oy3ncu01s.bkt.clouddn.com/17-10-20/31016530.jpg">
 <meta property="og:image" content="http://oy3ncu01s.bkt.clouddn.com/17-10-20/77243421.jpg">
 <meta property="og:image" content="http://note.youdao.com/favicon.ico">
-<meta property="og:updated_time" content="2017-10-20T06:33:55.000Z">
+<meta property="og:updated_time" content="2017-12-21T07:58:36.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="闭包">
-<meta name="twitter:description" content="闭包在我看来就是携带状态的函数，并且它的状态可以完全对外隐藏。 由于“链式作用域”，函数内部可以直接读取全局变量，不停向父层函数访问，但函数外部无法读取函数内部的局部变量。 因此，通过闭包我们可以从函数外部访问函数内部变量，可以把闭包理解珵函数内部与外部连接的桥梁。 所以，闭包的两大作用为：1，可以读取函数内部的变量；2，让这些内部变量一直保存在内存中，当函数调用后不会被销毁。">
+<meta name="twitter:description" content="闭包在我看来就是携带状态的函数，并且它的状态可以完全对外隐藏。由于“链式作用域”，函数内部可以直接读取全局变量，不停向父层函数访问，但函数外部无法读取函数内部的局部变量。因此，通过闭包我们可以从函数外部访问函数内部变量，可以把闭包理解珵函数内部与外部连接的桥梁。所以，闭包的两大作用为：1，可以读取函数内部的变量；2，让这些内部变量一直保存在内存中，当函数调用后不会被销毁。">
 <meta name="twitter:image" content="http://oy3ncu01s.bkt.clouddn.com/17-10-20/31016530.jpg">
 
 
@@ -370,13 +370,10 @@
       
 
       
-        <pre><code>闭包在我看来就是携带状态的函数，并且它的状态可以完全对外隐藏。
-由于“链式作用域”，函数内部可以直接读取全局变量，不停向父层函数访问，但函数外部无法读取函数内部的局部变量。
-因此，通过闭包我们可以从函数外部访问函数内部变量，可以把闭包理解珵函数内部与外部连接的桥梁。
-所以，闭包的两大作用为：1，可以读取函数内部的变量；2，让这些内部变量一直保存在内存中，当函数调用后不会被销毁。    
-</code></pre><a id="more"></a>
+        <p>闭包在我看来就是携带状态的函数，并且它的状态可以完全对外隐藏。<br>由于“链式作用域”，函数内部可以直接读取全局变量，不停向父层函数访问，但函数外部无法读取函数内部的局部变量。<br>因此，通过闭包我们可以从函数外部访问函数内部变量，可以把闭包理解珵函数内部与外部连接的桥梁。<br>所以，闭包的两大作用为：1，可以读取函数内部的变量；2，让这些内部变量一直保存在内存中，当函数调用后不会被销毁。    </p>
+<a id="more"></a>
 <p><img src="http://oy3ncu01s.bkt.clouddn.com/17-10-20/31016530.jpg" alt=""><br><img src="http://oy3ncu01s.bkt.clouddn.com/17-10-20/77243421.jpg" alt="image"></p>
-<h1 id="闭包"><a href="#闭包" class="headerlink" title="闭包"></a>闭包</h1><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> sub = <span class="built_in">document</span>.</div></pre></td></tr></table></figure>
+<h1 id="闭包"><a href="#闭包" class="headerlink" title="闭包"></a>闭包</h1><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> sub = <span class="built_in">document</span>.</div></pre></td></tr></table></figure>
 <hr>
 <ul>
 <li>[ <img src="http://note.youdao.com/favicon.ico" alt="image">] </li>
@@ -407,6 +404,10 @@
     
 
     
+     
+    
+
+    
 
     
 
@@ -429,14 +430,18 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
+              <a href="/2017/09/08/原型/" rel="next" title="原型">
+                <i class="fa fa-chevron-left"></i> 原型
+              </a>
+            
           </div>
 
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2017/09/08/常用的几种布局/" rel="prev" title="常用的几种布局">
-                常用的几种布局 <i class="fa fa-chevron-right"></i>
+              <a href="/2017/09/08/http首部字段/" rel="prev" title="HTTP首部字段">
+                HTTP首部字段 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -514,7 +519,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">8</span>
+                <span class="site-state-item-count">9</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
