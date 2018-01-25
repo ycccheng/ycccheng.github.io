@@ -94,22 +94,18 @@
 
 
 
-<meta name="description" content="闭包在我看来就是携带状态的函数，并且它的状态可以完全对外隐藏。由于“链式作用域”，函数内部可以直接读取全局变量，不停向父层函数访问，但函数外部无法读取函数内部的局部变量。因此，通过闭包我们可以从函数外部访问函数内部变量，可以把闭包理解珵函数内部与外部连接的桥梁。所以，闭包的两大作用为：1，可以读取函数内部的变量；2，让这些内部变量一直保存在内存中，当函数调用后不会被销毁。">
+<meta name="description" content="对于闭包的理解就是用来读取函数内部变量的函数。在js中只有子函数才能读取去不函数内的变量，因此，闭包就是定义在一个函数内部的函数。 123456789　function f1()&amp;#123;　　　　var n=999;　　　　function f2()&amp;#123;　　　　　　alert(n); 　　　　&amp;#125;　　　　return f2;　　&amp;#125;　　var result=f1();">
 <meta name="keywords" content="js">
 <meta property="og:type" content="article">
 <meta property="og:title" content="闭包">
 <meta property="og:url" content="http://yoursite.com/2017/09/08/闭包/index.html">
 <meta property="og:site_name" content="叶珵珵">
-<meta property="og:description" content="闭包在我看来就是携带状态的函数，并且它的状态可以完全对外隐藏。由于“链式作用域”，函数内部可以直接读取全局变量，不停向父层函数访问，但函数外部无法读取函数内部的局部变量。因此，通过闭包我们可以从函数外部访问函数内部变量，可以把闭包理解珵函数内部与外部连接的桥梁。所以，闭包的两大作用为：1，可以读取函数内部的变量；2，让这些内部变量一直保存在内存中，当函数调用后不会被销毁。">
+<meta property="og:description" content="对于闭包的理解就是用来读取函数内部变量的函数。在js中只有子函数才能读取去不函数内的变量，因此，闭包就是定义在一个函数内部的函数。 123456789　function f1()&amp;#123;　　　　var n=999;　　　　function f2()&amp;#123;　　　　　　alert(n); 　　　　&amp;#125;　　　　return f2;　　&amp;#125;　　var result=f1();">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://oy3ncu01s.bkt.clouddn.com/17-10-20/31016530.jpg">
-<meta property="og:image" content="http://oy3ncu01s.bkt.clouddn.com/17-10-20/77243421.jpg">
-<meta property="og:image" content="http://note.youdao.com/favicon.ico">
-<meta property="og:updated_time" content="2017-12-21T07:58:36.000Z">
+<meta property="og:updated_time" content="2018-01-25T13:13:15.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="闭包">
-<meta name="twitter:description" content="闭包在我看来就是携带状态的函数，并且它的状态可以完全对外隐藏。由于“链式作用域”，函数内部可以直接读取全局变量，不停向父层函数访问，但函数外部无法读取函数内部的局部变量。因此，通过闭包我们可以从函数外部访问函数内部变量，可以把闭包理解珵函数内部与外部连接的桥梁。所以，闭包的两大作用为：1，可以读取函数内部的变量；2，让这些内部变量一直保存在内存中，当函数调用后不会被销毁。">
-<meta name="twitter:image" content="http://oy3ncu01s.bkt.clouddn.com/17-10-20/31016530.jpg">
+<meta name="twitter:description" content="对于闭包的理解就是用来读取函数内部变量的函数。在js中只有子函数才能读取去不函数内的变量，因此，闭包就是定义在一个函数内部的函数。 123456789　function f1()&amp;#123;　　　　var n=999;　　　　function f2()&amp;#123;　　　　　　alert(n); 　　　　&amp;#125;　　　　return f2;　　&amp;#125;　　var result=f1();">
 
 
 
@@ -370,32 +366,8 @@
       
 
       
-        <p>闭包在我看来就是携带状态的函数，并且它的状态可以完全对外隐藏。<br>由于“链式作用域”，函数内部可以直接读取全局变量，不停向父层函数访问，但函数外部无法读取函数内部的局部变量。<br>因此，通过闭包我们可以从函数外部访问函数内部变量，可以把闭包理解珵函数内部与外部连接的桥梁。<br>所以，闭包的两大作用为：1，可以读取函数内部的变量；2，让这些内部变量一直保存在内存中，当函数调用后不会被销毁。    </p>
-<a id="more"></a>
-<p><img src="http://oy3ncu01s.bkt.clouddn.com/17-10-20/31016530.jpg" alt=""><br><img src="http://oy3ncu01s.bkt.clouddn.com/17-10-20/77243421.jpg" alt="image"></p>
-<h1 id="闭包"><a href="#闭包" class="headerlink" title="闭包"></a>闭包</h1><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> sub = <span class="built_in">document</span>.</div></pre></td></tr></table></figure>
-<hr>
-<ul>
-<li>[ <img src="http://note.youdao.com/favicon.ico" alt="image">] </li>
-</ul>
-<table>
-<thead>
-<tr>
-<th>123</th>
-<th>234</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>row 1 col 1</td>
-<td>row 1 col 2</td>
-</tr>
-<tr>
-<td>row 2 col 1</td>
-<td>row 2 col 2</td>
-</tr>
-</tbody>
-</table>
+        <p>对于闭包的理解就是用来读取函数内部变量的函数。在js中只有子函数才能读取去不函数内的变量，因此，闭包就是定义在一个函数内部的函数。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">　function f1()&#123;</div><div class="line">　　　　var n=999;</div><div class="line">　　　　function f2()&#123;</div><div class="line">　　　　　　alert(n); </div><div class="line">　　　　&#125;</div><div class="line">　　　　return f2;</div><div class="line">　　&#125;</div><div class="line">　　var result=f1();</div><div class="line">　　result(); // 999</div></pre></td></tr></table></figure>
 
       
     </div>
@@ -430,8 +402,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/09/08/原型/" rel="next" title="原型">
-                <i class="fa fa-chevron-left"></i> 原型
+              <a href="/2017/09/08/http首部字段/" rel="next" title="HTTP首部字段">
+                <i class="fa fa-chevron-left"></i> HTTP首部字段
               </a>
             
           </div>
@@ -440,8 +412,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2017/09/08/http首部字段/" rel="prev" title="HTTP首部字段">
-                HTTP首部字段 <i class="fa fa-chevron-right"></i>
+              <a href="/2017/09/08/ES6 6种声明变量的方法/" rel="prev" title="ES6 6种声明变量的方法">
+                ES6 6种声明变量的方法 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -494,17 +466,8 @@
       
 
       
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
-            文章目录
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview">
-            站点概览
-          </li>
-        </ul>
-      
 
-      <section class="site-overview sidebar-panel">
+      <section class="site-overview sidebar-panel sidebar-panel-active">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/images/avatar.gif"
@@ -519,7 +482,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">9</span>
+                <span class="site-state-item-count">11</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -567,22 +530,6 @@
       </section>
 
       
-      <!--noindex-->
-        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-
-            
-              
-            
-
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#闭包"><span class="nav-number">1.</span> <span class="nav-text">闭包</span></a></li></ol></div>
-            
-
-          </div>
-        </section>
-      <!--/noindex-->
-      
 
       
 
@@ -599,7 +546,7 @@
         <div class="copyright" >
   
   &copy; 
-  <span itemprop="copyrightYear">2017</span>
+  <span itemprop="copyrightYear">2018</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>

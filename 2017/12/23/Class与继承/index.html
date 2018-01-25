@@ -78,7 +78,7 @@
 <link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="js," />
 
 
 
@@ -94,17 +94,18 @@
 
 
 
-<meta name="description" content="简介ES5的继承，实质上是先创造子类的实例对象this,然后再将父类的方法添加到this上面。 123456function superType()&amp;#123;	this.colors = [&apos;red&apos;,&apos;blue&apos;,&apos;black&apos;]&amp;#125;function subType()&amp;#123;	superType.call(this);&amp;#125; ES6的继承机制是：实例先创造父类的实例对象th">
+<meta name="description" content="简介ES5的继承，实质上是先创造子类的实例对象this,然后再将父类的方法添加到this上面。 123456function superType()&amp;#123;	this.colors = [&apos;red&apos;,&apos;blue&apos;,&apos;black&apos;]&amp;#125;function subType()&amp;#123;	superType.call(this);&amp;#125;">
+<meta name="keywords" content="js">
 <meta property="og:type" content="article">
-<meta property="og:title" content="叶珵珵">
+<meta property="og:title" content="class与继承">
 <meta property="og:url" content="http://yoursite.com/2017/12/23/Class与继承/index.html">
 <meta property="og:site_name" content="叶珵珵">
-<meta property="og:description" content="简介ES5的继承，实质上是先创造子类的实例对象this,然后再将父类的方法添加到this上面。 123456function superType()&amp;#123;	this.colors = [&apos;red&apos;,&apos;blue&apos;,&apos;black&apos;]&amp;#125;function subType()&amp;#123;	superType.call(this);&amp;#125; ES6的继承机制是：实例先创造父类的实例对象th">
+<meta property="og:description" content="简介ES5的继承，实质上是先创造子类的实例对象this,然后再将父类的方法添加到this上面。 123456function superType()&amp;#123;	this.colors = [&apos;red&apos;,&apos;blue&apos;,&apos;black&apos;]&amp;#125;function subType()&amp;#123;	superType.call(this);&amp;#125;">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-12-23T07:00:04.000Z">
+<meta property="og:updated_time" content="2017-12-23T07:03:35.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="叶珵珵">
-<meta name="twitter:description" content="简介ES5的继承，实质上是先创造子类的实例对象this,然后再将父类的方法添加到this上面。 123456function superType()&amp;#123;	this.colors = [&apos;red&apos;,&apos;blue&apos;,&apos;black&apos;]&amp;#125;function subType()&amp;#123;	superType.call(this);&amp;#125; ES6的继承机制是：实例先创造父类的实例对象th">
+<meta name="twitter:title" content="class与继承">
+<meta name="twitter:description" content="简介ES5的继承，实质上是先创造子类的实例对象this,然后再将父类的方法添加到this上面。 123456function superType()&amp;#123;	this.colors = [&apos;red&apos;,&apos;blue&apos;,&apos;black&apos;]&amp;#125;function subType()&amp;#123;	superType.call(this);&amp;#125;">
 
 
 
@@ -139,7 +140,7 @@
 
 
 
-  <title> | 叶珵珵</title>
+  <title>class与继承 | 叶珵珵</title>
   
 
 
@@ -293,7 +294,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline"></h1>
+          <h1 class="post-title" itemprop="name headline">class与继承</h1>
         
 
         <div class="post-meta">
@@ -305,7 +306,7 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-12-23T15:00:04+08:00">
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-12-23T15:59:15+08:00">
                 2017-12-23
               </time>
             
@@ -315,6 +316,28 @@
             
           </span>
 
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/js/" itemprop="url" rel="index">
+                    <span itemprop="name">js</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
           
 
           
@@ -345,6 +368,7 @@
       
         <h3 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h3><p>ES5的继承，实质上是先创造子类的实例对象this,然后再将父类的方法添加到this上面。</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">superType</span>(<span class="params"></span>)</span>&#123;</div><div class="line">	<span class="keyword">this</span>.colors = [<span class="string">'red'</span>,<span class="string">'blue'</span>,<span class="string">'black'</span>]</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">subType</span>(<span class="params"></span>)</span>&#123;</div><div class="line">	superType.call(<span class="keyword">this</span>);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<a id="more"></a>
 <p>ES6的继承机制是：实例先创造父类的实例对象this(所以调用<code>super</code>方法),然后再用子类的构造函数修改this</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">colorPoint</span> <span class="keyword">extends</span> <span class="title">Point</span></span>&#123;</div><div class="line">	<span class="keyword">constructor</span>(x,y,color)&#123;</div><div class="line">		<span class="keyword">super</span>(x,y)<span class="comment">//调用父类构造函数中的（x,y）</span></div><div class="line">		<span class="comment">//super表示父类的构造函数，用来新建父类的this对象</span></div><div class="line">		<span class="keyword">this</span>.color = color;</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <p>有两点需要注意的地方：</p>
@@ -357,25 +381,25 @@
 <ul>
 <li><code>super</code>用作函数是调用，代表父类的构造函数。 ES6要求，子类的构造函数中必须执行一次<code>super</code>函数。</li>
 </ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">class A&#123;&#125;</div><div class="line">class B extends A&#123;</div><div class="line">	constructor()&#123;</div><div class="line">		super();</div><div class="line">		//`super`虽然指向的是父类的构造函数，但是返回的是子类B的实例</div><div class="line">		//即`super`内部的`this`指向是B</div><div class="line">		//A.prototype.constructor.call(this)</div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line">new A() //A</div><div class="line">new B() //B</div></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">A</span></span>&#123;&#125;</div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">B</span> <span class="keyword">extends</span> <span class="title">A</span></span>&#123;</div><div class="line">	<span class="keyword">constructor</span>()&#123;</div><div class="line">		<span class="keyword">super</span>();</div><div class="line">		<span class="comment">//super虽然指向的是父类的构造函数，但是返回的是子类B的实例</span></div><div class="line">		<span class="comment">//即super内部的this指向是B</span></div><div class="line">		<span class="comment">//A.prototype.constructor.call(this)</span></div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line"><span class="keyword">new</span> A() <span class="comment">//A</span></div><div class="line"><span class="keyword">new</span> B() <span class="comment">//B</span></div></pre></td></tr></table></figure>
 <ul>
 <li><code>super</code>作为对象时，指向父类的原型对象</li>
 </ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">calss A&#123;</div><div class="line">	p()&#123; return 2 &#125;</div><div class="line">&#125;</div><div class="line">class Bextends A&#123;</div><div class="line">	constructor()&#123;</div><div class="line">	super();</div><div class="line">	console.log(super.p()) //2</div><div class="line">	//指向`A.prototype` 即`A.prototype.p()`</div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line">let b = new B();</div></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">calss A&#123;</div><div class="line">	p()&#123; <span class="keyword">return</span> <span class="number">2</span> &#125;</div><div class="line">&#125;</div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Bextends</span> <span class="title">A</span></span>&#123;</div><div class="line">	<span class="keyword">constructor</span>()&#123;</div><div class="line">	<span class="keyword">super</span>();</div><div class="line">	<span class="built_in">console</span>.log(<span class="keyword">super</span>.p()) <span class="comment">//2</span></div><div class="line">	<span class="comment">//指向`A.prototype` 即`A.prototype.p()`</span></div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line"><span class="keyword">let</span> b = <span class="keyword">new</span> B();</div></pre></td></tr></table></figure>
 <h3 id="类的prototype属性和-proto属性"><a href="#类的prototype属性和-proto属性" class="headerlink" title="类的prototype属性和  proto属性"></a>类的prototype属性和 <em> proto</em>属性</h3><p>大多数浏览器的 ES5 实现之中，每一个对象都有 <code>__ proto__</code>属性，指向对应的构造函数的<code>prototype</code>属性,而在ES6中：</p>
 <ol>
 <li>子类的<code>_ proto _</code>属性，表示构造函数的继承，总是指向父类.</li>
 </ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">class AA&#123;&#125;</div><div class="line">class BB extends AA&#123;&#125;</div><div class="line">BB.__proto__   //class AA&#123;&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">AA</span></span>&#123;&#125;</div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">BB</span> <span class="keyword">extends</span> <span class="title">AA</span></span>&#123;&#125;</div><div class="line">BB.__proto__   <span class="comment">//class AA&#123;&#125;</span></div></pre></td></tr></table></figure>
 <ol>
 <li>子类<code>prototype</code>属性的<code>_proto_</code>属性，表示方法的继承，总是指向父类的<code>prototype</code>属性</li>
 </ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">BB.prototype   //AA &#123;constructor: ƒ&#125;</div><div class="line">BB.prototype.__proto__  //&#123;constructor: ƒ&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">BB.prototype   <span class="comment">//AA &#123;constructor: ƒ&#125;</span></div><div class="line">BB.prototype.__proto__  <span class="comment">//&#123;constructor: ƒ&#125;</span></div></pre></td></tr></table></figure>
 <h3 id="实例的-proto属性"><a href="#实例的-proto属性" class="headerlink" title="实例的  proto属性"></a>实例的 <strong> proto</strong>属性</h3><p>子类实例的<code>__ proto__</code>属性的<code>__ proto__</code>属性，指向父类实例的<code>__ proto__</code>属性。也就是说，子类的原型的原型，是父类的原型。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">var p1 = new Point(2, 3);</div><div class="line">var p2 = new ColorPoint(2, 3, &apos;red&apos;);</div><div class="line"></div><div class="line">p2.__proto__.__proto__ === p1.__proto__ // true</div></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> p1 = <span class="keyword">new</span> Point(<span class="number">2</span>, <span class="number">3</span>);</div><div class="line"><span class="keyword">var</span> p2 = <span class="keyword">new</span> ColorPoint(<span class="number">2</span>, <span class="number">3</span>, <span class="string">'red'</span>);</div><div class="line"></div><div class="line">p2.__proto__.__proto__ === p1.__proto__ <span class="comment">// true</span></div></pre></td></tr></table></figure>
 <p>因此通过子类实例的<code>_ proto_._ proto_</code>属性，可以修改父类实例的行为。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">p2.__proto__.__proto__.printName = function () &#123;</div><div class="line">  console.log(&apos;Ha&apos;);</div><div class="line">&#125;;</div><div class="line"></div><div class="line">p1.printName() // &quot;Ha&quot;</div></pre></td></tr></table></figure>
-<h3 id="原生构造函数的继承"><a href="#原生构造函数的继承" class="headerlink" title="原生构造函数的继承"></a>原生构造函数的继承</h3><p><code>extends</code>关键字不仅可以用来继承类，还可以用来继承原生构造函数。ES6允许继承原生构造函数定义子类，因为ES6是先新建父类的实例对象的<code>this</code>，然后再用子类构造函数修饰<code>this</code>，使得父类所有的行为都可以被继承。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">class MyArray extends Array &#123;</div><div class="line">  constructor(...args) &#123;</div><div class="line">    super(...args);</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">var arr = new MyArray();</div><div class="line">arr[0] = 12;</div><div class="line">arr.length // 1</div><div class="line"></div><div class="line">arr.length = 0;</div><div class="line">arr[0] // undefined</div></pre></td></tr></table></figure></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">p2.__proto__.__proto__.printName = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">  <span class="built_in">console</span>.log(<span class="string">'Ha'</span>);</div><div class="line">&#125;;</div><div class="line"></div><div class="line">p1.printName() <span class="comment">// "Ha"</span></div></pre></td></tr></table></figure>
+<h3 id="原生构造函数的继承"><a href="#原生构造函数的继承" class="headerlink" title="原生构造函数的继承"></a>原生构造函数的继承</h3><p><code>extends</code>关键字不仅可以用来继承类，还可以用来继承原生构造函数。ES6允许继承原生构造函数定义子类，因为ES6是先新建父类的实例对象的<code>this</code>，然后再用子类构造函数修饰<code>this</code>，使得父类所有的行为都可以被继承。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">MyArray</span> <span class="keyword">extends</span> <span class="title">Array</span> </span>&#123;</div><div class="line">  <span class="keyword">constructor</span>(...args) &#123;</div><div class="line">    <span class="keyword">super</span>(...args);</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">var</span> arr = <span class="keyword">new</span> MyArray();</div><div class="line">arr[<span class="number">0</span>] = <span class="number">12</span>;</div><div class="line">arr.length <span class="comment">// 1</span></div><div class="line"></div><div class="line">arr.length = <span class="number">0</span>;</div><div class="line">arr[<span class="number">0</span>] <span class="comment">// undefined</span></div></pre></td></tr></table></figure></p>
 
       
     </div>
@@ -395,6 +419,12 @@
 
     <footer class="post-footer">
       
+        <div class="post-tags">
+          
+            <a href="/tags/js/" rel="tag"># js</a>
+          
+        </div>
+      
 
       
       
@@ -413,6 +443,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/01/20/css面经积累/" rel="prev" title="css面经积累">
+                css面经积累 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -489,7 +523,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">9</span>
+                <span class="site-state-item-count">11</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -569,7 +603,7 @@
         <div class="copyright" >
   
   &copy; 
-  <span itemprop="copyrightYear">2017</span>
+  <span itemprop="copyrightYear">2018</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>

@@ -274,7 +274,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/12/23/Class与继承/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/01/23/js面经积累/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="ycccheng">
@@ -293,7 +293,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2017/12/23/Class与继承/" itemprop="url">未命名</a></h1>
+                <a class="post-title-link" href="/2018/01/23/js面经积累/" itemprop="url">js面经积累</a></h1>
         
 
         <div class="post-meta">
@@ -305,8 +305,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-12-23T15:00:04+08:00">
-                2017-12-23
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-01-23T15:59:15+08:00">
+                2018-01-23
               </time>
             
 
@@ -315,6 +315,28 @@
             
           </span>
 
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/js/" itemprop="url" rel="index">
+                    <span itemprop="name">js</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
           
 
           
@@ -344,42 +366,323 @@
 
       
         
-          
-            <h3 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h3><p>ES5的继承，实质上是先创造子类的实例对象this,然后再将父类的方法添加到this上面。</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">superType</span>(<span class="params"></span>)</span>&#123;</div><div class="line">	<span class="keyword">this</span>.colors = [<span class="string">'red'</span>,<span class="string">'blue'</span>,<span class="string">'black'</span>]</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">subType</span>(<span class="params"></span>)</span>&#123;</div><div class="line">	superType.call(<span class="keyword">this</span>);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>ES6的继承机制是：实例先创造父类的实例对象this(所以调用<code>super</code>方法),然后再用子类的构造函数修改this</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">colorPoint</span> <span class="keyword">extends</span> <span class="title">Point</span></span>&#123;</div><div class="line">	<span class="keyword">constructor</span>(x,y,color)&#123;</div><div class="line">		<span class="keyword">super</span>(x,y)<span class="comment">//调用父类构造函数中的（x,y）</span></div><div class="line">		<span class="comment">//super表示父类的构造函数，用来新建父类的this对象</span></div><div class="line">		<span class="keyword">this</span>.color = color;</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>有两点需要注意的地方：</p>
-<ol>
-<li>如果子类没有定义<code>constructor</code>方法，这个方法会被默认添加，即任何一个子类都有<code>constructor</code>方法;</li>
-<li>子类构造函数中，只有调用<code>super</code>之后，才能使用<code>this</code>关键字，否则会报错；ES6要求，子类必须调用一次<code>super</code>函数</li>
-</ol>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Point</span> </span>&#123;</div><div class="line">  <span class="keyword">constructor</span>(x, y) &#123;</div><div class="line">    <span class="keyword">this</span>.x = x;</div><div class="line">    <span class="keyword">this</span>.y = y;</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">ColorPoint</span> <span class="keyword">extends</span> <span class="title">Point</span> </span>&#123;</div><div class="line">  <span class="keyword">constructor</span>(x, y, color) &#123;</div><div class="line">    <span class="keyword">this</span>.color = color; <span class="comment">// ReferenceError</span></div><div class="line">    <span class="keyword">super</span>(x, y);</div><div class="line">    <span class="keyword">this</span>.color = color; <span class="comment">// 正确</span></div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h3 id="super"><a href="#super" class="headerlink" title="super"></a>super</h3><p><code>super</code>既可以当对象使用，也可以当函数使用</p>
-<ul>
-<li><code>super</code>用作函数是调用，代表父类的构造函数。 ES6要求，子类的构造函数中必须执行一次<code>super</code>函数。</li>
+          <h4 id="一些判断"><a href="#一些判断" class="headerlink" title="一些判断"></a>一些判断</h4><ul>
+<li><code>typeof</code>操作符可以判断<code>number</code>,<code>boolean</code>,<code>string</code>,<code>function</code>,<code>undefined</code>;</li>
+<li>判断<code>array</code>需要用<code>array.isArray(arr)</code>;</li>
+<li>判断<code>null</code>需要用<code>myVar === null</code>;</li>
+<li>判断某个全局变量是否存在使用<code>typeof window.myVar === &#39;undefined&#39;</code>;</li>
+<li>函数内部判断某个变量是否存在用<code>typeof myVar === &#39;undefined&#39;</code> </li>
 </ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">class A&#123;&#125;</div><div class="line">class B extends A&#123;</div><div class="line">	constructor()&#123;</div><div class="line">		super();</div><div class="line">		//`super`虽然指向的是父类的构造函数，但是返回的是子类B的实例</div><div class="line">		//即`super`内部的`this`指向是B</div><div class="line">		//A.prototype.constructor.call(this)</div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line">new A() //A</div><div class="line">new B() //B</div></pre></td></tr></table></figure>
-<ul>
-<li><code>super</code>作为对象时，指向父类的原型对象</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">calss A&#123;</div><div class="line">	p()&#123; return 2 &#125;</div><div class="line">&#125;</div><div class="line">class Bextends A&#123;</div><div class="line">	constructor()&#123;</div><div class="line">	super();</div><div class="line">	console.log(super.p()) //2</div><div class="line">	//指向`A.prototype` 即`A.prototype.p()`</div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line">let b = new B();</div></pre></td></tr></table></figure>
-<h3 id="类的prototype属性和-proto属性"><a href="#类的prototype属性和-proto属性" class="headerlink" title="类的prototype属性和  proto属性"></a>类的prototype属性和 <em> proto</em>属性</h3><p>大多数浏览器的 ES5 实现之中，每一个对象都有 <code>__ proto__</code>属性，指向对应的构造函数的<code>prototype</code>属性,而在ES6中：</p>
-<ol>
-<li>子类的<code>_ proto _</code>属性，表示构造函数的继承，总是指向父类.</li>
-</ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">class AA&#123;&#125;</div><div class="line">class BB extends AA&#123;&#125;</div><div class="line">BB.__proto__   //class AA&#123;&#125;</div></pre></td></tr></table></figure>
-<ol>
-<li>子类<code>prototype</code>属性的<code>_proto_</code>属性，表示方法的继承，总是指向父类的<code>prototype</code>属性</li>
-</ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">BB.prototype   //AA &#123;constructor: ƒ&#125;</div><div class="line">BB.prototype.__proto__  //&#123;constructor: ƒ&#125;</div></pre></td></tr></table></figure>
-<h3 id="实例的-proto属性"><a href="#实例的-proto属性" class="headerlink" title="实例的  proto属性"></a>实例的 <strong> proto</strong>属性</h3><p>子类实例的<code>__ proto__</code>属性的<code>__ proto__</code>属性，指向父类实例的<code>__ proto__</code>属性。也就是说，子类的原型的原型，是父类的原型。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">var p1 = new Point(2, 3);</div><div class="line">var p2 = new ColorPoint(2, 3, &apos;red&apos;);</div><div class="line"></div><div class="line">p2.__proto__.__proto__ === p1.__proto__ // true</div></pre></td></tr></table></figure>
-<p>因此通过子类实例的<code>_ proto_._ proto_</code>属性，可以修改父类实例的行为。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">p2.__proto__.__proto__.printName = function () &#123;</div><div class="line">  console.log(&apos;Ha&apos;);</div><div class="line">&#125;;</div><div class="line"></div><div class="line">p1.printName() // &quot;Ha&quot;</div></pre></td></tr></table></figure>
-<h3 id="原生构造函数的继承"><a href="#原生构造函数的继承" class="headerlink" title="原生构造函数的继承"></a>原生构造函数的继承</h3><p><code>extends</code>关键字不仅可以用来继承类，还可以用来继承原生构造函数。ES6允许继承原生构造函数定义子类，因为ES6是先新建父类的实例对象的<code>this</code>，然后再用子类构造函数修饰<code>this</code>，使得父类所有的行为都可以被继承。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">class MyArray extends Array &#123;</div><div class="line">  constructor(...args) &#123;</div><div class="line">    super(...args);</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">var arr = new MyArray();</div><div class="line">arr[0] = 12;</div><div class="line">arr.length // 1</div><div class="line"></div><div class="line">arr.length = 0;</div><div class="line">arr[0] // undefined</div></pre></td></tr></table></figure></p>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/01/23/js面经积累/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+     
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/01/20/css面经积累/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="ycccheng">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="叶珵珵">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/01/20/css面经积累/" itemprop="url">css面经积累</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-01-20T15:59:15+08:00">
+                2018-01-20
+              </time>
+            
+
+            
+
+            
+          </span>
 
           
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/css/" itemprop="url" rel="index">
+                    <span itemprop="name">css</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h4 id="置换元素"><a href="#置换元素" class="headerlink" title="置换元素"></a>置换元素</h4><p>一个内容，不受CSS视觉格式化模型控制，CSS渲染模型并不考虑对此内容的渲染，一般都拥有固定尺寸（宽度、高度、高度比）的元素，称为置换元素。</p>
+<p>例如浏览器会根据<code>img</code>的<code>src</code>属性值来读取图片信息并显示出来；又如根据<code>input</code>的<code>type</code>属性来决定是显示文本还是按钮等。</p>
+<p>常见的替换元素有<code>img</code> <code>input</code> <code>textarea</code> <code>select</code> <code>object</code>。</p>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/01/20/css面经积累/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+     
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/12/23/Class与继承/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="ycccheng">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="叶珵珵">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/12/23/Class与继承/" itemprop="url">class与继承</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-12-23T15:59:15+08:00">
+                2017-12-23
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/js/" itemprop="url" rel="index">
+                    <span itemprop="name">js</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h3 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h3><p>ES5的继承，实质上是先创造子类的实例对象this,然后再将父类的方法添加到this上面。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">superType</span>(<span class="params"></span>)</span>&#123;</div><div class="line">	<span class="keyword">this</span>.colors = [<span class="string">'red'</span>,<span class="string">'blue'</span>,<span class="string">'black'</span>]</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">subType</span>(<span class="params"></span>)</span>&#123;</div><div class="line">	superType.call(<span class="keyword">this</span>);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/12/23/Class与继承/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -736,156 +1039,6 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/09/08/js单线程理解/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="ycccheng">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="叶珵珵">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/09/08/js单线程理解/" itemprop="url">js单线程相关理解</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-09-08T15:59:15+08:00">
-                2017-09-08
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/js/" itemprop="url" rel="index">
-                    <span itemprop="name">js</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p>一直不太理解单线程是什么意思，刚看了一些博客的讲解好像懂了一些。<br>今天就来谈谈这个问题。<br>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2017/09/08/js单线程理解/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-     
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/09/08/ES6 6种声明变量的方法/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1036,6 +1189,153 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/09/08/闭包/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="ycccheng">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="叶珵珵">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/09/08/闭包/" itemprop="url">闭包</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-09-08T15:59:15+08:00">
+                2017-09-08
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/js/" itemprop="url" rel="index">
+                    <span itemprop="name">js</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>对于闭包的理解就是用来读取函数内部变量的函数。在js中只有子函数才能读取去不函数内的变量，因此，闭包就是定义在一个函数内部的函数。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">　function f1()&#123;</div><div class="line">　　　　var n=999;</div><div class="line">　　　　function f2()&#123;</div><div class="line">　　　　　　alert(n); </div><div class="line">　　　　&#125;</div><div class="line">　　　　return f2;</div><div class="line">　　&#125;</div><div class="line">　　var result=f1();</div><div class="line">　　result(); // 999</div></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+     
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/09/08/http首部字段/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1132,156 +1432,6 @@
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2017/09/08/http首部字段/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-     
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/09/08/闭包/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="ycccheng">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="叶珵珵">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/09/08/闭包/" itemprop="url">闭包</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-09-08T15:59:15+08:00">
-                2017-09-08
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/js/" itemprop="url" rel="index">
-                    <span itemprop="name">js</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p>闭包在我看来就是携带状态的函数，并且它的状态可以完全对外隐藏。<br>由于“链式作用域”，函数内部可以直接读取全局变量，不停向父层函数访问，但函数外部无法读取函数内部的局部变量。<br>因此，通过闭包我们可以从函数外部访问函数内部变量，可以把闭包理解珵函数内部与外部连接的桥梁。<br>所以，闭包的两大作用为：1，可以读取函数内部的变量；2，让这些内部变量一直保存在内存中，当函数调用后不会被销毁。    </p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2017/09/08/闭包/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -1627,6 +1777,10 @@
   </section>
 
   
+  <nav class="pagination">
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right"></i></a>
+  </nav>
+
 
 
           </div>
@@ -1670,7 +1824,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">9</span>
+                <span class="site-state-item-count">11</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -1734,7 +1888,7 @@
         <div class="copyright" >
   
   &copy; 
-  <span itemprop="copyrightYear">2017</span>
+  <span itemprop="copyrightYear">2018</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>

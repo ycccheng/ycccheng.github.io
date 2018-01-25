@@ -78,7 +78,7 @@
 <link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="js," />
+  <meta name="keywords" content="css," />
 
 
 
@@ -94,21 +94,20 @@
 
 
 
-<meta name="description" content="一直不太理解单线程是什么意思，刚看了一些博客的讲解好像懂了一些。今天就来谈谈这个问题。">
-<meta name="keywords" content="js">
+<meta name="description" content="置换元素一个内容，不受CSS视觉格式化模型控制，CSS渲染模型并不考虑对此内容的渲染，一般都拥有固定尺寸（宽度、高度、高度比）的元素，称为置换元素。 例如浏览器会根据img的src属性值来读取图片信息并显示出来；又如根据input的type属性来决定是显示文本还是按钮等。 常见的替换元素有img input textarea select object。">
+<meta name="keywords" content="css">
 <meta property="og:type" content="article">
-<meta property="og:title" content="js单线程相关理解">
-<meta property="og:url" content="http://yoursite.com/2017/09/08/js单线程理解/index.html">
+<meta property="og:title" content="css面经积累">
+<meta property="og:url" content="http://yoursite.com/2018/01/20/css面经积累/index.html">
 <meta property="og:site_name" content="叶珵珵">
-<meta property="og:description" content="一直不太理解单线程是什么意思，刚看了一些博客的讲解好像懂了一些。今天就来谈谈这个问题。">
+<meta property="og:description" content="置换元素一个内容，不受CSS视觉格式化模型控制，CSS渲染模型并不考虑对此内容的渲染，一般都拥有固定尺寸（宽度、高度、高度比）的元素，称为置换元素。 例如浏览器会根据img的src属性值来读取图片信息并显示出来；又如根据input的type属性来决定是显示文本还是按钮等。 常见的替换元素有img input textarea select object。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://oy3ncu01s.bkt.clouddn.com/17-11-8/78666029.jpg">
-<meta property="og:image" content="http://oy3ncu01s.bkt.clouddn.com/17-11-8/74206109.jpg">
-<meta property="og:updated_time" content="2017-12-21T07:57:08.000Z">
+<meta property="og:image" content="http://oy3ncu01s.bkt.clouddn.com/18-1-4/32379756.jpg">
+<meta property="og:updated_time" content="2018-01-25T14:38:22.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="js单线程相关理解">
-<meta name="twitter:description" content="一直不太理解单线程是什么意思，刚看了一些博客的讲解好像懂了一些。今天就来谈谈这个问题。">
-<meta name="twitter:image" content="http://oy3ncu01s.bkt.clouddn.com/17-11-8/78666029.jpg">
+<meta name="twitter:title" content="css面经积累">
+<meta name="twitter:description" content="置换元素一个内容，不受CSS视觉格式化模型控制，CSS渲染模型并不考虑对此内容的渲染，一般都拥有固定尺寸（宽度、高度、高度比）的元素，称为置换元素。 例如浏览器会根据img的src属性值来读取图片信息并显示出来；又如根据input的type属性来决定是显示文本还是按钮等。 常见的替换元素有img input textarea select object。">
+<meta name="twitter:image" content="http://oy3ncu01s.bkt.clouddn.com/18-1-4/32379756.jpg">
 
 
 
@@ -137,13 +136,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2017/09/08/js单线程理解/"/>
+  <link rel="canonical" href="http://yoursite.com/2018/01/20/css面经积累/"/>
 
 
 
 
 
-  <title>js单线程相关理解 | 叶珵珵</title>
+  <title>css面经积累 | 叶珵珵</title>
   
 
 
@@ -280,7 +279,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/09/08/js单线程理解/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/01/20/css面经积累/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="ycccheng">
@@ -297,7 +296,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">js单线程相关理解</h1>
+          <h1 class="post-title" itemprop="name headline">css面经积累</h1>
         
 
         <div class="post-meta">
@@ -309,8 +308,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-09-08T15:59:15+08:00">
-                2017-09-08
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-01-20T15:59:15+08:00">
+                2018-01-20
               </time>
             
 
@@ -332,8 +331,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/js/" itemprop="url" rel="index">
-                    <span itemprop="name">js</span>
+                  <a href="/categories/css/" itemprop="url" rel="index">
+                    <span itemprop="name">css</span>
                   </a>
                 </span>
 
@@ -369,43 +368,31 @@
       
 
       
-        <p>一直不太理解单线程是什么意思，刚看了一些博客的讲解好像懂了一些。<br>今天就来谈谈这个问题。<br><a id="more"></a></p>
-<p>js是单线程的，这是毋庸置疑的，那么js是怎么实现异步请求的呢？js本身是不可能异步的，但js的宿主环境，如浏览器、node都是多线程的，宿主环境通过某种方式使得js具备了异步的属性。</p>
-<h3 id="js为什么是单线程的？"><a href="#js为什么是单线程的？" class="headerlink" title="js为什么是单线程的？"></a>js为什么是单线程的？</h3><p>js的单线程机制，与它用途有关。作为浏览器脚本语言，js的主要用途是与用户互动，以及操作DOM。这就决定了它的单线程。</p>
-<p>如果js同时有两个线程，一个线程在某个节点上添加了内容，另一个线程删除了这个节点，这就导致了混乱，所以js从一诞生就是单线程的。</p>
-<h3 id="浏览器的多线程"><a href="#浏览器的多线程" class="headerlink" title="浏览器的多线程"></a>浏览器的多线程</h3><p>浏览器是多线程的，浏览器只给js分配了一个线程来执行任务（函数），但由于js是单线程的，因此一次只能执行一个任务，这些任务形成一个<strong>任务队列</strong>（callback queue）等候执行。这意味着完成队列的所有任务会非常的耗时，且效率低。所以浏览器为这些耗时的任务开辟了另外的线程，并由这些线程实现异步。</p>
-<p><strong>下面是浏览器的主要线程：</strong></p>
-<ul>
-<li>界面渲染线程</li>
-<li>浏览器事件触发线程</li>
-<li>http请求线程</li>
-<li>js引擎线程</li>
-</ul>
-<h3 id="任务队列callback-queue"><a href="#任务队列callback-queue" class="headerlink" title="任务队列callback queue"></a>任务队列callback queue</h3><p>单线程意味着所有任务都得排队，前一个没有结束，后一个任务就得一直等着。只有前一个任务执行完了才会执行下一个任务。<br>但是在开发的后期，人们逐渐意识到不必等前一个任务结束再折行下一个任务（如IO设备，ajax操作）。可以把处于等待中的任务挂起，先运行排在后面的任务。等IO设备返回了结果再回头把挂起的任务继续执行下去。</p>
-<p>于是所有的任务分为两种，同步任务和异步任务。<strong>同步</strong>指的是在主线程上排队执行的任务，只有前一个任务执行完毕，才会执行后一个任务；</p>
-<p><strong>异步任务</strong>指的是，不进入主线程，而是进而任务队列的任务，只有任务队列“通知”主线程异步任务可以执行了，就会执行任务队列的任务。</p>
-<p>异步执行的运行机制如下:(同步执行也是如此，可视为没有异步任务的异步执行)</p>
+        <h4 id="置换元素"><a href="#置换元素" class="headerlink" title="置换元素"></a>置换元素</h4><p>一个内容，不受CSS视觉格式化模型控制，CSS渲染模型并不考虑对此内容的渲染，一般都拥有固定尺寸（宽度、高度、高度比）的元素，称为置换元素。</p>
+<p>例如浏览器会根据<code>img</code>的<code>src</code>属性值来读取图片信息并显示出来；又如根据<code>input</code>的<code>type</code>属性来决定是显示文本还是按钮等。</p>
+<p>常见的替换元素有<code>img</code> <code>input</code> <code>textarea</code> <code>select</code> <code>object</code>。</p>
+<a id="more"></a>
+<h4 id="行内元素、块状元素"><a href="#行内元素、块状元素" class="headerlink" title="行内元素、块状元素"></a>行内元素、块状元素</h4><p>常见的块状元素有：<code>div</code> <code>p</code> <code>form</code> <code>ul</code> <code>ol</code></p>
+<p>常见的行内元素有：<code>span</code> <code>strong</code> <code>em</code></p>
+<p><strong>区别</strong></p>
 <ol>
-<li>所有的同步任务都在主线程上执行，形成一个执行栈</li>
-<li>主线程外，还存在一个“任务队列”，只有异步运行有了结果，就会在“任务队列”中放置一个事件。（这里的事件在我的理解是通过回调函数进入任务队列）</li>
-<li>执行栈中的所有同步任务执行完毕，系统会处理“任务队列”里的任务。并进入执行栈，开始执行</li>
-<li>主线程不断重复上面的第3步。</li>
+<li><p>块状元素独占一行且宽度回沾满父元素的宽度，行内元素不会独占一行，且相邻元素可以同在一行。<br><img src="http://oy3ncu01s.bkt.clouddn.com/18-1-4/32379756.jpg" alt=""></p>
+</li>
+<li><p>块状元素可以设置宽高，且还是会独占一行；行内元素设置宽高无效。</p>
+</li>
+<li><p>块状元素可以设置<code>margin</code> <code>padding</code>属性；行内元素水平方向的<code>margin</code> <code>padding</code>属性，但是垂直方向不会产生边距效果。</p>
+</li>
+<li><p>块状元素对应的<code>display:block</code>,行内元素<code>display:inline</code>,<br><code>display:inline-block</code>属性可以让元素具有块状元素和行内元素特性：既可以设置宽高、设置边距、也可以与其他元素并排。</p>
+</li>
 </ol>
-<p><img src="http://oy3ncu01s.bkt.clouddn.com/17-11-8/78666029.jpg" alt=""></p>
-<p>上图很好的诠释了异步的机制，也展现出异步的优点。</p>
-<h3 id="回调函数"><a href="#回调函数" class="headerlink" title="回调函数"></a>回调函数</h3><p>在讲任务队列之前我得先讲一下回调函数，因为看到这里时对回调函数产生了模糊。特地仔细研究了下回调函数。<br>之前对于回调函数接触是在ajax里面，ajax请求返回后才执行回调函数里面的内容。</p>
-<p>“任务队列”是一个事件的队列（也可以理解成消息的队列），IO设备完成一项任务，就在”任务队列”中添加一个事件，表示相关的异步任务可以进入”执行栈”了。主线程读取”任务队列”，就是读取里面有哪些事件。</p>
-<p>而这些事件是怎么进入“任务队列”的呢？答案是回调函数。</p>
-<p>所谓”回调函数”（callback），就是那些会被主线程挂起来的代码。异步任务必须指定回调函数，当主线程开始执行异步任务，就是执行对应的回调函数。</p>
-<h3 id="事件循环-Event-Loop"><a href="#事件循环-Event-Loop" class="headerlink" title="事件循环 Event Loop"></a>事件循环 Event Loop</h3><p>主线程从“任务队列”中读取事件，这个循环的过程又被称为事件循环Event loop。</p>
-<p><img src="http://oy3ncu01s.bkt.clouddn.com/17-11-8/74206109.jpg" alt=""></p>
-<p>主线程在运行的时候，产生堆（heap）和栈（stack），函数的执行就是通过进栈和出栈实现的，栈中的代码调用各种外部API，它们在”任务队列”中加入各种事件（click，load，done）。只要栈中的代码执行完毕，主线程就会去读取”任务队列”，依次执行那些事件所对应的回调函数。</p>
-<h3 id="定时器"><a href="#定时器" class="headerlink" title="定时器"></a>定时器</h3><p>“任务队列”还可以放置定时事件。<br>setTimeout()函数接收两个参数，一个是回调函数，一个是任务执行前需等待的时间。</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">console</span>.log(<span class="number">1</span>);</div><div class="line">setTimeout(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">	consoloe.log(<span class="number">2</span>);</div><div class="line">&#125;,<span class="number">1000</span>);</div><div class="line"><span class="built_in">console</span>.log(<span class="number">3</span>); <span class="comment">//1,3,2</span></div></pre></td></tr></table></figure>
-<p>setTimeout()将第二行推迟到1000毫秒之后执行。</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">setTimeout(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;<span class="built_in">console</span>.log(<span class="number">1</span>);&#125;,<span class="number">0</span>);</div><div class="line"><span class="built_in">console</span>.log(<span class="number">2</span>); <span class="comment">//2,1</span></div></pre></td></tr></table></figure>
-<p>如果将setTimeout()的第二个参数设为0，就表示当前代码执行完（执行栈清空）以后，立即执行（0毫秒间隔）指定的回调函数。</p>
-<p>总之，setTimeout(fn,0)指的是某个任务在主线程最早可得的空闲时间执行，也就是尽可能早的执行。他在任务队列的尾部添加了一个时间，因此要等到所有同步任务和“任务队列”的任务处理完，再会执行。</p>
+<h4 id="CSS-中类-classes-和-ID-的区别。"><a href="#CSS-中类-classes-和-ID-的区别。" class="headerlink" title="CSS 中类 (classes) 和 ID 的区别。"></a>CSS 中类 (classes) 和 ID 的区别。</h4><ul>
+<li>书写上的差别：class名用“.”号开头来定义，id名用“#”号开头来定义； </li>
+<li>调用上的区别：在同一个html网页页面中class是可以被多次调用的（在不同的地方）。而id名作为标签的身份则是唯一的，id在页面中只能出现一次。在js脚本中经常会用到id来修改一个标签的属性 </li>
+<li>id是先找到结构/内容，再给它定义样式；class是先定义好一种样式，再套给多个结构/内容。</li>
+</ul>
+<h4 id="请问-“resetting”-和-“normalizing”-CSS-之间的区别？你会如何选择，为什么？"><a href="#请问-“resetting”-和-“normalizing”-CSS-之间的区别？你会如何选择，为什么？" class="headerlink" title="请问 “resetting” 和 “normalizing” CSS 之间的区别？你会如何选择，为什么？"></a>请问 “resetting” 和 “normalizing” CSS 之间的区别？你会如何选择，为什么？</h4><ul>
+<li>Normalize.css 保护了有价值的默认值<br>Reset通过为几乎所有的元素施加默认样式，强行使得元素有相同的视觉效果。相比之下，Normalize.css保持了许多默认的浏览器样式。这就意味着你不用再为所有公共的排版元素重新设置样式。</li>
+</ul>
 
       
     </div>
@@ -427,7 +414,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/js/" rel="tag"># js</a>
+            <a href="/tags/css/" rel="tag"># css</a>
           
         </div>
       
@@ -440,14 +427,18 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
+              <a href="/2017/12/23/Class与继承/" rel="next" title="class与继承">
+                <i class="fa fa-chevron-left"></i> class与继承
+              </a>
+            
           </div>
 
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2017/09/08/常用的几种布局/" rel="prev" title="常用的几种布局">
-                常用的几种布局 <i class="fa fa-chevron-right"></i>
+              <a href="/2018/01/23/js面经积累/" rel="prev" title="js面经积累">
+                js面经积累 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -582,7 +573,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#js为什么是单线程的？"><span class="nav-number">1.</span> <span class="nav-text">js为什么是单线程的？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#浏览器的多线程"><span class="nav-number">2.</span> <span class="nav-text">浏览器的多线程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#任务队列callback-queue"><span class="nav-number">3.</span> <span class="nav-text">任务队列callback queue</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#回调函数"><span class="nav-number">4.</span> <span class="nav-text">回调函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#事件循环-Event-Loop"><span class="nav-number">5.</span> <span class="nav-text">事件循环 Event Loop</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#定时器"><span class="nav-number">6.</span> <span class="nav-text">定时器</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#置换元素"><span class="nav-number">1.</span> <span class="nav-text">置换元素</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#行内元素、块状元素"><span class="nav-number">2.</span> <span class="nav-text">行内元素、块状元素</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#CSS-中类-classes-和-ID-的区别。"><span class="nav-number">3.</span> <span class="nav-text">CSS 中类 (classes) 和 ID 的区别。</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#请问-“resetting”-和-“normalizing”-CSS-之间的区别？你会如何选择，为什么？"><span class="nav-number">4.</span> <span class="nav-text">请问 “resetting” 和 “normalizing” CSS 之间的区别？你会如何选择，为什么？</span></a></li></ol></div>
             
 
           </div>
