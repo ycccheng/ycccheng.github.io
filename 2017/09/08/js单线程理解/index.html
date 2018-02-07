@@ -104,7 +104,7 @@
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://oy3ncu01s.bkt.clouddn.com/17-11-8/78666029.jpg">
 <meta property="og:image" content="http://oy3ncu01s.bkt.clouddn.com/17-11-8/74206109.jpg">
-<meta property="og:updated_time" content="2017-12-21T07:57:08.000Z">
+<meta property="og:updated_time" content="2018-02-07T11:05:10.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="js单线程相关理解">
 <meta name="twitter:description" content="一直不太理解单线程是什么意思，刚看了一些博客的讲解好像懂了一些。今天就来谈谈这个问题。">
@@ -383,7 +383,7 @@
 </ul>
 <h3 id="任务队列callback-queue"><a href="#任务队列callback-queue" class="headerlink" title="任务队列callback queue"></a>任务队列callback queue</h3><p>单线程意味着所有任务都得排队，前一个没有结束，后一个任务就得一直等着。只有前一个任务执行完了才会执行下一个任务。<br>但是在开发的后期，人们逐渐意识到不必等前一个任务结束再折行下一个任务（如IO设备，ajax操作）。可以把处于等待中的任务挂起，先运行排在后面的任务。等IO设备返回了结果再回头把挂起的任务继续执行下去。</p>
 <p>于是所有的任务分为两种，同步任务和异步任务。<strong>同步</strong>指的是在主线程上排队执行的任务，只有前一个任务执行完毕，才会执行后一个任务；</p>
-<p><strong>异步任务</strong>指的是，不进入主线程，而是进而任务队列的任务，只有任务队列“通知”主线程异步任务可以执行了，就会执行任务队列的任务。</p>
+<p><strong>异步任务</strong>指的是，<strong>不进入主线程，而是进而任务队列的任务</strong>，只有任务队列“通知”主线程异步任务可以执行了，就会执行任务队列的任务。</p>
 <p>异步执行的运行机制如下:(同步执行也是如此，可视为没有异步任务的异步执行)</p>
 <ol>
 <li>所有的同步任务都在主线程上执行，形成一个执行栈</li>
@@ -446,8 +446,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2017/09/08/常用的几种布局/" rel="prev" title="常用的几种布局">
-                常用的几种布局 <i class="fa fa-chevron-right"></i>
+              <a href="/2017/09/08/闭包/" rel="prev" title="闭包">
+                闭包 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -525,7 +525,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">11</span>
+                <span class="site-state-item-count">12</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
