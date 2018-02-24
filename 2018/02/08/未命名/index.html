@@ -94,18 +94,18 @@
 
 
 
-<meta name="description" content="对于闭包的理解就是用来读取函数内部变量的函数。在js中只有子函数才能读取去不函数内的变量，因此，闭包就是定义在一个函数内部的函数。 123456789　function f1()&amp;#123;　　　　var n=999;　　　　function f2()&amp;#123;　　　　　　alert(n); 　　　　&amp;#125;　　　　return f2;　　&amp;#125;　　var result=f1();">
+<meta name="description" content="回流与重绘回流  当render tree中的一部分(或全部)因为元素的规模尺寸，布局，隐藏等改变而需要重新构建。这就称为回流(其实我觉得叫重新布局更简单明了些)。每个页面至少需要一次回流，就是在页面第一次加载的时候。 重绘  当render tree中的一些元素需要更新属性，而这些属性只是影响元素的外观，风格，而不会影响布局的，比如background-color。则就叫称为重绘。  回流一定会">
 <meta name="keywords" content="js">
 <meta property="og:type" content="article">
-<meta property="og:title" content="闭包">
-<meta property="og:url" content="http://yoursite.com/2017/09/08/闭包/index.html">
+<meta property="og:title" content="重绘与回流">
+<meta property="og:url" content="http://yoursite.com/2018/02/08/未命名/index.html">
 <meta property="og:site_name" content="叶珵珵">
-<meta property="og:description" content="对于闭包的理解就是用来读取函数内部变量的函数。在js中只有子函数才能读取去不函数内的变量，因此，闭包就是定义在一个函数内部的函数。 123456789　function f1()&amp;#123;　　　　var n=999;　　　　function f2()&amp;#123;　　　　　　alert(n); 　　　　&amp;#125;　　　　return f2;　　&amp;#125;　　var result=f1();">
+<meta property="og:description" content="回流与重绘回流  当render tree中的一部分(或全部)因为元素的规模尺寸，布局，隐藏等改变而需要重新构建。这就称为回流(其实我觉得叫重新布局更简单明了些)。每个页面至少需要一次回流，就是在页面第一次加载的时候。 重绘  当render tree中的一些元素需要更新属性，而这些属性只是影响元素的外观，风格，而不会影响布局的，比如background-color。则就叫称为重绘。  回流一定会">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-01-25T13:13:15.000Z">
+<meta property="og:updated_time" content="2018-02-09T05:24:43.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="闭包">
-<meta name="twitter:description" content="对于闭包的理解就是用来读取函数内部变量的函数。在js中只有子函数才能读取去不函数内的变量，因此，闭包就是定义在一个函数内部的函数。 123456789　function f1()&amp;#123;　　　　var n=999;　　　　function f2()&amp;#123;　　　　　　alert(n); 　　　　&amp;#125;　　　　return f2;　　&amp;#125;　　var result=f1();">
+<meta name="twitter:title" content="重绘与回流">
+<meta name="twitter:description" content="回流与重绘回流  当render tree中的一部分(或全部)因为元素的规模尺寸，布局，隐藏等改变而需要重新构建。这就称为回流(其实我觉得叫重新布局更简单明了些)。每个页面至少需要一次回流，就是在页面第一次加载的时候。 重绘  当render tree中的一些元素需要更新属性，而这些属性只是影响元素的外观，风格，而不会影响布局的，比如background-color。则就叫称为重绘。  回流一定会">
 
 
 
@@ -134,13 +134,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2017/09/08/闭包/"/>
+  <link rel="canonical" href="http://yoursite.com/2018/02/08/未命名/"/>
 
 
 
 
 
-  <title>闭包 | 叶珵珵</title>
+  <title>重绘与回流 | 叶珵珵</title>
   
 
 
@@ -277,7 +277,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/09/08/闭包/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/02/08/未命名/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="ycccheng">
@@ -294,7 +294,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">闭包</h1>
+          <h1 class="post-title" itemprop="name headline">重绘与回流</h1>
         
 
         <div class="post-meta">
@@ -306,8 +306,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-09-08T15:59:15+08:00">
-                2017-09-08
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-02-08T15:59:15+08:00">
+                2018-02-08
               </time>
             
 
@@ -366,8 +366,33 @@
       
 
       
-        <p>对于闭包的理解就是用来读取函数内部变量的函数。在js中只有子函数才能读取去不函数内的变量，因此，闭包就是定义在一个函数内部的函数。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">　function f1()&#123;</div><div class="line">　　　　var n=999;</div><div class="line">　　　　function f2()&#123;</div><div class="line">　　　　　　alert(n); </div><div class="line">　　　　&#125;</div><div class="line">　　　　return f2;</div><div class="line">　　&#125;</div><div class="line">　　var result=f1();</div><div class="line">　　result(); // 999</div></pre></td></tr></table></figure>
+        <h3 id="回流与重绘"><a href="#回流与重绘" class="headerlink" title="回流与重绘"></a>回流与重绘</h3><p><strong>回流</strong></p>
+<p> 当render tree中的一部分(或全部)因为元素的规模尺寸，布局，隐藏等改变而需要重新构建。这就称为回流(其实我觉得叫重新布局更简单明了些)。每个页面至少需要一次回流，就是在页面第一次加载的时候。</p>
+<p><strong>重绘</strong></p>
+<p> 当render tree中的一些元素需要更新属性，而这些属性只是影响元素的外观，风格，而不会影响布局的，比如background-color。则就叫称为重绘。</p>
+<p> <strong>回流一定会引起重绘，重绘不一定会引起回流</strong></p>
+<h3 id="引起回流与重绘的因素"><a href="#引起回流与重绘的因素" class="headerlink" title="引起回流与重绘的因素"></a>引起回流与重绘的因素</h3><ul>
+<li>调整窗口大小（Resizing the window）</li>
+<li>改变字体（Changing the font）</li>
+<li>增加或者移除样式表</li>
+<li>内容或文本变化，比如用户在input框中输入文字</li>
+<li>激活 CSS 伪类，比如 :hover </li>
+<li>操作 class 属性</li>
+<li>脚本操作 DOM</li>
+<li>计算 offsetWidth 和 offsetHeight 属性</li>
+<li>设置 style 属性的值 </li>
+</ul>
+<h3 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h3><p>重绘的代价是高昂的，因为浏览器必须验证DOM树上其他节点元素的可见性。而回流更是性能的关键因为其变化涉及到部分页面（或是整个页面）的布局。一个元素的回流导致了其所有子元素以及DOM中紧随其后的祖先元素的随后的回流。</p>
+<h3 id="css中避免回流"><a href="#css中避免回流" class="headerlink" title="css中避免回流"></a>css中避免回流</h3><p><a href="http://www.zhangxinxu.com/wordpress/2010/01/%E5%9B%9E%E6%B5%81%E4%B8%8E%E9%87%8D%E7%BB%98%EF%BC%9Acss%E6%80%A7%E8%83%BD%E8%AE%A9javascript%E5%8F%98%E6%85%A2%EF%BC%9F/" target="_blank" rel="external">http://www.zhangxinxu.com/wordpress/2010/01/%E5%9B%9E%E6%B5%81%E4%B8%8E%E9%87%8D%E7%BB%98%EF%BC%9Acss%E6%80%A7%E8%83%BD%E8%AE%A9javascript%E5%8F%98%E6%85%A2%EF%BC%9F/</a></p>
+<ul>
+<li>尽可能在DOM树的最末端改变class</li>
+<li>避免设置多层内联样式</li>
+<li>动画效果应用到position属性为absolute或fixed的元素上</li>
+<li>牺牲平滑度换取速度</li>
+<li>避免使用table布局</li>
+<li>避免使用CSS的JavaScript表达式</li>
+</ul>
+<h3 id="js中避免回流"><a href="#js中避免回流" class="headerlink" title="js中避免回流"></a>js中避免回流</h3><p>避免逐项更改样式。最好一次性更改style属性，或者将样式列表定义为class并一次性更改class属性。<br>避免循环操作DOM。创建一个documentFragment或div，在它上面应用所有DOM操作，最后再把它添加到window.document。<br>也可以在一个display:none的元素上进行操作，最终把它显示出来。因为display:none上的DOM操作不会引发回流和重绘。<br>避免循环读取offsetLeft等属性。在循环之前把它们存起来。<br>绝对定位具有复杂动画的元素。绝对定位使它脱离文档刘，否则会引起父元素及后续元素大量的回流。</p>
 
       
     </div>
@@ -402,8 +427,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/09/08/ES6 6种声明变量的方法/" rel="next" title="ES6 6种声明变量的方法">
-                <i class="fa fa-chevron-left"></i> ES6 6种声明变量的方法
+              <a href="/2018/02/02/html面经积累/" rel="next" title="html面经积累">
+                <i class="fa fa-chevron-left"></i> html面经积累
               </a>
             
           </div>
@@ -411,10 +436,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2017/12/08/promise ES6/" rel="prev" title="ES6之Promise">
-                ES6之Promise <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -466,8 +487,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel sidebar-panel-active">
+      <section class="site-overview sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/images/avatar.gif"
@@ -529,6 +559,22 @@
 
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#回流与重绘"><span class="nav-number">1.</span> <span class="nav-text">回流与重绘</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#引起回流与重绘的因素"><span class="nav-number">2.</span> <span class="nav-text">引起回流与重绘的因素</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#问题"><span class="nav-number">3.</span> <span class="nav-text">问题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#css中避免回流"><span class="nav-number">4.</span> <span class="nav-text">css中避免回流</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#js中避免回流"><span class="nav-number">5.</span> <span class="nav-text">js中避免回流</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
