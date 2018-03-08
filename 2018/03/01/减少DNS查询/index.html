@@ -78,7 +78,7 @@
 <link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="js," />
+  <meta name="keywords" content="web," />
 
 
 
@@ -94,18 +94,18 @@
 
 
 
-<meta name="description" content="doctype（文档类型）的作用文档头部加上&amp;lt;!DOCTYPE html&amp;gt;使得浏览器按照w3c标准来解析渲染页面，避免ie等版本下的怪异模式">
-<meta name="keywords" content="js">
+<meta name="description" content="减少DNS查询DNS为域名系统，从浏览器地址栏输入某个地址后，会用过DNS将域名转为成服务器能接收的IP地址。首先会查看浏览器缓存是否存在，不存在则访问本机DNS缓存，如果还是不存在则访问本地DNS服务器。所以DNS查询是需要时间的，在DNS查询完成之前，浏览器是不能下载任何资源的。 减少DNS最理想是方法是将所有的资源都放在同一个域下面，这样访问整个网站只需要进行一次DNS查询，这样可以提高性能">
+<meta name="keywords" content="web">
 <meta property="og:type" content="article">
-<meta property="og:title" content="html面经积累">
-<meta property="og:url" content="http://yoursite.com/2018/02/02/html面经积累/index.html">
+<meta property="og:title" content="前端性能优化">
+<meta property="og:url" content="http://yoursite.com/2018/03/01/减少DNS查询/index.html">
 <meta property="og:site_name" content="叶珵珵">
-<meta property="og:description" content="doctype（文档类型）的作用文档头部加上&amp;lt;!DOCTYPE html&amp;gt;使得浏览器按照w3c标准来解析渲染页面，避免ie等版本下的怪异模式">
+<meta property="og:description" content="减少DNS查询DNS为域名系统，从浏览器地址栏输入某个地址后，会用过DNS将域名转为成服务器能接收的IP地址。首先会查看浏览器缓存是否存在，不存在则访问本机DNS缓存，如果还是不存在则访问本地DNS服务器。所以DNS查询是需要时间的，在DNS查询完成之前，浏览器是不能下载任何资源的。 减少DNS最理想是方法是将所有的资源都放在同一个域下面，这样访问整个网站只需要进行一次DNS查询，这样可以提高性能">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-02-07T11:18:30.000Z">
+<meta property="og:updated_time" content="2018-03-04T11:11:30.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="html面经积累">
-<meta name="twitter:description" content="doctype（文档类型）的作用文档头部加上&amp;lt;!DOCTYPE html&amp;gt;使得浏览器按照w3c标准来解析渲染页面，避免ie等版本下的怪异模式">
+<meta name="twitter:title" content="前端性能优化">
+<meta name="twitter:description" content="减少DNS查询DNS为域名系统，从浏览器地址栏输入某个地址后，会用过DNS将域名转为成服务器能接收的IP地址。首先会查看浏览器缓存是否存在，不存在则访问本机DNS缓存，如果还是不存在则访问本地DNS服务器。所以DNS查询是需要时间的，在DNS查询完成之前，浏览器是不能下载任何资源的。 减少DNS最理想是方法是将所有的资源都放在同一个域下面，这样访问整个网站只需要进行一次DNS查询，这样可以提高性能">
 
 
 
@@ -134,13 +134,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2018/02/02/html面经积累/"/>
+  <link rel="canonical" href="http://yoursite.com/2018/03/01/减少DNS查询/"/>
 
 
 
 
 
-  <title>html面经积累 | 叶珵珵</title>
+  <title>前端性能优化 | 叶珵珵</title>
   
 
 
@@ -277,7 +277,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/02/02/html面经积累/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/03/01/减少DNS查询/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="ycccheng">
@@ -294,7 +294,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">html面经积累</h1>
+          <h1 class="post-title" itemprop="name headline">前端性能优化</h1>
         
 
         <div class="post-meta">
@@ -306,8 +306,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-02-02T20:59:15+08:00">
-                2018-02-02
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-01T15:59:15+08:00">
+                2018-03-01
               </time>
             
 
@@ -329,8 +329,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/js/" itemprop="url" rel="index">
-                    <span itemprop="name">js</span>
+                  <a href="/categories/web/" itemprop="url" rel="index">
+                    <span itemprop="name">web</span>
                   </a>
                 </span>
 
@@ -366,28 +366,16 @@
       
 
       
-        <h4 id="doctype（文档类型）的作用"><a href="#doctype（文档类型）的作用" class="headerlink" title="doctype（文档类型）的作用"></a><code>doctype</code>（文档类型）的作用</h4><p>文档头部加上&lt;!DOCTYPE html&gt;使得浏览器按照w3c标准来解析渲染页面，避免ie等版本下的怪异模式</p>
-<a id="more"></a>
-<h4 id="浏览器标准模式-standards-mode-、几乎标准模式（almost-standards-mode）和怪异模式-quirks-mode-之间的区别是什么？"><a href="#浏览器标准模式-standards-mode-、几乎标准模式（almost-standards-mode）和怪异模式-quirks-mode-之间的区别是什么？" class="headerlink" title="浏览器标准模式 (standards mode) 、几乎标准模式（almost standards mode）和怪异模式 (quirks mode) 之间的区别是什么？"></a>浏览器标准模式 (standards mode) 、几乎标准模式（almost standards mode）和怪异模式 (quirks mode) 之间的区别是什么？</h4><p><a href="https://www.jianshu.com/p/dcab7cde8c04" target="_blank" rel="external">https://www.jianshu.com/p/dcab7cde8c04</a></p>
-<p><a href="http://www.frontopen.com/1385.html" target="_blank" rel="external">http://www.frontopen.com/1385.html</a></p>
-<p>在“标准模式”(Standards Mode) 页面按照 HTML 与 CSS 的定义渲染，而在“怪异模式”(Quirks Mode)就是浏览器为了兼容很早之前针对旧版本浏览器设计、并未严格遵循 W3C 标准的网页而产生的一种页面渲染模式。浏览器基于页面中文件类型描述的存在以决定采用哪种渲染模式；如果存在一个完整的DOCTYPE则浏览器将会采用标准模式，而如果它缺失则浏览器将会采用怪异模式。</p>
-<p>盒模型的处理差异</p>
-<p>行内元素的垂直对齐</p>
-<p>元素溢出等问题</p>
-<h4 id="HTML-和-XHTML-有什么区别？"><a href="#HTML-和-XHTML-有什么区别？" class="headerlink" title="HTML 和 XHTML 有什么区别？"></a>HTML 和 XHTML 有什么区别？</h4><hr>
-<h4 id="如果页面使用-‘application-xhtml-xml’-会有什么问题吗？"><a href="#如果页面使用-‘application-xhtml-xml’-会有什么问题吗？" class="headerlink" title="如果页面使用 ‘application/xhtml+xml’ 会有什么问题吗？"></a>如果页面使用 ‘application/xhtml+xml’ 会有什么问题吗？</h4><hr>
-<h4 id="网页需要支持多语言"><a href="#网页需要支持多语言" class="headerlink" title="网页需要支持多语言"></a>网页需要支持多语言</h4><p>多语言网站实现计划 ：</p>
-<p>1、静态：就是为每种语言分辨准备一套页面文件，要么通过文件后缀名来区分不同语言，要么通过子目录来区分不同语言。<br>例如对于首页文件index_en.htm供给英语界面，index_gb.htm供给简体中文界面，index_big.htm供给繁体中文界面，或者是en/index.htm供给英语界面，gb/index.htm供给简体中文界面，big/index.htm供给繁体中文界面，一旦用户选择了需要的语言后，主动跳转到相应的页面，首页以下其他链接也是按照同样方法处理。从保护的角度来看，通过子目录比通过文件后缀名来区分不同语言版本显得要简略明了。</p>
-<p>2，动态：站点内所有页面文件都是动态页面文件（PHP，ASP等）而不是静态页面文件，在需要输出语言文字的处所同一采用语言变量来表现，这些语言变量可以根据用户选择不同的语言赋予不同的值，从而能够实现在不同的语言环境下输出不同的文字。<br>例如：语言变量ln_name，当用户选择的语言是英语时赋值为“Name”，当用户选择的语言是简体中文时赋值为“姓名”，这样就可以适应不同语言时的输出。</p>
-<p>采用静态方法的长处是页面直接输出到客户端，不需要在服务器上运行，占用服务器的资源比拟少，系统能够支撑的并发连接数较多，毛病是要为每种语言制作一套页面文件，很多内容即使是和语言无关的也要分不同语言来存储，因此占用的存储空间较多。</p>
-<p>采用动态方法和静态方法的优毛病正好相反，它的长处是动态页面文件只有一套，不同语言的文字应用语言变量来存储，和语言无关的内容只存储一份，占用的存储空间较少，并且扩大新语言比拟轻易，毛病需要在服务器上运行，然后把成果输进到客户端，占用服务器的资源比拟多，系统能够支撑的并发连接数较少。</p>
-<hr>
-<h4 id="使用-data-属性的好处是什么"><a href="#使用-data-属性的好处是什么" class="headerlink" title="使用 data- 属性的好处是什么"></a>使用 data- 属性的好处是什么</h4><p><a href="https://www.cnblogs.com/dolphinX/p/3348458.html" target="_blank" rel="external">https://www.cnblogs.com/dolphinX/p/3348458.html</a></p>
-<p>data-<em> 实际上上就是data-前缀加上自定义的属性名，使用这样的结构可以进行数据存放。使用data-</em>可以解决自定义属性混乱无管理的现状。</p>
-<hr>
-<h4 id="如果把-HTML5-看作做一个开放平台，那它的构建模块有哪些？"><a href="#如果把-HTML5-看作做一个开放平台，那它的构建模块有哪些？" class="headerlink" title="如果把 HTML5 看作做一个开放平台，那它的构建模块有哪些？"></a>如果把 HTML5 看作做一个开放平台，那它的构建模块有哪些？</h4><hr>
-<h4 id="请描述-cookies、sessionStorage-和-localStorage-的区别。"><a href="#请描述-cookies、sessionStorage-和-localStorage-的区别。" class="headerlink" title="请描述 cookies、sessionStorage 和 localStorage 的区别。"></a>请描述 cookies、sessionStorage 和 localStorage 的区别。</h4><p><a href="https://www.cnblogs.com/jacobb/p/6824838.html" target="_blank" rel="external">https://www.cnblogs.com/jacobb/p/6824838.html</a></p>
-<h4 id="什么是渐进式渲染"><a href="#什么是渐进式渲染" class="headerlink" title="什么是渐进式渲染"></a>什么是渐进式渲染</h4>
+        <h3 id="减少DNS查询"><a href="#减少DNS查询" class="headerlink" title="减少DNS查询"></a>减少DNS查询</h3><p>DNS为域名系统，从浏览器地址栏输入某个地址后，会用过DNS将域名转为成服务器能接收的IP地址。首先会查看浏览器缓存是否存在，不存在则访问本机DNS缓存，如果还是不存在则访问本地DNS服务器。所以DNS查询是需要时间的，在DNS查询完成之前，浏览器是不能下载任何资源的。</p>
+<p>减少DNS最理想是方法是将所有的资源都放在同一个域下面，这样访问整个网站只需要进行一次DNS查询，这样可以提高性能</p>
+<p>但是单域的问题在于，所有资源下载时会产生排队现象，这样会造成阻塞</p>
+<p>所以建议一个网站至少使用2个域，但不多于4个域来提高资源</p>
+<h3 id="使用CDN"><a href="#使用CDN" class="headerlink" title="使用CDN"></a>使用CDN</h3><p><a href="https://www.zhihu.com/question/36514327" target="_blank" rel="external">https://www.zhihu.com/question/36514327</a></p>
+<p>CDN,又名内容分发网络，CDN是将源站内容分发至最接近用户的节点，使用户可就近取得所需内容，提高用户访问的响应速度和成功率。解决因分布、带宽、服务器性能带来的访问延迟问题，适用于站点加速、点播、直播等场景。</p>
+<h3 id="避免重定向"><a href="#避免重定向" class="headerlink" title="避免重定向"></a>避免重定向</h3><p>重定向指的是用户原始请求A被重定向到其他的请求（页面B）</p>
+<p>并且有两个状态码来标识：<br>301：永久重定向<br>302：临时重定向</p>
+<p>增加了浏览器到服务器的往返次数，必然会降低性能。</p>
+
       
     </div>
     
@@ -408,7 +396,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/js/" rel="tag"># js</a>
+            <a href="/tags/web/" rel="tag"># web</a>
           
         </div>
       
@@ -421,8 +409,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/01/20/css面经积累/" rel="next" title="css面经积累">
-                <i class="fa fa-chevron-left"></i> css面经积累
+              <a href="/2018/02/08/未命名/" rel="next" title="重绘与回流">
+                <i class="fa fa-chevron-left"></i> 重绘与回流
               </a>
             
           </div>
@@ -430,10 +418,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/02/08/未命名/" rel="prev" title="重绘与回流">
-                重绘与回流 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -510,7 +494,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">12</span>
+                <span class="site-state-item-count">11</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -521,7 +505,7 @@
             
             <div class="site-state-item site-state-categories">
               <a href="/categories/index.html">
-                <span class="site-state-item-count">3</span>
+                <span class="site-state-item-count">4</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
@@ -532,7 +516,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">3</span>
+                <span class="site-state-item-count">4</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -567,7 +551,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#doctype（文档类型）的作用"><span class="nav-number">1.</span> <span class="nav-text">doctype（文档类型）的作用</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#浏览器标准模式-standards-mode-、几乎标准模式（almost-standards-mode）和怪异模式-quirks-mode-之间的区别是什么？"><span class="nav-number">2.</span> <span class="nav-text">浏览器标准模式 (standards mode) 、几乎标准模式（almost standards mode）和怪异模式 (quirks mode) 之间的区别是什么？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#HTML-和-XHTML-有什么区别？"><span class="nav-number">3.</span> <span class="nav-text">HTML 和 XHTML 有什么区别？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#如果页面使用-‘application-xhtml-xml’-会有什么问题吗？"><span class="nav-number">4.</span> <span class="nav-text">如果页面使用 ‘application/xhtml+xml’ 会有什么问题吗？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#网页需要支持多语言"><span class="nav-number">5.</span> <span class="nav-text">网页需要支持多语言</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#使用-data-属性的好处是什么"><span class="nav-number">6.</span> <span class="nav-text">使用 data- 属性的好处是什么</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#如果把-HTML5-看作做一个开放平台，那它的构建模块有哪些？"><span class="nav-number">7.</span> <span class="nav-text">如果把 HTML5 看作做一个开放平台，那它的构建模块有哪些？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#请描述-cookies、sessionStorage-和-localStorage-的区别。"><span class="nav-number">8.</span> <span class="nav-text">请描述 cookies、sessionStorage 和 localStorage 的区别。</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#什么是渐进式渲染"><span class="nav-number">9.</span> <span class="nav-text">什么是渐进式渲染</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#减少DNS查询"><span class="nav-number">1.</span> <span class="nav-text">减少DNS查询</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#使用CDN"><span class="nav-number">2.</span> <span class="nav-text">使用CDN</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#避免重定向"><span class="nav-number">3.</span> <span class="nav-text">避免重定向</span></a></li></ol></div>
             
 
           </div>

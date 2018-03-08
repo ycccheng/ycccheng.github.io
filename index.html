@@ -274,6 +274,160 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/03/01/减少DNS查询/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="ycccheng">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="叶珵珵">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/03/01/减少DNS查询/" itemprop="url">前端性能优化</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-01T15:59:15+08:00">
+                2018-03-01
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/web/" itemprop="url" rel="index">
+                    <span itemprop="name">web</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="减少DNS查询"><a href="#减少DNS查询" class="headerlink" title="减少DNS查询"></a>减少DNS查询</h3><p>DNS为域名系统，从浏览器地址栏输入某个地址后，会用过DNS将域名转为成服务器能接收的IP地址。首先会查看浏览器缓存是否存在，不存在则访问本机DNS缓存，如果还是不存在则访问本地DNS服务器。所以DNS查询是需要时间的，在DNS查询完成之前，浏览器是不能下载任何资源的。</p>
+<p>减少DNS最理想是方法是将所有的资源都放在同一个域下面，这样访问整个网站只需要进行一次DNS查询，这样可以提高性能</p>
+<p>但是单域的问题在于，所有资源下载时会产生排队现象，这样会造成阻塞</p>
+<p>所以建议一个网站至少使用2个域，但不多于4个域来提高资源</p>
+<h3 id="使用CDN"><a href="#使用CDN" class="headerlink" title="使用CDN"></a>使用CDN</h3><p><a href="https://www.zhihu.com/question/36514327" target="_blank" rel="external">https://www.zhihu.com/question/36514327</a></p>
+<p>CDN,又名内容分发网络，CDN是将源站内容分发至最接近用户的节点，使用户可就近取得所需内容，提高用户访问的响应速度和成功率。解决因分布、带宽、服务器性能带来的访问延迟问题，适用于站点加速、点播、直播等场景。</p>
+<h3 id="避免重定向"><a href="#避免重定向" class="headerlink" title="避免重定向"></a>避免重定向</h3><p>重定向指的是用户原始请求A被重定向到其他的请求（页面B）</p>
+<p>并且有两个状态码来标识：<br>301：永久重定向<br>302：临时重定向</p>
+<p>增加了浏览器到服务器的往返次数，必然会降低性能。</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+     
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/02/08/未命名/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -366,334 +520,11 @@
 
       
         
-          
-            <h3 id="回流与重绘"><a href="#回流与重绘" class="headerlink" title="回流与重绘"></a>回流与重绘</h3><p><strong>回流</strong></p>
+          <h3 id="回流与重绘"><a href="#回流与重绘" class="headerlink" title="回流与重绘"></a>回流与重绘</h3><p><strong>回流</strong></p>
 <p> 当render tree中的一部分(或全部)因为元素的规模尺寸，布局，隐藏等改变而需要重新构建。这就称为回流(其实我觉得叫重新布局更简单明了些)。每个页面至少需要一次回流，就是在页面第一次加载的时候。</p>
-<p><strong>重绘</strong></p>
-<p> 当render tree中的一些元素需要更新属性，而这些属性只是影响元素的外观，风格，而不会影响布局的，比如background-color。则就叫称为重绘。</p>
-<p> <strong>回流一定会引起重绘，重绘不一定会引起回流</strong></p>
-<h3 id="引起回流与重绘的因素"><a href="#引起回流与重绘的因素" class="headerlink" title="引起回流与重绘的因素"></a>引起回流与重绘的因素</h3><ul>
-<li>调整窗口大小（Resizing the window）</li>
-<li>改变字体（Changing the font）</li>
-<li>增加或者移除样式表</li>
-<li>内容或文本变化，比如用户在input框中输入文字</li>
-<li>激活 CSS 伪类，比如 :hover </li>
-<li>操作 class 属性</li>
-<li>脚本操作 DOM</li>
-<li>计算 offsetWidth 和 offsetHeight 属性</li>
-<li>设置 style 属性的值 </li>
-</ul>
-<h3 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h3><p>重绘的代价是高昂的，因为浏览器必须验证DOM树上其他节点元素的可见性。而回流更是性能的关键因为其变化涉及到部分页面（或是整个页面）的布局。一个元素的回流导致了其所有子元素以及DOM中紧随其后的祖先元素的随后的回流。</p>
-<h3 id="css中避免回流"><a href="#css中避免回流" class="headerlink" title="css中避免回流"></a>css中避免回流</h3><p><a href="http://www.zhangxinxu.com/wordpress/2010/01/%E5%9B%9E%E6%B5%81%E4%B8%8E%E9%87%8D%E7%BB%98%EF%BC%9Acss%E6%80%A7%E8%83%BD%E8%AE%A9javascript%E5%8F%98%E6%85%A2%EF%BC%9F/" target="_blank" rel="external">http://www.zhangxinxu.com/wordpress/2010/01/%E5%9B%9E%E6%B5%81%E4%B8%8E%E9%87%8D%E7%BB%98%EF%BC%9Acss%E6%80%A7%E8%83%BD%E8%AE%A9javascript%E5%8F%98%E6%85%A2%EF%BC%9F/</a></p>
-<ul>
-<li>尽可能在DOM树的最末端改变class</li>
-<li>避免设置多层内联样式</li>
-<li>动画效果应用到position属性为absolute或fixed的元素上</li>
-<li>牺牲平滑度换取速度</li>
-<li>避免使用table布局</li>
-<li>避免使用CSS的JavaScript表达式</li>
-</ul>
-<h3 id="js中避免回流"><a href="#js中避免回流" class="headerlink" title="js中避免回流"></a>js中避免回流</h3><p>避免逐项更改样式。最好一次性更改style属性，或者将样式列表定义为class并一次性更改class属性。<br>避免循环操作DOM。创建一个documentFragment或div，在它上面应用所有DOM操作，最后再把它添加到window.document。<br>也可以在一个display:none的元素上进行操作，最终把它显示出来。因为display:none上的DOM操作不会引发回流和重绘。<br>避免循环读取offsetLeft等属性。在循环之前把它们存起来。<br>绝对定位具有复杂动画的元素。绝对定位使它脱离文档刘，否则会引起父元素及后续元素大量的回流。</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-     
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/02/02/html面经积累/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="ycccheng">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="叶珵珵">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/02/02/html面经积累/" itemprop="url">html面经积累</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-02-02T20:59:15+08:00">
-                2018-02-02
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/js/" itemprop="url" rel="index">
-                    <span itemprop="name">js</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h4 id="doctype（文档类型）的作用"><a href="#doctype（文档类型）的作用" class="headerlink" title="doctype（文档类型）的作用"></a><code>doctype</code>（文档类型）的作用</h4><p>文档头部加上&lt;!DOCTYPE html&gt;使得浏览器按照w3c标准来解析渲染页面，避免ie等版本下的怪异模式</p>
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2018/02/02/html面经积累/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-     
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/01/20/css面经积累/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="ycccheng">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="叶珵珵">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/01/20/css面经积累/" itemprop="url">css面经积累</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-01-20T15:59:15+08:00">
-                2018-01-20
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/css/" itemprop="url" rel="index">
-                    <span itemprop="name">css</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h4 id="置换元素"><a href="#置换元素" class="headerlink" title="置换元素"></a>置换元素</h4><p>一个内容，不受CSS视觉格式化模型控制，CSS渲染模型并不考虑对此内容的渲染，一般都拥有固定尺寸（宽度、高度、高度比）的元素，称为置换元素。</p>
-<p>例如浏览器会根据<code>img</code>的<code>src</code>属性值来读取图片信息并显示出来；又如根据<code>input</code>的<code>type</code>属性来决定是显示文本还是按钮等。</p>
-<p>常见的替换元素有<code>img</code> <code>input</code> <code>textarea</code> <code>select</code> <code>object</code>。</p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2018/01/20/css面经积累/#more" rel="contents">
+            <a class="btn" href="/2018/02/08/未命名/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -1205,7 +1036,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/09/08/闭包/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/09/08/js单线程理解/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="ycccheng">
@@ -1224,7 +1055,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2017/09/08/闭包/" itemprop="url">闭包</a></h1>
+                <a class="post-title-link" href="/2017/09/08/js单线程理解/" itemprop="url">js单线程相关理解</a></h1>
         
 
         <div class="post-meta">
@@ -1297,11 +1128,14 @@
 
       
         
-          
-            <p>对于闭包的理解就是用来读取函数内部变量的函数。在js中只有子函数才能读取去不函数内的变量，因此，闭包就是定义在一个函数内部的函数。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">　function f1()&#123;</div><div class="line">　　　　var n=999;</div><div class="line">　　　　function f2()&#123;</div><div class="line">　　　　　　alert(n); </div><div class="line">　　　　&#125;</div><div class="line">　　　　return f2;</div><div class="line">　　&#125;</div><div class="line">　　var result=f1();</div><div class="line">　　result(); // 999</div></pre></td></tr></table></figure>
-
-          
+          <p>一直不太理解单线程是什么意思，刚看了一些博客的讲解好像懂了一些。<br>今天就来谈谈这个问题。<br>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/09/08/js单线程理解/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -1502,7 +1336,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/09/08/原型/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/09/08/http首部字段/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="ycccheng">
@@ -1521,7 +1355,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2017/09/08/原型/" itemprop="url">原型</a></h1>
+                <a class="post-title-link" href="/2017/09/08/http首部字段/" itemprop="url">HTTP首部字段</a></h1>
         
 
         <div class="post-meta">
@@ -1556,8 +1390,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/js/" itemprop="url" rel="index">
-                    <span itemprop="name">js</span>
+                  <a href="/categories/http/" itemprop="url" rel="index">
+                    <span itemprop="name">http</span>
                   </a>
                 </span>
 
@@ -1594,11 +1428,10 @@
 
       
         
-          <p>探讨原型之前，我们先探讨下对象和函数的关系：</p>
-<h2 id="对象与函数"><a href="#对象与函数" class="headerlink" title="对象与函数"></a>对象与函数</h2><p>我们一直都知道，函数是对象的一种，通过instanceof函数可以判断；<br>再去看数据，我们也知道数组也是对象的一种，他就是数组的一个子集；<br>但是我们又可以说所有对象都是通过函数创建的；<br>所以，函数和对象的关系有种鸡生蛋蛋生鸡的关系<br>
+          <p>http协议的请求和响应报文必定包含<strong>http首部</strong><br>首部内容是客户端和服务器请求或响应时所提供的需要的信息。</p>
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2017/09/08/原型/#more" rel="contents">
+            <a class="btn" href="/2017/09/08/http首部字段/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -1790,6 +1623,157 @@
 
 
     
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/09/08/原型/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="ycccheng">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="叶珵珵">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/09/08/原型/" itemprop="url">原型</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-09-08T15:59:15+08:00">
+                2017-09-08
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/js/" itemprop="url" rel="index">
+                    <span itemprop="name">js</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <p>探讨原型之前，我们先探讨下对象和函数的关系：</p>
+<h2 id="对象与函数"><a href="#对象与函数" class="headerlink" title="对象与函数"></a>对象与函数</h2><p>我们一直都知道，函数是对象的一种，通过instanceof函数可以判断；<br>再去看数据，我们也知道数组也是对象的一种，他就是数组的一个子集；<br>但是我们又可以说所有对象都是通过函数创建的；<br>所以，函数和对象的关系有种鸡生蛋蛋生鸡的关系<br>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/09/08/原型/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+     
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
   </section>
 
   
@@ -1840,7 +1824,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">12</span>
+                <span class="site-state-item-count">11</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -1851,7 +1835,7 @@
             
             <div class="site-state-item site-state-categories">
               <a href="/categories/index.html">
-                <span class="site-state-item-count">3</span>
+                <span class="site-state-item-count">4</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
@@ -1862,7 +1846,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">3</span>
+                <span class="site-state-item-count">4</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
