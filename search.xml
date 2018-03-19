@@ -12,17 +12,6 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[重绘与回流]]></title>
-    <url>%2F2018%2F02%2F08%2F%E6%9C%AA%E5%91%BD%E5%90%8D%2F</url>
-    <content type="text"><![CDATA[回流与重绘回流 当render tree中的一部分(或全部)因为元素的规模尺寸，布局，隐藏等改变而需要重新构建。这就称为回流(其实我觉得叫重新布局更简单明了些)。每个页面至少需要一次回流，就是在页面第一次加载的时候。 重绘 当render tree中的一些元素需要更新属性，而这些属性只是影响元素的外观，风格，而不会影响布局的，比如background-color。则就叫称为重绘。 回流一定会引起重绘，重绘不一定会引起回流 引起回流与重绘的因素 调整窗口大小（Resizing the window） 改变字体（Changing the font） 增加或者移除样式表 内容或文本变化，比如用户在input框中输入文字 激活 CSS 伪类，比如 :hover 操作 class 属性 脚本操作 DOM 计算 offsetWidth 和 offsetHeight 属性 设置 style 属性的值 问题重绘的代价是高昂的，因为浏览器必须验证DOM树上其他节点元素的可见性。而回流更是性能的关键因为其变化涉及到部分页面（或是整个页面）的布局。一个元素的回流导致了其所有子元素以及DOM中紧随其后的祖先元素的随后的回流。 css中避免回流http://www.zhangxinxu.com/wordpress/2010/01/%E5%9B%9E%E6%B5%81%E4%B8%8E%E9%87%8D%E7%BB%98%EF%BC%9Acss%E6%80%A7%E8%83%BD%E8%AE%A9javascript%E5%8F%98%E6%85%A2%EF%BC%9F/ 尽可能在DOM树的最末端改变class 避免设置多层内联样式 动画效果应用到position属性为absolute或fixed的元素上 牺牲平滑度换取速度 避免使用table布局 避免使用CSS的JavaScript表达式 js中避免回流避免逐项更改样式。最好一次性更改style属性，或者将样式列表定义为class并一次性更改class属性。避免循环操作DOM。创建一个documentFragment或div，在它上面应用所有DOM操作，最后再把它添加到window.document。也可以在一个display:none的元素上进行操作，最终把它显示出来。因为display:none上的DOM操作不会引发回流和重绘。避免循环读取offsetLeft等属性。在循环之前把它们存起来。绝对定位具有复杂动画的元素。绝对定位使它脱离文档刘，否则会引起父元素及后续元素大量的回流。]]></content>
-      <categories>
-        <category>js</category>
-      </categories>
-      <tags>
-        <tag>js</tag>
-      </tags>
-  </entry>
-  <entry>
     <title><![CDATA[class与继承]]></title>
     <url>%2F2017%2F12%2F23%2FClass%E4%B8%8E%E7%BB%A7%E6%89%BF%2F</url>
     <content type="text"><![CDATA[简介ES5的继承，实质上是先创造子类的实例对象this,然后再将父类的方法添加到this上面。 123456function superType()&#123; this.colors = ['red','blue','black']&#125;function subType()&#123; superType.call(this);&#125; ES6的继承机制是：实例先创造父类的实例对象this(所以调用super方法),然后再用子类的构造函数修改this 1234567class colorPoint extends Point&#123; constructor(x,y,color)&#123; super(x,y)//调用父类构造函数中的（x,y） //super表示父类的构造函数，用来新建父类的this对象 this.color = color; &#125;&#125; 有两点需要注意的地方： 如果子类没有定义constructor方法，这个方法会被默认添加，即任何一个子类都有constructor方法; 子类构造函数中，只有调用super之后，才能使用this关键字，否则会报错；ES6要求，子类必须调用一次super函数 1234567891011121314class Point &#123; constructor(x, y) &#123; this.x = x; this.y = y; &#125;&#125;class ColorPoint extends Point &#123; constructor(x, y, color) &#123; this.color = color; // ReferenceError super(x, y); this.color = color; // 正确 &#125;&#125; supersuper既可以当对象使用，也可以当函数使用 super用作函数是调用，代表父类的构造函数。 ES6要求，子类的构造函数中必须执行一次super函数。 1234567891011class A&#123;&#125;class B extends A&#123; constructor()&#123; super(); //super虽然指向的是父类的构造函数，但是返回的是子类B的实例 //即super内部的this指向是B //A.prototype.constructor.call(this) &#125;&#125;new A() //Anew B() //B super作为对象时，指向父类的原型对象 1234567891011calss A&#123; p()&#123; return 2 &#125;&#125;class Bextends A&#123; constructor()&#123; super(); console.log(super.p()) //2 //指向`A.prototype` 即`A.prototype.p()` &#125;&#125;let b = new B(); 类的prototype属性和 proto属性大多数浏览器的 ES5 实现之中，每一个对象都有 __ proto__属性，指向对应的构造函数的prototype属性,而在ES6中： 子类的_ proto _属性，表示构造函数的继承，总是指向父类. 123class AA&#123;&#125;class BB extends AA&#123;&#125;BB.__proto__ //class AA&#123;&#125; 子类prototype属性的_proto_属性，表示方法的继承，总是指向父类的prototype属性 12BB.prototype //AA &#123;constructor: ƒ&#125;BB.prototype.__proto__ //&#123;constructor: ƒ&#125; 实例的 proto属性子类实例的__ proto__属性的__ proto__属性，指向父类实例的__ proto__属性。也就是说，子类的原型的原型，是父类的原型。 1234var p1 = new Point(2, 3);var p2 = new ColorPoint(2, 3, 'red');p2.__proto__.__proto__ === p1.__proto__ // true 因此通过子类实例的_ proto_._ proto_属性，可以修改父类实例的行为。 12345p2.__proto__.__proto__.printName = function () &#123; console.log('Ha');&#125;;p1.printName() // "Ha" 原生构造函数的继承extends关键字不仅可以用来继承类，还可以用来继承原生构造函数。ES6允许继承原生构造函数定义子类，因为ES6是先新建父类的实例对象的this，然后再用子类构造函数修饰this，使得父类所有的行为都可以被继承。123456789101112class MyArray extends Array &#123; constructor(...args) &#123; super(...args); &#125;&#125;var arr = new MyArray();arr[0] = 12;arr.length // 1arr.length = 0;arr[0] // undefined]]></content>
@@ -67,17 +56,6 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[js单线程相关理解]]></title>
-    <url>%2F2017%2F09%2F08%2Fjs%E5%8D%95%E7%BA%BF%E7%A8%8B%E7%90%86%E8%A7%A3%2F</url>
-    <content type="text"><![CDATA[一直不太理解单线程是什么意思，刚看了一些博客的讲解好像懂了一些。今天就来谈谈这个问题。 js是单线程的，这是毋庸置疑的，那么js是怎么实现异步请求的呢？js本身是不可能异步的，但js的宿主环境，如浏览器、node都是多线程的，宿主环境通过某种方式使得js具备了异步的属性。 js为什么是单线程的？js的单线程机制，与它用途有关。作为浏览器脚本语言，js的主要用途是与用户互动，以及操作DOM。这就决定了它的单线程。 如果js同时有两个线程，一个线程在某个节点上添加了内容，另一个线程删除了这个节点，这就导致了混乱，所以js从一诞生就是单线程的。 浏览器的多线程浏览器是多线程的，浏览器只给js分配了一个线程来执行任务（函数），但由于js是单线程的，因此一次只能执行一个任务，这些任务形成一个任务队列（callback queue）等候执行。这意味着完成队列的所有任务会非常的耗时，且效率低。所以浏览器为这些耗时的任务开辟了另外的线程，并由这些线程实现异步。 下面是浏览器的主要线程： 界面渲染线程 浏览器事件触发线程 http请求线程 js引擎线程 任务队列callback queue单线程意味着所有任务都得排队，前一个没有结束，后一个任务就得一直等着。只有前一个任务执行完了才会执行下一个任务。但是在开发的后期，人们逐渐意识到不必等前一个任务结束再折行下一个任务（如IO设备，ajax操作）。可以把处于等待中的任务挂起，先运行排在后面的任务。等IO设备返回了结果再回头把挂起的任务继续执行下去。 于是所有的任务分为两种，同步任务和异步任务。同步指的是在主线程上排队执行的任务，只有前一个任务执行完毕，才会执行后一个任务； 异步任务指的是，不进入主线程，而是进而任务队列的任务，只有任务队列“通知”主线程异步任务可以执行了，就会执行任务队列的任务。 异步执行的运行机制如下:(同步执行也是如此，可视为没有异步任务的异步执行) 所有的同步任务都在主线程上执行，形成一个执行栈 主线程外，还存在一个“任务队列”，只有异步运行有了结果，就会在“任务队列”中放置一个事件。（这里的事件在我的理解是通过回调函数进入任务队列） 执行栈中的所有同步任务执行完毕，系统会处理“任务队列”里的任务。并进入执行栈，开始执行 主线程不断重复上面的第3步。 上图很好的诠释了异步的机制，也展现出异步的优点。 回调函数在讲任务队列之前我得先讲一下回调函数，因为看到这里时对回调函数产生了模糊。特地仔细研究了下回调函数。之前对于回调函数接触是在ajax里面，ajax请求返回后才执行回调函数里面的内容。 “任务队列”是一个事件的队列（也可以理解成消息的队列），IO设备完成一项任务，就在”任务队列”中添加一个事件，表示相关的异步任务可以进入”执行栈”了。主线程读取”任务队列”，就是读取里面有哪些事件。 而这些事件是怎么进入“任务队列”的呢？答案是回调函数。 所谓”回调函数”（callback），就是那些会被主线程挂起来的代码。异步任务必须指定回调函数，当主线程开始执行异步任务，就是执行对应的回调函数。 事件循环 Event Loop主线程从“任务队列”中读取事件，这个循环的过程又被称为事件循环Event loop。 主线程在运行的时候，产生堆（heap）和栈（stack），函数的执行就是通过进栈和出栈实现的，栈中的代码调用各种外部API，它们在”任务队列”中加入各种事件（click，load，done）。只要栈中的代码执行完毕，主线程就会去读取”任务队列”，依次执行那些事件所对应的回调函数。 定时器“任务队列”还可以放置定时事件。setTimeout()函数接收两个参数，一个是回调函数，一个是任务执行前需等待的时间。 12345console.log(1);setTimeout(function()&#123; consoloe.log(2);&#125;,1000);console.log(3); //1,3,2 setTimeout()将第二行推迟到1000毫秒之后执行。 12setTimeout(function()&#123;console.log(1);&#125;,0);console.log(2); //2,1 如果将setTimeout()的第二个参数设为0，就表示当前代码执行完（执行栈清空）以后，立即执行（0毫秒间隔）指定的回调函数。 总之，setTimeout(fn,0)指的是某个任务在主线程最早可得的空闲时间执行，也就是尽可能早的执行。他在任务队列的尾部添加了一个时间，因此要等到所有同步任务和“任务队列”的任务处理完，再会执行。]]></content>
-      <categories>
-        <category>js</category>
-      </categories>
-      <tags>
-        <tag>js</tag>
-      </tags>
-  </entry>
-  <entry>
     <title><![CDATA[HTTP首部字段]]></title>
     <url>%2F2017%2F09%2F08%2Fhttp%E9%A6%96%E9%83%A8%E5%AD%97%E6%AE%B5%2F</url>
     <content type="text"><![CDATA[http协议的请求和响应报文必定包含http首部首部内容是客户端和服务器请求或响应时所提供的需要的信息。 请求报文与响应报文构成请求报文由方法，URI，http版本、首部字段组成。 响应报文由http版本，状态码，首部字段组成。 构成 请求报文 响应报文 报文首部 请求行、通用/请求/实体首部字段 请求行、通用/请求/实体首部字段 主体部分 报文主体 报文主体 首部字段首部字段在客户端与服务器通信中，起到传递重要信息的作用。首部字段是为了给浏览器 和服务器提供报文大小、认证信息、缓存等内容。 字段结构 首部字段名：字段值 4种字段类型 通用首部字段 请求/相应首部字段 实体首部 接下来我们详细讲一下每个字段的具体内容 http/1.1通用首部字段通用首部字段指的是请求报文和响应报文都会使用的首部。 1. Cache-Control通过指定Cache-Control的值，就能操作缓存的工作机制。指令可为多个，且用”，“来间隔 1Cache-Control: private, max-age = 0, no-cache 表示能否缓存的指令 public指令 表明可向任一用户提供响应的缓存 private指令 与public相对的，表明响应的缓存只向特定用户提供 no-cache指令 确定缓存的有效性，防止返回过期的缓存 客户端请求包含no-cache：表示客户端不会接受缓存服务器发来的缓存，处于中间的缓存服务器就会把请求发给源服务器。 服务器请求包含no-cache：缓存服务器不能对资源进行缓存。以后也不会对缓存服务器的资源进行确认，且禁止对任何资源进行缓存。 1Cache-Control:no-cache = Location 如果对字段名指定具体参数值，客户端接受到服务器返回的响应报文后，就不能使用缓存了。也就是说，无村塾的首部字段可以使用缓存。++且该参数只能在响应报文中指定。++ 控制可执行缓存的对象的指令 no-store指令 规定不能缓存请求或响应的任一部分 指定缓存期限和认证的指令 s-maxage 只适用于拱多位用户使用的公共缓存服务器 1Cache-Control:s-maxage = 604800（秒） max-age 客户端角度 如果在缓存期限内，即判定当前的缓存期限小于指定时间，则向客户端发送缓存的数据。1Cache-Control:s-maxage = 0（秒） 当值为0时，那么缓存服务器需要将请求发送给园服务器。 服务器角度 缓存服务器不再对缓存的期限进行确认。 min-fresh指令 超过期限就无法返回缓存，只返回指定时间内的缓存。 max-scale缓存过期也照常接收。 only-if-cached 客户端仅在缓存服务器本地缓存目标资源的情况下才会要求其返回。缓存服务器不重新加载响应，不确认缓存的有效性。 must-revalidate指令 代理服务器向源服务器确定缓存的有效性。 proxy-cache 所有缓存服务器在接受客户端带有该指令的情求返回响应之前，必须再次验证缓存的有效性。 no-transform 缓存不能改变实体主体的媒体类型。 2. Connection指令具有两个作用： 控制不再转发给代理的首部字段：可控制代理服务器不再转发部分字段 1Connection: 不再转发的首部字段名 管理持久连接 1Connection:close http/1.1默认状态下是持久连接的。 1Connection：Keep-Alive http/1.1之前的版本都是非持久连接的，所以可以指定字段值keep-alive. 3. Date表明创建报文的日期和时间 4. Pragma1Pragma:no-cache 所有的中间服务器的http版本不一定都是1.1，因此发送的请求会包含下面两个字段 12Cache-Control:no-cachePragma:no-cache 5. Trailer该字段会实现说明在斑纹主体后记录了哪些首部字段 123Trailer:Expries...报文主体...Expries:详细内容 6.Transfer-Encoding7. Upgrade用于检测http协议以及其他协议是否可使用更高的版本进行通信 12upgrade: TLS/1.0Connection: ugrade upgrade首部字段产生作用的对象仅限于客户端与邻接服务器，因此在指定upgrade字段时还得指定connection字段。 8.via追踪客户端和服务器之间请求或响应报文的传输路径。 9.Warning1Warning:[警告码][警告主机：端口号][警告内容][日期] http/1.1请求首部字段1.hosthost会告知服务器，请求的资源所处的互联网主机名和端口号 一个IP地址可对应多个域名：一台服务器（虚拟主机）只有一个IP，上面可以存放千万个网站，当这些网站请求到来时，服务器会根据host字段的值中的主机名来确定本次请求的资源在哪个服务器上。 IP地址相当于通信地址，都是由数字组成的，不利于记忆，因此为了方便记忆，定义了域名，所以人们都是访问baidu.com，而不是ip地址。 1host:www.baidu.com http/1.1响应首部字段1.varyvary可对缓存进行控制，源服务器向代理服务器传达关于缓存使用方法的命令。 当客户当与代理服务器都带有相同值的vary指令时，那么就直接从代理服务器发送缓存给客户端，如果不相同，则向源服务器发送请求。 从代理服务器收到源服务器返回的包含vary的响应后，如果再要进行缓存，则仅对请求中的vary指令值相同时返回缓存。]]></content>
@@ -89,14 +67,14 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[常用的几种布局]]></title>
-    <url>%2F2017%2F09%2F08%2F%E5%B8%B8%E7%94%A8%E7%9A%84%E5%87%A0%E7%A7%8D%E5%B8%83%E5%B1%80%2F</url>
-    <content type="text"><![CDATA[两列布局左列定宽，右列自适应12.left&#123;float：left; width:100px;&#125;.right&#123;margin-left:100px&#125; IE6会有3像素的bug 三列布局这三种布局基本都是当今网页布局比较常用的布局方式：左中右三栏布局，左右两栏宽度固定（要是不想固定将宽度改成百分比），中间栏宽度自适应。 绝度定位法左右两栏采用绝对定位，固定于页面两侧；中间栏用左右margin值撑开距离。 12345&lt;body&gt; &lt;div id="left" style="position:absolute; width:200px; left:0;"&gt;&lt;/div&gt; &lt;div id="main" style="margin:0 210px"&gt;&lt;/div&gt; &lt;div id="right" style="position:absolute; width:200px;"&gt;&lt;/div&gt;&lt;/body&gt; margin负值法这种方法是在实际的网站中应用的最多的，中间主体使用双层标签，内层div为真正的主体内容，含有左右210像素的margin值。左右栏采用maigin负值定位：margin-left:-100% 1234567&lt;body&gt; &lt;div style="float:left margin:0;"&gt; &lt;div width:100%,float:left&gt;&lt;/div&gt; &lt;/div&gt; &lt;div id="left" style="width:200px; margin-left:-100%;float:left"&gt;&lt;/div&gt; &lt;div id="right" style=" width:200px; margin-left:-200px;float:left"&gt;&lt;/div&gt;&lt;/body&gt; 自身浮动法左栏左浮动，右栏右浮动，中间部分自适应12345&lt;body&gt; &lt;div id="left" style="width:200px; float:left"&gt;&lt;/div&gt; &lt;div id="right" style="width:200px; float:right"&gt;&lt;/div&gt; &lt;div style="margin:0 210px;"&gt;&lt;/div&gt;&lt;/body&gt;]]></content>
+    <title><![CDATA[js单线程相关理解]]></title>
+    <url>%2F2017%2F09%2F08%2Fjs%E5%8D%95%E7%BA%BF%E7%A8%8B%E7%90%86%E8%A7%A3%2F</url>
+    <content type="text"><![CDATA[一直不太理解单线程是什么意思，刚看了一些博客的讲解好像懂了一些。今天就来谈谈这个问题。 js是单线程的，这是毋庸置疑的，那么js是怎么实现异步请求的呢？js本身是不可能异步的，但js的宿主环境，如浏览器、node都是多线程的，宿主环境通过某种方式使得js具备了异步的属性。 js为什么是单线程的？js的单线程机制，与它用途有关。作为浏览器脚本语言，js的主要用途是与用户互动，以及操作DOM。这就决定了它的单线程。 如果js同时有两个线程，一个线程在某个节点上添加了内容，另一个线程删除了这个节点，这就导致了混乱，所以js从一诞生就是单线程的。 浏览器的多线程浏览器是多线程的，浏览器只给js分配了一个线程来执行任务（函数），但由于js是单线程的，因此一次只能执行一个任务，这些任务形成一个任务队列（callback queue）等候执行。这意味着完成队列的所有任务会非常的耗时，且效率低。所以浏览器为这些耗时的任务开辟了另外的线程，并由这些线程实现异步。 下面是浏览器的主要线程： 界面渲染线程 浏览器事件触发线程 http请求线程 js引擎线程 任务队列callback queue单线程意味着所有任务都得排队，前一个没有结束，后一个任务就得一直等着。只有前一个任务执行完了才会执行下一个任务。但是在开发的后期，人们逐渐意识到不必等前一个任务结束再折行下一个任务（如IO设备，ajax操作）。可以把处于等待中的任务挂起，先运行排在后面的任务。等IO设备返回了结果再回头把挂起的任务继续执行下去。 于是所有的任务分为两种，同步任务和异步任务。同步指的是在主线程上排队执行的任务，只有前一个任务执行完毕，才会执行后一个任务； 异步任务指的是，不进入主线程，而是进而任务队列的任务，只有任务队列“通知”主线程异步任务可以执行了，就会执行任务队列的任务。 异步执行的运行机制如下:(同步执行也是如此，可视为没有异步任务的异步执行) 所有的同步任务都在主线程上执行，形成一个执行栈 主线程外，还存在一个“任务队列”，只有异步运行有了结果，就会在“任务队列”中放置一个事件。（这里的事件在我的理解是通过回调函数进入任务队列） 执行栈中的所有同步任务执行完毕，系统会处理“任务队列”里的任务。并进入执行栈，开始执行 主线程不断重复上面的第3步。 上图很好的诠释了异步的机制，也展现出异步的优点。 回调函数在讲任务队列之前我得先讲一下回调函数，因为看到这里时对回调函数产生了模糊。特地仔细研究了下回调函数。之前对于回调函数接触是在ajax里面，ajax请求返回后才执行回调函数里面的内容。 “任务队列”是一个事件的队列（也可以理解成消息的队列），IO设备完成一项任务，就在”任务队列”中添加一个事件，表示相关的异步任务可以进入”执行栈”了。主线程读取”任务队列”，就是读取里面有哪些事件。 而这些事件是怎么进入“任务队列”的呢？答案是回调函数。 所谓”回调函数”（callback），就是那些会被主线程挂起来的代码。异步任务必须指定回调函数，当主线程开始执行异步任务，就是执行对应的回调函数。 事件循环 Event Loop主线程从“任务队列”中读取事件，这个循环的过程又被称为事件循环Event loop。 主线程在运行的时候，产生堆（heap）和栈（stack），函数的执行就是通过进栈和出栈实现的，栈中的代码调用各种外部API，它们在”任务队列”中加入各种事件（click，load，done）。只要栈中的代码执行完毕，主线程就会去读取”任务队列”，依次执行那些事件所对应的回调函数。 定时器“任务队列”还可以放置定时事件。setTimeout()函数接收两个参数，一个是回调函数，一个是任务执行前需等待的时间。 12345console.log(1);setTimeout(function()&#123; consoloe.log(2);&#125;,1000);console.log(3); //1,3,2 setTimeout()将第二行推迟到1000毫秒之后执行。 12setTimeout(function()&#123;console.log(1);&#125;,0);console.log(2); //2,1 如果将setTimeout()的第二个参数设为0，就表示当前代码执行完（执行栈清空）以后，立即执行（0毫秒间隔）指定的回调函数。 总之，setTimeout(fn,0)指的是某个任务在主线程最早可得的空闲时间执行，也就是尽可能早的执行。他在任务队列的尾部添加了一个时间，因此要等到所有同步任务和“任务队列”的任务处理完，再会执行。]]></content>
       <categories>
-        <category>css</category>
+        <category>js</category>
       </categories>
       <tags>
-        <tag>css</tag>
+        <tag>js</tag>
       </tags>
   </entry>
   <entry>
@@ -108,6 +86,17 @@
       </categories>
       <tags>
         <tag>js</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[常用的几种布局]]></title>
+    <url>%2F2017%2F09%2F08%2F%E5%B8%B8%E7%94%A8%E7%9A%84%E5%87%A0%E7%A7%8D%E5%B8%83%E5%B1%80%2F</url>
+    <content type="text"><![CDATA[两列布局左列定宽，右列自适应12.left&#123;float：left; width:100px;&#125;.right&#123;margin-left:100px&#125; IE6会有3像素的bug 三列布局这三种布局基本都是当今网页布局比较常用的布局方式：左中右三栏布局，左右两栏宽度固定（要是不想固定将宽度改成百分比），中间栏宽度自适应。 绝度定位法左右两栏采用绝对定位，固定于页面两侧；中间栏用左右margin值撑开距离。 12345&lt;body&gt; &lt;div id="left" style="position:absolute; width:200px; left:0;"&gt;&lt;/div&gt; &lt;div id="main" style="margin:0 210px"&gt;&lt;/div&gt; &lt;div id="right" style="position:absolute; width:200px;"&gt;&lt;/div&gt;&lt;/body&gt; margin负值法这种方法是在实际的网站中应用的最多的，中间主体使用双层标签，内层div为真正的主体内容，含有左右210像素的margin值。左右栏采用maigin负值定位：margin-left:-100% 1234567&lt;body&gt; &lt;div style="float:left margin:0;"&gt; &lt;div width:100%,float:left&gt;&lt;/div&gt; &lt;/div&gt; &lt;div id="left" style="width:200px; margin-left:-100%;float:left"&gt;&lt;/div&gt; &lt;div id="right" style=" width:200px; margin-left:-200px;float:left"&gt;&lt;/div&gt;&lt;/body&gt; 自身浮动法左栏左浮动，右栏右浮动，中间部分自适应12345&lt;body&gt; &lt;div id="left" style="width:200px; float:left"&gt;&lt;/div&gt; &lt;div id="right" style="width:200px; float:right"&gt;&lt;/div&gt; &lt;div style="margin:0 210px;"&gt;&lt;/div&gt;&lt;/body&gt;]]></content>
+      <categories>
+        <category>css</category>
+      </categories>
+      <tags>
+        <tag>css</tag>
       </tags>
   </entry>
   <entry>
