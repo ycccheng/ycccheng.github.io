@@ -78,7 +78,7 @@
 <link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="web," />
+  <meta name="keywords" content="http," />
 
 
 
@@ -94,18 +94,20 @@
 
 
 
-<meta name="description" content="减少DNS查询DNS为域名系统，从浏览器地址栏输入某个地址后，会用过DNS将域名转为成服务器能接收的IP地址。首先会查看浏览器缓存是否存在，不存在则访问本机DNS缓存，如果还是不存在则访问本地DNS服务器。所以DNS查询是需要时间的，在DNS查询完成之前，浏览器是不能下载任何资源的。 减少DNS最理想是方法是将所有的资源都放在同一个域下面，这样访问整个网站只需要进行一次DNS查询，这样可以提高性能">
-<meta name="keywords" content="web">
+<meta name="description" content="浏览器缓存是指一个web资源，如图片，资源文件等，存在于服务器与客户端之间的副本。使用缓存的作用如下。 减少网络带宽消耗降低服务器压力减少网络延迟，加快页面打开速度，提高用户体验 缓存的类型 数据库缓存 服务器缓存（代理服务器缓存，CDN缓存） 浏览器缓存 （）  缓存相关请求头http协议分别从有效期和校验值两个维度来规定浏览器是否可以直接从本地磁盘使用缓存副本，还是需要从服务器重新请求资源 有">
+<meta name="keywords" content="http">
 <meta property="og:type" content="article">
-<meta property="og:title" content="前端性能优化">
-<meta property="og:url" content="http://yoursite.com/2018/03/01/减少DNS查询/index.html">
+<meta property="og:title" content="面经积累">
+<meta property="og:url" content="http://yoursite.com/2018/03/08/http缓存机制/index.html">
 <meta property="og:site_name" content="叶珵珵">
-<meta property="og:description" content="减少DNS查询DNS为域名系统，从浏览器地址栏输入某个地址后，会用过DNS将域名转为成服务器能接收的IP地址。首先会查看浏览器缓存是否存在，不存在则访问本机DNS缓存，如果还是不存在则访问本地DNS服务器。所以DNS查询是需要时间的，在DNS查询完成之前，浏览器是不能下载任何资源的。 减少DNS最理想是方法是将所有的资源都放在同一个域下面，这样访问整个网站只需要进行一次DNS查询，这样可以提高性能">
+<meta property="og:description" content="浏览器缓存是指一个web资源，如图片，资源文件等，存在于服务器与客户端之间的副本。使用缓存的作用如下。 减少网络带宽消耗降低服务器压力减少网络延迟，加快页面打开速度，提高用户体验 缓存的类型 数据库缓存 服务器缓存（代理服务器缓存，CDN缓存） 浏览器缓存 （）  缓存相关请求头http协议分别从有效期和校验值两个维度来规定浏览器是否可以直接从本地磁盘使用缓存副本，还是需要从服务器重新请求资源 有">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-03-04T11:11:30.000Z">
+<meta property="og:image" content="http://oy3ncu01s.bkt.clouddn.com/18-3-8/68528827.jpg">
+<meta property="og:updated_time" content="2018-03-08T08:22:41.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="前端性能优化">
-<meta name="twitter:description" content="减少DNS查询DNS为域名系统，从浏览器地址栏输入某个地址后，会用过DNS将域名转为成服务器能接收的IP地址。首先会查看浏览器缓存是否存在，不存在则访问本机DNS缓存，如果还是不存在则访问本地DNS服务器。所以DNS查询是需要时间的，在DNS查询完成之前，浏览器是不能下载任何资源的。 减少DNS最理想是方法是将所有的资源都放在同一个域下面，这样访问整个网站只需要进行一次DNS查询，这样可以提高性能">
+<meta name="twitter:title" content="面经积累">
+<meta name="twitter:description" content="浏览器缓存是指一个web资源，如图片，资源文件等，存在于服务器与客户端之间的副本。使用缓存的作用如下。 减少网络带宽消耗降低服务器压力减少网络延迟，加快页面打开速度，提高用户体验 缓存的类型 数据库缓存 服务器缓存（代理服务器缓存，CDN缓存） 浏览器缓存 （）  缓存相关请求头http协议分别从有效期和校验值两个维度来规定浏览器是否可以直接从本地磁盘使用缓存副本，还是需要从服务器重新请求资源 有">
+<meta name="twitter:image" content="http://oy3ncu01s.bkt.clouddn.com/18-3-8/68528827.jpg">
 
 
 
@@ -134,13 +136,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2018/03/01/减少DNS查询/"/>
+  <link rel="canonical" href="http://yoursite.com/2018/03/08/http缓存机制/"/>
 
 
 
 
 
-  <title>前端性能优化 | 叶珵珵</title>
+  <title>面经积累 | 叶珵珵</title>
   
 
 
@@ -277,7 +279,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/03/01/减少DNS查询/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/03/08/http缓存机制/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="ycccheng">
@@ -294,7 +296,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">前端性能优化</h1>
+          <h1 class="post-title" itemprop="name headline">面经积累</h1>
         
 
         <div class="post-meta">
@@ -306,8 +308,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-01T15:59:15+08:00">
-                2018-03-01
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-08T15:59:15+08:00">
+                2018-03-08
               </time>
             
 
@@ -329,8 +331,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/web/" itemprop="url" rel="index">
-                    <span itemprop="name">web</span>
+                  <a href="/categories/http/" itemprop="url" rel="index">
+                    <span itemprop="name">http</span>
                   </a>
                 </span>
 
@@ -366,15 +368,30 @@
       
 
       
-        <h3 id="减少DNS查询"><a href="#减少DNS查询" class="headerlink" title="减少DNS查询"></a>减少DNS查询</h3><p>DNS为域名系统，从浏览器地址栏输入某个地址后，会用过DNS将域名转为成服务器能接收的IP地址。首先会查看浏览器缓存是否存在，不存在则访问本机DNS缓存，如果还是不存在则访问本地DNS服务器。所以DNS查询是需要时间的，在DNS查询完成之前，浏览器是不能下载任何资源的。</p>
-<p>减少DNS最理想是方法是将所有的资源都放在同一个域下面，这样访问整个网站只需要进行一次DNS查询，这样可以提高性能</p>
-<p>但是单域的问题在于，所有资源下载时会产生排队现象，这样会造成阻塞</p>
-<p>所以建议一个网站至少使用2个域，但不多于4个域来提高资源</p>
-<h3 id="使用CDN"><a href="#使用CDN" class="headerlink" title="使用CDN"></a>使用CDN</h3><p><a href="https://www.zhihu.com/question/36514327" target="_blank" rel="external">https://www.zhihu.com/question/36514327</a></p>
-<p>CDN,又名内容分发网络，CDN是将源站内容分发至最接近用户的节点，使用户可就近取得所需内容，提高用户访问的响应速度和成功率。解决因分布、带宽、服务器性能带来的访问延迟问题，适用于站点加速、点播、直播等场景。</p>
-<h3 id="避免重定向"><a href="#避免重定向" class="headerlink" title="避免重定向"></a>避免重定向</h3><p>重定向指的是用户原始请求A被重定向到其他的请求（页面B）</p>
-<p>并且有两个状态码来标识：<br>301：永久重定向<br>302：临时重定向</p>
-<p>增加了浏览器到服务器的往返次数，必然会降低性能。</p>
+        <p>浏览器缓存是指一个web资源，如图片，资源文件等，存在于服务器与客户端之间的副本。使用缓存的作用如下。</p>
+<p><strong>减少网络带宽消耗</strong><br><strong>降低服务器压力</strong><br><strong>减少网络延迟，加快页面打开速度，提高用户体验</strong></p>
+<h3 id="缓存的类型"><a href="#缓存的类型" class="headerlink" title="缓存的类型"></a>缓存的类型</h3><ol>
+<li>数据库缓存</li>
+<li>服务器缓存（代理服务器缓存，CDN缓存）</li>
+<li>浏览器缓存 （<meta http-equiv="pragma" content="no-cache">）</li>
+</ol>
+<h3 id="缓存相关请求头"><a href="#缓存相关请求头" class="headerlink" title="缓存相关请求头"></a>缓存相关请求头</h3><p>http协议分别从有效期和校验值两个维度来规定浏览器是否可以直接从本地磁盘使用缓存副本，还是需要从服务器重新请求资源</p>
+<h4 id="有效期"><a href="#有效期" class="headerlink" title="有效期"></a>有效期</h4><p><strong>Expires</strong></p>
+<p>属于响应请求头字段，告诉浏览器可以在缓存过期时间前可以使用缓存，无需再次请求</p>
+<p><strong>cache-control</strong></p>
+<p>指明当前资源的有效期，控制浏览器是都直接从浏览器缓存取数据还是重新发送请求到服务器取数据。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">cache-control:public | private | no-cache | no-store | max-age</div></pre></td></tr></table></figure>
+<p><strong>Last-modified/if-modified-since</strong></p>
+<p>last-modified:标识资源的最后修改时间</p>
+<p>if-modified-since:与请求资源的最后修改时间（last-modified）相比，若资源被更改过，则返回响应资源及200；若资源未被更改，则返回304</p>
+<p><strong>Etag</strong></p>
+<p>当前请求资源在服务器的唯一标识，当资源更新时，etag也会更新</p>
+<h4 id="last-modified-etag-和-cache-control-expires"><a href="#last-modified-etag-和-cache-control-expires" class="headerlink" title="last-modified/etag 和 cache-control/expires"></a>last-modified/etag 和 cache-control/expires</h4><p>配置last-modified/etag，浏览器会根据etag值<strong>发起请求</strong>，若未修改返回304从本地磁盘中拉取资源</p>
+<p>而cache-control/expries则是直接从缓存中拉取资源，不发送请求</p>
+<h4 id="浏览器缓存机制"><a href="#浏览器缓存机制" class="headerlink" title="浏览器缓存机制"></a>浏览器缓存机制</h4><p><img src="http://oy3ncu01s.bkt.clouddn.com/18-3-8/68528827.jpg" alt=""></p>
+<p>首先判断缓存是否过期，如果没有过期则从缓存中读取；</p>
+<p>如果过期，首先查看etag是否与服务器匹配，如果不匹配则请求头带上if-none-match；</p>
+<p>如果匹配，通过last-modified与if-modified-since对比，决定返回304还是新的资源</p>
 
       
     </div>
@@ -396,7 +413,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/web/" rel="tag"># web</a>
+            <a href="/tags/http/" rel="tag"># http</a>
           
         </div>
       
@@ -551,7 +568,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#减少DNS查询"><span class="nav-number">1.</span> <span class="nav-text">减少DNS查询</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#使用CDN"><span class="nav-number">2.</span> <span class="nav-text">使用CDN</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#避免重定向"><span class="nav-number">3.</span> <span class="nav-text">避免重定向</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#缓存的类型"><span class="nav-number">1.</span> <span class="nav-text">缓存的类型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#缓存相关请求头"><span class="nav-number">2.</span> <span class="nav-text">缓存相关请求头</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#有效期"><span class="nav-number">2.1.</span> <span class="nav-text">有效期</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#last-modified-etag-和-cache-control-expires"><span class="nav-number">2.2.</span> <span class="nav-text">last-modified/etag 和 cache-control/expires</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#浏览器缓存机制"><span class="nav-number">2.3.</span> <span class="nav-text">浏览器缓存机制</span></a></li></ol></li></ol></div>
             
 
           </div>
