@@ -102,7 +102,7 @@
 <meta property="og:site_name" content="叶珵珵">
 <meta property="og:description" content="Promise介绍promise是异步编程的一种解决方案，而传统的方案指的是回调函数或事件。 promise的本质上还是回调函数，通过注册promise对象执行成功与失败时的相应的回调函数。 但与回调函数方式有什么不同呢？在使用promise进行进一步处理时，唏嘘按照接口规定的方式编写处理代码。除promise对象规定的方法以外的方法是不可以使用的。而传统的异步请求是可以自己自由的定义回调函数的参">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-03-19T01:27:44.000Z">
+<meta property="og:updated_time" content="2018-03-29T02:54:17.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="ES6之Promise">
 <meta name="twitter:description" content="Promise介绍promise是异步编程的一种解决方案，而传统的方案指的是回调函数或事件。 promise的本质上还是回调函数，通过注册promise对象执行成功与失败时的相应的回调函数。 但与回调函数方式有什么不同呢？在使用promise进行进一步处理时，唏嘘按照接口规定的方式编写处理代码。除promise对象规定的方法以外的方法是不可以使用的。而传统的异步请求是可以自己自由的定义回调函数的参">
@@ -391,7 +391,7 @@
 <p>由于promise在新建后会立即执行，所以首先输出的是<code>promise</code>，然后，<code>then</code>方法指定的回调函数，将在当前脚本所有同步任务执行完才会执行，所以<code>resolved</code>最后输出。</p>
 <h4 id="2-Promise-prototype-catch"><a href="#2-Promise-prototype-catch" class="headerlink" title="2.Promise.prototype.catch()"></a>2.Promise.prototype.catch()</h4><p><code>Promise.prototype.catch()</code>用来处理promise实例发生错误时的回调函数，是<code>.then(null,rejection)</code>的别名。</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">p.then(<span class="function">(<span class="params">val</span>) =&gt;</span> <span class="built_in">console</span>.log(<span class="string">'success'</span>))</div><div class="line">.catch(<span class="function">(<span class="params">err</span>) =&gt;</span> <span class="built_in">console</span>.log(<span class="string">'failed'</span>));</div></pre></td></tr></table></figure>
-
+<h4 id="promise-all与"><a href="#promise-all与" class="headerlink" title="promise.all与"></a>promise.all与</h4>
       
     </div>
     
@@ -571,7 +571,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Promise介绍"><span class="nav-number">1.</span> <span class="nav-text">Promise介绍</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#promise三种状态"><span class="nav-number">2.</span> <span class="nav-text">promise三种状态</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#基本用法"><span class="nav-number">3.</span> <span class="nav-text">基本用法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#缺点"><span class="nav-number">3.1.</span> <span class="nav-text">缺点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#一些point"><span class="nav-number">3.2.</span> <span class="nav-text">一些point</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#1-Promise在新建后就会立即执行。"><span class="nav-number">3.2.0.1.</span> <span class="nav-text">1. Promise在新建后就会立即执行。</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-Promise-prototype-catch"><span class="nav-number">3.2.1.</span> <span class="nav-text">2.Promise.prototype.catch()</span></a></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Promise介绍"><span class="nav-number">1.</span> <span class="nav-text">Promise介绍</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#promise三种状态"><span class="nav-number">2.</span> <span class="nav-text">promise三种状态</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#基本用法"><span class="nav-number">3.</span> <span class="nav-text">基本用法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#缺点"><span class="nav-number">3.1.</span> <span class="nav-text">缺点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#一些point"><span class="nav-number">3.2.</span> <span class="nav-text">一些point</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#1-Promise在新建后就会立即执行。"><span class="nav-number">3.2.0.1.</span> <span class="nav-text">1. Promise在新建后就会立即执行。</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-Promise-prototype-catch"><span class="nav-number">3.2.1.</span> <span class="nav-text">2.Promise.prototype.catch()</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#promise-all与"><span class="nav-number">3.2.2.</span> <span class="nav-text">promise.all与</span></a></li></ol></li></ol></li></ol></div>
             
 
           </div>
